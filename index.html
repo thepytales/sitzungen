@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schule und Unterricht inklusionssensibel gestalten - Seminar</title>
+    <style>
+        /* Stark barrierefreies UDL Farbschema */
+        :root {
+            /* Hellmodus */
+            --bg-color: #ffffff;
+            --container-bg: #f8f9fa;
+            --text-color: #1a1a1a;
+            --heading-color: #004085;
+            --accent-color: #0056b3;
+            --border-color: #dee2e6;
+            --toc-bg: #e2eef9;
+            --toc-border: #b8daff;
+            --table-header-bg: #004085;
+            --table-header-text: #ffffff;
+            --button-bg: #0056b3;
+            --button-text: #ffffff;
+            --button-stop-bg: #dc3545;
+        }
+
+        [data-theme="dark"] {
+            /* Neuer Dunkelmodus: Dunkelblaues Design mit weissem Text fuer enormen Kontrast */
+            --bg-color: #0a192f;
+            --container-bg: #112240;
+            --text-color: #ffffff;
+            --heading-color: #64ffda;
+            --accent-color: #64ffda;
+            --border-color: #233554;
+            --toc-bg: #0d2747;
+            --toc-border: #64ffda;
+            --table-header-bg: #020c1b;
+            --table-header-text: #64ffda;
+            --button-bg: #64ffda;
+            --button-text: #0a192f;
+            --button-stop-bg: #ff6b6b;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            font-size: 18px;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .theme-toggle {
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            border: 2px solid transparent;
+            padding: 12px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 6px;
+            margin-bottom: 2rem;
+            display: inline-block;
+        }
+
+        .theme-toggle:focus {
+            outline: 4px solid var(--text-color);
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        /* Kontrastreiches Inhaltsverzeichnis */
+        nav {
+            background-color: var(--toc-bg);
+            border: 3px solid var(--toc-border);
+            padding: 1.5rem 2rem;
+            margin-bottom: 3rem;
+            border-radius: 8px;
+        }
+
+        nav h2 {
+            margin-top: 0;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: bold;
+            display: block;
+            padding: 10px;
+            border: 2px solid var(--border-color);
+            border-radius: 4px;
+            background-color: var(--container-bg);
+        }
+
+        nav a:hover, nav a:focus {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            border-color: var(--text-color);
+        }
+
+        .slide-container {
+            background-color: var(--container-bg);
+            border-left: 8px solid var(--accent-color);
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            border-radius: 4px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        h1, h2, h3, h4 { color: var(--heading-color); margin-top: 0; }
+        h1 { font-size: 2.5rem; border-bottom: 3px solid var(--accent-color); padding-bottom: 1rem; margin-bottom: 2rem; }
+        h2 { font-size: 2rem; margin-bottom: 1.5rem; }
+        h3 { font-size: 1.4rem; margin-top: 1.5rem; }
+        
+        /* Barrierefreie Vorlese-Buttons (Direkt nebeneinander) */
+        .tts-controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            background-color: var(--bg-color);
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-read, .btn-stop {
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+            border: 2px solid transparent;
+        }
+
+        .btn-read { background-color: var(--button-bg); color: var(--button-text); }
+        .btn-stop { background-color: var(--button-stop-bg); color: #ffffff; }
+
+        .btn-read:hover, .btn-read:focus, .btn-stop:hover:not(:disabled), .btn-stop:focus:not(:disabled) {
+            opacity: 0.9;
+            outline: 3px solid var(--text-color);
+            outline-offset: 2px;
+        }
+
+        /* Ausgegrauter Stopp-Button Status */
+        .btn-stop:disabled {
+            background-color: #cccccc;
+            color: #666666;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        /* Komplett lesbare Tabelle */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            margin-top: 1.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: var(--bg-color);
+            min-width: 800px;
+        }
+
+        th, td {
+            border: 2px solid var(--border-color);
+            padding: 16px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background-color: var(--table-header-bg);
+            color: var(--table-header-text);
+            font-size: 1.1rem;
+        }
+
+        ul, ol { padding-left: 2rem; margin-bottom: 1.5rem; }
+        li { margin-bottom: 0.8rem; }
+        strong { color: var(--heading-color); }
+    </style>
+</head>
+<body data-theme="light">
+
+    <main>
+        <h1>Schule und Unterricht inklusionssensibel gestalten</h1>
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Zwischen hellem und dunklem Design wechseln">Hell/Dunkel umschalten</button>
+
+        <nav aria-label="Inhaltsverzeichnis">
+            <h2>Schnellzugriff auf die Themen</h2>
+            <ul>
+                <li><a href="#slide-1">Seminar-Einführung</a></li>
+                <li><a href="#slide-2">Ablauf</a></li>
+                <li><a href="#slide-3">Seminarkontext und Modulziele</a></li>
+                <li><a href="#slide-4">Defizit- vs. Bedarfsorientierung</a></li>
+                <li><a href="#slide-5">Organisation & Zeitplan</a></li>
+                <li><a href="#slide-6">Theoretischer Input (Lindmeier)</a></li>
+                <li><a href="#slide-7">Praxis-Transfer & Diskussion</a></li>
+                <li><a href="#slide-8">Prüfungsleistung: Portfolio</a></li>
+                <li><a href="#slide-9">Teil 1: Barriere-Analyse</a></li>
+                <li><a href="#slide-10">Teil 2: Gestaltungsoptionen</a></li>
+                <li><a href="#slide-11">Teil 3: OPAL-Lernmodule</a></li>
+                <li><a href="#slide-12">Abschluss und Fragen</a></li>
+            </ul>
+        </nav>
+
+        <section class="slide-container" id="slide-1">
+            <div class="tts-controls">
+                <button class="btn-read" onclick="speakText('slide-1-content', 'stop-btn-1')" aria-label="Abschnitt 1 vorlesen">Vorlesen</button>
+                <button class="btn-stop" id="stop-btn-1" onclick="stopSpeech()" aria-label="Vorlesen stoppen" disabled>Stopp</button>
+            </div>
+            <div id="slide-1-content">
+                <h2>Einführung in das Modul</h2>
+                <p>Dominik Töpper</p>
+                <p>Schule und Unterricht inklusionssensibel gestalten</p>
+                <p>Modul EW-SEGY-BW4</p>
+                <p>Seminar</p>
+                <p>Sommersemester 2026</p>
+            </div>
+        </section>
+
+        <section class="slide-container" id="slide-2">
+            <div class="tts-controls">
+                <button class="btn-read" onclick="speakText('slide-2-content', 'stop-btn-2')" aria-label="Abschnitt 2 vorlesen">Vorlesen</button>
+                <button class="btn-stop" id="stop-btn-2" onclick="stopSpeech()" aria-label="Vorlesen stoppen" disabled>Stopp</button>
+            </div>
+            <div id="slide-2-content">
+                <h2>Ablauf</h2>
+                <p>Modul EW-SEGY-BW4 - Schule und Unterricht inklusionssensibel gestalten I Dominik Töpper</p>
+                <ol>
+                    <li>1. Seminarkontext und Modulziele</li>
+                    <li>2. Organisation & Zeitplan</li>
+                    <li>3. Theoretischer Input: Lindmeier & Lindmeier (2015)</li>
+                    <li>4. Praxis-Transfer & Diskussion</li>
+                    <li>5. Ausblick auf die Prüfungsleistung: Portfolio</li>
+                    <li>6. Abschluss und Fragen</li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="slide-container" id="slide-3">
+            <div class="tts-controls">
+                <button class="btn-read" onclick="speakText('slide-3-content', 'stop-btn-3')" aria-label="Abschnitt 3 vorlesen">Vorlesen</button>
+                <button class="btn-stop" id="stop-btn-3" onclick="stopSpeech()" aria-label="Vorlesen stoppen" disabled>Stopp</button>
+            </div>
+            <div id="slide-3-content">
+                <h2>1. Seminarkontext und Modulziele</h2>
+                <h3>1. Qualifikationsziele</h3>
+                <ul>
+                    <li>Sie identifizieren Barrieren in der gymnasialen Unterrichtspraxis und begründen Ausschlussmechanismen theoriegeleitet (z.B. über Neurodiversität oder den Inklusionsbegriff der UN-BRK).</li>
+                    <li>Sie setzen sich kritisch mit der Spannung zwischen Inklusion und dem Leistungsprinzip am Gymnasium auseinander.</li>
+                    <li>Sie entwerfen präventive Unterrichtsangebote (UDL) und transformieren reaktive Einzelfalllösungen in inklusive Designs für die ganze Lerngruppe.</li>
+                    <li>Sie übersetzen pädagogische Konzepte in digitale, praxisnahe Lernbausteine zur Sensibilisierung anderer Studierender.</li>
+                </ul>
+                <h3>2. Zentrale Inhalte</h3>
+                <ul>
+                    <li>Begriffe von Diversität und sonderpädagogische Grundlagen.</li>
+                    <li>Rechtliche und ethische Grundlagen schulischer Inklusion.</li>
+                    <li>Arbeiten in multiprofessionellen Teams sowie Organisations- und Schulentwicklung.</li>
+                </ul>
+                <h3>3. Struktur & Leistungsnachweis</h3>
+                <ul>
+                    <li>Arbeitsaufwand: 150 Stunden (5 Leistungspunkte).</li>
+                    <li>Prüfungsleistung: Portfolio (Bearbeitungszeit ca. 60 Stunden).</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="slide-container" id="slide-4">
+            <div class="tts-controls">
+                <button class="btn-read" onclick="speakText('slide-4-content', 'stop-btn-4')" aria-label="Abschnitt 4 vorlesen">Vorlesen</button>
+                <button class="btn-stop" id="stop-btn-4" onclick="stopSpeech()" aria-label="Vorlesen stoppen" disabled>Stopp</button>
+            </div>
+            <div id="slide-4-content">
+                <h2>Defizitorientiert vs. Bedarfsorientiert</h2>
+                <h3>Defizitorientiert (Medizinisches Modell / Integration):</h3>
+                <p>Schaut auf das Kind. "Das Kind hat ADHS oder LRS und scheitert deshalb am Text."<br>(Das Label/die Diagnose steht im Vordergrund).</p>
+                <p><strong>Die klassische Maßnahme: Der Nachteilsausgleich (NTA)</strong></p>
+                <p>Weil das Kind eine diagnostizierte Beeinträchtigung hat, bekommt es als Reaktion darauf eine individuelle Anpassung (z. B. mehr Zeit, einen speziellen Text), um die unveränderte schulische Norm trotzdem erfüllen zu können.<br>
+                Es ist oft defizitär und diskriminierend begründet, zusätzlich wirkt es erst reaktiv (es muss erst jemand scheitern und getestet werden) und lindert die Barriere nur für diese eine Person.</p>
+
+                <h3>Bedarfsorientiert (Soziales Modell / Inklusion):</h3>
+                <p>Schaut auf die Umgebung. "Der Text ist unstrukturiert. Er stellt eine Barriere dar, weil er den individuellen Bedarf nach visueller Strukturierung nicht erfüllt."<br>(Die Barriere und der Unterstützungsbedarf stehen im Vordergrund).</p>
+                <p><strong>Die zukunftsweisende Maßnahme: Universal Design for Learning (UDL)</strong></p>
+                <p>Die Umgebung (der Text, der Unterricht) wird von Beginn an so flexibel und barrierefrei konzipiert (z. B. klare Strukturierung, alternative Audio-Option, Wahlmöglichkeiten), dass sie einer größtmöglichen Vielfalt an Lernenden gerecht wird.<br>
+                Es ist proaktiv. Barrieren werden abgebaut, bevor jemand daran scheitert.<br>
+                Lernhilfen stehen allen zur Verfügung, ohne dass jemand dafür ein Label oder einen gesonderten Nachteilsausgleich beantragen muss.</p>
+            </div>
+        </section>
+
+        <section class="slide-container" id="slide-5">
+            <div class="tts-controls">
+                <button class="btn-read" onclick="speakText('slide-5-content', 'stop-btn-5')" aria-label="Abschnitt 5 vorlesen">Vorlesen</button>
+                <button class="btn-stop" id="stop-btn-5" onclick="stopSpeech()" aria-label="Vorlesen stoppen" disabled>Stopp</button>
+            </div>
+            <div id="slide-5-content">
+                <h2>2. Organisation & Zeitplan</h2>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th scope="col">Datum</th>
+                                <th scope="col">Typ</th>
+                                <th scope="col">Sitzungsinhalt</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>16. Apr. 2026</td>
+                                <td>Präsenz</td>
+                                <td>Sitzung 1: Einführung, Modulziele & Kennenlernen</td>
+                            </tr>
+                            <tr>
+                                <td>23. Apr. 2026</td>
+                                <td>Präsenz</td>
+                                <td>Sitzung 2: Inklusionsbegriff und rechtliche Grundlagen</td>
+                            </tr>
+                            <tr>
+                                <td>30. Apr. 2026</td>
+                                <td>Präsenz</td>
+                                <td>Sitzung 3: Nachteilsausgleich vs. Universal Design for Learning</td>
+                            </tr>
+                            <tr>
+                                <td>7. Mai 2026</td>
+                                <td>Präsenz</td>
+                                <td>Sitzung 4: Neurodiversität im Klassenzimmer</td>
+                            </tr>
+                            <tr>
+                                <td>14. Mai 2026</td>
+                                <td>--</td>
+                                <td>FEIERTAG (Christi Himmelfahrt)</td>
+                            </tr>
+                            <tr>
+                                <td>21. Mai 2026</td>
+                                <td>Präsenz</td>
+                                <td>Sitzung 5: Überleitung zur Portfolioarbeit</td>
+                            </tr>
+                            <tr>
+                                <td>28. Mai 2026</td>
+                                <td>--</td>
+                                <td>PFINGSTPAUSE</td>
+                            </tr>
+                            <tr>
+                                <td>4. Juni 2026</td>
+                                <td>Selbststudium</td>
+                                <td>Selbstarbeit I (Forschungsauftrag zur Barriere-Analyse)</td>
+                            </tr>
+                            <tr>
+                                <td>11. Juni 2026</td>
+                                <td>Selbststudium</td>
+                                <td>Selbstarbeit II (Inhaltserstellung der Lernmodule)</td>
+                            </tr>
+                            <tr>
+                                <td>18. Juni 2026</td>
+                                <td>Präsenz</td>
+                                <td>Sitzung 6: Exkurs 1 "Unsichtbare Barrieren"</td>
+                            </tr>
+                            <tr>
+                                <td>25. Juni 2026</td>
+                                <td>Präsenz</td>
+                                <td>Sitzung 7: Exkurs 2 "Classroom Management"</td>
+                            </tr>
+                            <tr>
+                                <td>2. Juli 2026</td>
+                                <td>Präsenz</td>
+                                <td>Sitzung 8: Exkurs 3 "KI als Unterstützungsmaßnahme"</td>
+                            </tr>
+                            <tr>
+                                <td>9. Juli 2026</td>
+                                <td>Präsenz</td>
+                                <td>Sitzung 9: Exkurs 4 "Kooperation in multiprofessionellen Teams"</td>
+                            </tr>
+                            <tr>
+                                <td>16. Juli 2026</td>
+                                <td>Präsenz</td>
+                                <td>Sitzung 10: Seminarauswertung und Reflexion</td>
+                            </tr>
+                            <tr>
+                                <td>23. Juli 2026</td>
+                                <td>Präsenz</td>
+                                <td>Sitzung 11: Abschlusssitzung und Portfolio-Rückfragen</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section class="slide-container" id="slide-6">
+            <div class="tts-controls">
+                <button class="btn-read" onclick="speakText('slide-6-content', 'stop-btn-6')" aria-label="Abschnitt 6 vorlesen">Vorlesen</button>
+                <button class="btn-stop" id="stop-btn-6" onclick="stopSpeech()" aria-label="Vorlesen stoppen" disabled>Stopp</button>
+            </div>
+            <div id="slide-6-content">
+                <h2>3. Theoretischer Input: Lindmeier & Lindmeier (2015)</h2>
+                <h3>Leseauftrag (15 Minuten):</h3>
+                <ul>
+                    <li>Lest von Lindmeier & Lindmeier (2015) das Kapitel 2 („Inklusion als Menschenrechtsprinzip“, S. 45–47).</li>
+                    <li>Markiert, wie die Kernbegriffe der Menschenrechte (Freiheit, Gleichheit, Brüderlichkeit) im Inklusionsdiskurs neu gedeutet werden.</li>
+                </ul>
+                <p><strong>Einordnung:</strong> UN-Behindertenrechtskonvention (UN-BRK) ist ein völkerrechtlich bindender Vertrag der Vereinten Nationen von 2006, der die Rechte von Menschen mit Beeinträchtigungen schützt und fördert.</p>
+
+                <h3>Aufgabe 1 - Dekonstruktion (Think-/Paararbeit - 10 Min.)</h3>
+                <p>Wählt gemeinsam eines der folgenden Konzepte aus:</p>
+                <ul>
+                    <li>Assistierte Freiheit (statt reiner Autonomie)</li>
+                    <li>Diskriminierungsverbot & Barrierefreiheit (als Abbau struktureller Normen)</li>
+                    <li>Gesellschaftliche Inklusion / enhanced sense of belonging (statt bloßem „Dabeisein“)</li>
+                </ul>
+                <p>Diskutiert darüber und erläutert euch gegenseitig, worin genau der Paradigmenwechsel im Verständnis besteht.</p>
+
+                <h3>Aufgabe 2 - Transfer auf das System Gymnasium (Paararbeit - 10 Min.)</h3>
+                <ul>
+                    <li>Übertragt das gewählte Konzept aus Aufgabe 1 kritisch auf die Institution Gymnasium.</li>
+                    <li>Inwiefern ist das Thema “Inklusion” für das Gymnasium relevant? Notiert zunächst euren eigenen Standpunkt.</li>
+                    <li>Tauscht euch dann mit einer zweiten Person aus und kommentiert den Standpunkt der anderen Person in ca. 5 Sätzen.</li>
+                    <li>Geht dabei darauf ein, inwiefern Ihr dem Standpunkt zustimmt / widersprecht.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="slide-container" id="slide-7">
+            <div class="tts-controls">
+                <button class="btn-read" onclick="speakText('slide-7-content', 'stop-btn-7')" aria-label="Abschnitt 7 vorlesen">Vorlesen</button>
+                <button class="btn-stop" id="stop-btn-7" onclick="stopSpeech()" aria-label="Vorlesen stoppen" disabled>Stopp</button>
+            </div>
+            <div id="slide-7-content">
+                <h2>4. Praxis-Transfer & Diskussion</h2>
+                <ul>
+                    <li>Inklusion ist am Gymnasium eigentlich unwichtig, weil der historische und gesellschaftliche Kernauftrag dieser Schulform die Elitenförderung und Auslese ist. Wer das Gymnasium inklusiv machen will, schafft es de facto ab.</li>
+                    <li>Inklusion schadet dem Gymnasium, weil die ständige Gewährung von Nachteilsausgleichen das objektive Leistungsprinzip ad absurdum führt und die harte Arbeit der regulären Schülerschaft entwertet.</li>
+                    <li>Inklusion hat am Gymnasium keine Priorität, weil wir als Gymnasiallehrkräfte primär Fachwissenschaftler sind, die auf das Abitur vorbereiten sollen. Therapeutische und sonderpädagogische Aufgaben übersteigen schlichtweg unser Berufsbild.</li>
+                    <li>Inklusion am Gymnasium ist reine Zeitverschwendung, weil ein System, das durch Zentralabitur und enormen Notendruck geprägt ist, strukturell gar keinen Raum für individuelle Förderung oder ‚assistierte Freiheit‘ zulässt.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="slide-container" id="slide-8">
+            <div class="tts-controls">
+                <button class="btn-read" onclick="speakText('slide-8-content', 'stop-btn-8')" aria-label="Abschnitt 8 vorlesen">Vorlesen</button>
+                <button class="btn-stop" id="stop-btn-8" onclick="stopSpeech()" aria-label="Vorlesen stoppen" disabled>Stopp</button>
+            </div>
+            <div id="slide-8-content">
+                <h2>5. Ausblick auf die Prüfungsleistung: Portfolio</h2>
+                
+                <h3>Anmeldung auf Selma</h3>
+                <p>An- und Abmeldezeitraum 1: 27.04.2026 - 18.05.2026</p>
+                <p>Ich bin noch nicht als Prüfer eingetragen! (Stand 16.04.2026)</p>
+
+                <h3>Die Prüfungsleistung</h3>
+                <p>Portfolio zum Thema: Entwicklung inklusionspädagogischer Lernbausteine für das Gymnasium</p>
+
+                <h3>Der Arbeitsauftrag</h3>
+                <p>Jede Arbeitsgruppe (4-5 Studierende) erhält ein inklusionspädagogisches Themen-Paar. Eure Aufgabe ist es, für jeden der beiden Themenbereiche einen eigenen multimedialen OPAL-Lernbaustein zu entwickeln.</p>
+                <p>Diese Bausteine sollen Gymnasiallehrkräfte für existierende Barrieren im Schulalltag sensibilisieren und konkrete, präventive Lösungswege aufzeigen.</p>
+                <p>Die Prüfungsleistung (das Portfolio, ca. 12-15 Seiten) dokumentiert den theoriegeleiteten Entwicklungsprozess eurer beiden OPAL-Bausteine in drei Schritten. Für jeden Baustein sind die drei Schritte separat zu erbringen.</p>
+            </div>
+        </section>
+
+        <section class="slide-container" id="slide-9">
+            <div class="tts-controls">
+                <button class="btn-read" onclick="speakText('slide-9-content', 'stop-btn-9')" aria-label="Abschnitt 9 vorlesen">Vorlesen</button>
+                <button class="btn-stop" id="stop-btn-9" onclick="stopSpeech()" aria-label="Vorlesen stoppen" disabled>Stopp</button>
+            </div>
+            <div id="slide-9-content">
+                <h2>Teil 1: Die theoriegeleitete Barriere-Analyse (ca. 4-5 Seiten insgesamt)</h2>
+                <p>Geht von euren OPAL-Themen (Ihren Lösungsansätzen) aus und erarbeitet eine zugrundeliegende Problemstellungen im Unterrichtsalltag.</p>
+                
+                <h3>Situationskonstruktion:</h3>
+                <p>Entwerft für jeden eurer beiden OPAL-Bausteine eine realistische, exkludierende Unterrichtssituation am Gymnasium.<br>
+                (Ein Beispiel für das Thema Live-Untertitelung: Ein schnelles, unstrukturiertes Plenumsgespräch ohne visuelle Absicherung der Redebeiträge).</p>
+
+                <h3>Barrieren statt Diagnosen:</h3>
+                <p>Definiert die funktionalen Bedarfe, die in dieser Lernumgebung ignoriert werden, anstatt sich auf medizinische Diagnosen zu stützen.<br>
+                (Beispiel: Das rein auditive Setting exkludiert Lernende mit einem Bedarf nach visueller Sprachunterstützung).</p>
+
+                <h3>Theoretische Fundierung:</h3>
+                <p>Begründet dabei fortlaufend theoriegeleitet (u.a. durch Rückgriff auf Seminarliteratur), warum diese Unterrichtssituation eine Barriere darstellt und Mechanismen des Ausschlusses produziert.</p>
+                <p>Richtungsweisend ist hierbei der Grundsatz: „Die Ausgestaltung des Unterrichts und anderer schulischer Veranstaltungen orientiert sich an den individuellen Lern- und Entwicklungsvoraussetzungen der Schüler“ (SMK 2015, S. 10).</p>
+                <p>Inklusion bedeutet grundlegend, diese systemischen „Barrieren abzubauen“ (SMK 2015, S. 5).</p>
+            </div>
+        </section>
+
+        <section class="slide-container" id="slide-10">
+            <div class="tts-controls">
+                <button class="btn-read" onclick="speakText('slide-10-content', 'stop-btn-10')" aria-label="Abschnitt 10 vorlesen">Vorlesen</button>
+                <button class="btn-stop" id="stop-btn-10" onclick="stopSpeech()" aria-label="Vorlesen stoppen" disabled>Stopp</button>
+            </div>
+            <div id="slide-10-content">
+                <h2>Teil 2: Bedarfsorientierte Gestaltungsoptionen (ca. 4-5 Seiten insgesamt)</h2>
+                <p>Erläutert für jeden eurer beiden Bausteine den Weg von der reaktiven Sonderlösung hin zum präventiven, inklusiven Lern-Design.</p>
+
+                <h3>Der reaktive Nachteilsausgleich:</h3>
+                <p>Skizziert kurz, wie die in Teil 1 identifizierte Barriere zunächst als klassischer Nachteilsausgleich für ein spezifisches Kind abgebaut werden könnte.</p>
+                <p>Der Nachteilsausgleich dient formal dazu, „Einschränkungen durch Beeinträchtigungen oder Behinderungen auszugleichen oder zu verringern“ (Defizitorientierte Herangehensweise; KMK 2011 zitiert nach SMK 2015, S. 28).<br>
+                Reflektiert hier kurz die (organisatorischen oder stigmatisierenden) Grenzen dieses Ansatzes.</p>
+
+                <h3>Der präventive Perspektivwechsel (UDL):</h3>
+                <p>Vollzieht nun den Perspektivwechsel vom Individuum hin zur gesamten Lerngruppe.<br>
+                Wie können eure beiden OPAL-Themen jeweils präventiv in das Design Ihres Unterrichts integriert werden, sodass individuelle Sonderlösungen obsolet werden?<br>
+                (Ansatz des Universal Design for Learning).</p>
+
+                <h3>Der Mehrwert für alle:</h3>
+                <p>Inwiefern profitieren alle Lernenden (z. B. auch Kinder ohne Diagnosen, mehrsprachig aufwachsende Kinder, Lernende mit temporären Einschränkungen) von euren proaktiven Anpassungen der Lernumgebung?</p>
+            </div>
+        </section>
+
+        <section class="slide-container" id="slide-11">
+            <div class="tts-controls">
+                <button class="btn-read" onclick="speakText('slide-11-content', 'stop-btn-11')" aria-label="Abschnitt 11 vorlesen">Vorlesen</button>
+                <button class="btn-stop" id="stop-btn-11" onclick="stopSpeech()" aria-label="Vorlesen stoppen" disabled>Stopp</button>
+            </div>
+            <div id="slide-11-content">
+                <h2>Teil 3: Die OPAL-Lernmodule (ca. 3-4 Seiten Begleittext + 2 Medienprodukte)</h2>
+                <p>Überführt eure theoriegeleiteten Erkenntnisse aus Teil 1 und 2 in die Praxis und entwerft Lernmodule.</p>
+
+                <h3>Medienproduktion:</h3>
+                <p>Erstellt für beide Themen eures Themen-Paares jeweils ein pragmatisches Lernmedium (z. B. ein 3 bis 5-Minuten-Erklärvideo, ein interaktives H5P-Quiz, einen interaktiven Vorher-Nachher-Vergleich usw.). Die Zielgruppe sind Gymnasiallehrkräfte, die Sie für den Barriereabbau sensibilisieren möchten.</p>
+
+                <h3>OPAL-Skript:</h3>
+                <p>Dokumentiert im Portfolio den Begleittext, der im OPAL-Kurs neben Ihrem Medium stehen wird.</p>
+
+                <h3>Mediendidaktische Reflexion:</h3>
+                <p>Begründet abschließend kurz eure mediale Umsetzung. Warum habe ihr genau dieses Format gewählt, um über die beiden inklusionspädagogischen Handlungsfelder zu informieren?</p>
+            </div>
+        </section>
+
+        <section class="slide-container" id="slide-12">
+            <div class="tts-controls">
+                <button class="btn-read" onclick="speakText('slide-12-content', 'stop-btn-12')" aria-label="Abschnitt 12 vorlesen">Vorlesen</button>
+                <button class="btn-stop" id="stop-btn-12" onclick="stopSpeech()" aria-label="Vorlesen stoppen" disabled>Stopp</button>
+            </div>
+            <div id="slide-12-content">
+                <h2>6. Abschluss und Fragen</h2>
+                <p>Noch Fragen?</p>
+                <p>Erreichbarkeit via Mail: dominik.toepper@tu-dresden.de</p>
+                <p>und</p>
+                <p>Sprechzeiten nach Vereinbarung im Raum 405 (MS1)</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Logik für den Dark/Light Mode Toggle
+        function toggleTheme() {
+            const body = document.body;
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            body.setAttribute('data-theme', newTheme);
+        }
+
+        // Hilfsfunktion: Alle Stop-Buttons deaktivieren
+        function disableAllStopButtons() {
+            const buttons = document.querySelectorAll('.btn-stop');
+            buttons.forEach(btn => btn.disabled = true);
+        }
+
+        // Sprachausgabe mit strikter Verhinderung von Überlappungen
+        function speakText(elementId, stopBtnId) {
+            // Vorherige Ausgabe stoppen und alle Buttons zurücksetzen
+            window.speechSynthesis.cancel();
+            disableAllStopButtons();
+            
+            const element = document.getElementById(elementId);
+            if (!element) return;
+            
+            const textToRead = element.innerText;
+            const utterance = new SpeechSynthesisUtterance(textToRead);
+            
+            utterance.lang = 'de-DE';
+            utterance.rate = 0.95; 
+
+            const stopBtn = document.getElementById(stopBtnId);
+            if (stopBtn) {
+                stopBtn.disabled = false; // Mache diesen Button klickbar
+            }
+
+            // Wenn Vorlesen natürlich endet oder Fehler wirft -> Button ausgrauen
+            utterance.onend = function() {
+                if (stopBtn) stopBtn.disabled = true;
+            };
+            utterance.onerror = function() {
+                if (stopBtn) stopBtn.disabled = true;
+            };
+            
+            // Startet das Vorlesen exklusiv für diesen Abschnitt
+            window.speechSynthesis.speak(utterance);
+        }
+
+        function stopSpeech() {
+            // Bricht das aktuelle Vorlesen sofort ab
+            window.speechSynthesis.cancel();
+            disableAllStopButtons();
+        }
+    </script>
+</body>
+</html>
