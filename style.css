@@ -1,0 +1,810 @@
+:root {
+    --bg-color: #ffffff;
+    --container-bg: #f4f7f6;
+    --text-color: #212529;
+    --heading-color: #00305e;
+    --accent-color: #0056b3;
+    --border-color: #dee2e6;
+    --card-bg: #ffffff;
+    --button-bg: #0056b3;
+    --button-text: #ffffff;
+    --success-color: #28a745;
+    --modal-overlay: rgba(0, 0, 0, 0.6);
+}
+
+/* Native Skalierung (Zoom-Simulation): Alles wird global vergrößert */
+html { 
+    font-size: 18px; /* Hebt alles um ca. 12,5% an */
+}
+
+/* Auf sehr großen Bildschirmen / im Vollbild nochmal größer */
+@media (min-width: 1400px) { 
+    html { font-size: 21px; } /* Simuliert ca. den 130-150% Zoom */
+}
+
+[data-theme="dark"] {
+    --bg-color: #0d1117;
+    --container-bg: #161b22;
+    --text-color: #c9d1d9;
+    --heading-color: #58a6ff;
+    --accent-color: #58a6ff;
+    --border-color: #30363d;
+    --card-bg: #21262d;
+    --button-bg: #238636;
+    --modal-overlay: rgba(0, 0, 0, 0.8);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.no-print { display: block; }
+.print-only { display: none; }
+
+/* --- HEADER UI & BUTTONS --- */
+header {
+    background-color: var(--card-bg);
+    padding: 3.5rem 0 2.5rem 0; /* Padding wird nun vom inneren Container gesteuert */
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+    position: relative;
+    z-index: 10;
+}
+
+.header-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem; /* Exakt gleicher Abstand wie im main-Bereich */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.header-info h1 {
+    margin: 0;
+    font-size: clamp(1.4rem, 2.5vw, 2.2rem); /* Skaliert dynamisch, damit es auf breiten Bildschirmen passt */
+    white-space: nowrap; /* Zwingt die Überschrift streng auf eine einzige Zeile */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Blendet den Text elegant aus, falls der Bildschirm extrem schmal ist */
+    color: var(--heading-color);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    font-weight: 700;
+}
+
+.header-toolbar {
+    display: flex;
+    justify-content: space-between; /* Verteilt Startmenü (links) und Tab/Einstellungen (rechts) */
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.header-actions-left, .header-actions-right {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+/* Buttons: Klar als interaktive Elemente erkennbar */
+.nav-btn {
+    height: 38px; 
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    padding: 0 1rem;
+    border-radius: 6px;
+    box-sizing: border-box;
+    white-space: nowrap;
+    font-weight: 600;
+    background-color: var(--card-bg);
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+}
+
+.nav-btn svg {
+    opacity: 0.9;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.nav-btn:hover {
+    background-color: var(--accent-color);
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 86, 179, 0.15);
+}
+
+.nav-btn:hover svg {
+    opacity: 1;
+    transform: translateY(-1px);
+}
+
+.nav-btn:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--bg-color), 0 0 0 6px var(--accent-color);
+}
+
+@media (max-width: 1024px) {
+    .header-toolbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .header-actions {
+        width: 100%;
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 2.5rem 1.5rem 2rem 1.5rem;
+    }
+    .header-info h1 {
+        font-size: 2.2rem;
+    }
+}
+
+main {
+    max-width: 1400px; /* Erweitert, damit es auf großen Monitoren (im neuen Tab) voll wirkt */
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+button {
+    padding: 0.8rem 1.5rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    transition: opacity 0.2s;
+}
+
+button:disabled, .nav-btn:disabled, .locked-btn { 
+    background-color: var(--container-bg) !important; 
+    color: var(--text-color) !important;
+    border: 1px solid var(--border-color) !important;
+    cursor: not-allowed !important; 
+    opacity: 0.5;
+    pointer-events: none;
+    box-shadow: none !important;
+}
+
+details {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+
+summary {
+    font-weight: 500;
+    font-size: 1.05rem;
+    cursor: pointer;
+    color: var(--text-color);
+    padding: 0.8rem 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    transition: color 0.2s;
+}
+
+summary:hover {
+    color: var(--accent-color);
+}
+
+summary::-webkit-details-marker { display: none; }
+
+summary::before {
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 6px solid var(--accent-color);
+    margin-right: 12px;
+    transition: transform 0.2s ease-in-out;
+}
+
+details[open] summary {
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+}
+
+details[open] summary::before {
+    transform: rotate(90deg);
+}
+
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.tile {
+    background-color: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: left;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+}
+
+.tile:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    border-color: var(--accent-color);
+}
+
+.tile.locked {
+    opacity: 0.5;
+    background-color: var(--container-bg);
+    pointer-events: none;
+    filter: grayscale(1); /* Macht gesperrte Kacheln farblos */
+    cursor: not-allowed;
+}
+
+.date-badge {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: #ffffff;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    align-self: flex-start;
+}
+
+.tile h3 { margin: 0 0 0.5rem 0; font-size: 1.1rem; }
+.tile p { margin: 0 0 1rem 0; font-size: 0.9rem; flex-grow: 1; }
+
+.summary-btn {
+    background-color: var(--container-bg);
+    color: var(--heading-color);
+    border: 2px solid var(--border-color);
+    padding: 0.5rem;
+    width: 100%;
+    text-align: center;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    margin-top: auto;
+}
+
+.summary-btn:hover {
+    background-color: var(--accent-color);
+    color: #ffffff;
+    border-color: var(--accent-color);
+}
+
+.content-section {
+    display: none;
+    background-color: var(--card-bg);
+    padding: 2.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.active { display: block; }
+
+.task-box {
+    background-color: var(--container-bg);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    border-left: 5px solid var(--accent-color);
+}
+
+.task-check {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+
+.task-check input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-top: 0.2rem;
+    cursor: pointer;
+    accent-color: var(--accent-color);
+}
+
+.task-check input[type="checkbox"]:checked + span {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+textarea {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    margin-top: 1rem;
+    box-sizing: border-box;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.tts-controls {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.tts-btn {
+    background-color: var(--heading-color);
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    color: #ffffff;
+    border: 2px solid transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.tts-btn:hover:not(:disabled) {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.tts-btn:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.tts-btn:focus-visible {
+    outline: 3px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+.tts-btn:disabled {
+    background-color: var(--container-bg);
+    color: var(--text-color);
+    border: 2px solid var(--border-color);
+    opacity: 0.6;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+.pdf-btn {
+    display: inline-block;
+    background-color: transparent;
+    color: var(--accent-color);
+    border: 2px solid var(--accent-color);
+    padding: 0.6rem 1.2rem;
+    font-size: 0.95rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 1.5rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+.pdf-btn:hover {
+    background-color: var(--accent-color);
+    color: #ffffff;
+}
+
+/* --- OPTIMIERTES GLOSSAR STYLING --- */
+.glossary-term {
+    border-bottom: 2px solid var(--accent-color);
+    cursor: help;
+    position: relative;
+    display: inline-block;
+    font-weight: 500;
+    color: var(--heading-color);
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.glossary-term:hover,
+.glossary-term:focus-visible {
+    background-color: var(--accent-color);
+    color: #ffffff;
+    outline: none;
+    border-radius: 4px;
+}
+
+/* Das alte fehleranfällige ::after Pseudo-Element wird entfernt und durch eine globale Klasse ersetzt */
+.global-tooltip {
+    position: fixed;
+    background-color: var(--glossary-bg, var(--heading-color));
+    color: #ffffff;
+    padding: 1rem;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    width: max-content;
+    max-width: 280px;
+    z-index: 9999; /* Z-Index extrem hoch, damit es über allem (auch Modals) liegt */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    font-weight: 400;
+    line-height: 1.5;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s, transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform: translateY(10px);
+    left: 0;
+    top: 0;
+}
+
+.global-tooltip.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* --- EINSTELLUNGSMENÜ & MODAL ERWEITERUNG --- */
+.settings-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.settings-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.settings-group label {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.settings-control {
+    padding: 0.6rem;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    background: var(--card-bg);
+    color: var(--text-color);
+    font-family: inherit;
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.settings-control:focus-visible {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px var(--bg-color), 0 0 0 6px var(--accent-color);
+}
+
+/* --- PROFESSIONELLES MODAL-DESIGN --- */
+.modal-overlay {
+    display: none;
+    position: absolute; /* OPAL-Fix: position absolute statt fixed, da OPAL iframes in die Länge zieht */
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--modal-overlay);
+    z-index: 2000;
+    align-items: flex-start; /* OPAL-Fix: Modal rutscht an den Anfang, JS übernimmt die genaue Platzierung */
+    justify-content: center;
+    padding: 1rem;
+    backdrop-filter: blur(4px);
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-content {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    padding: 2.5rem;
+    border-radius: 16px;
+    max-width: 900px; /* Erhöht für ein breiteres Layout */
+    width: 90vw; /* Dynamische Anpassung an die Bildschirmbreite */
+    /* OPAL-Fix: Höhe anpassen, damit es nicht über den Rand geht, aber scrollbar bleibt */
+    max-height: calc(100vh - 4rem); 
+    overflow-y: auto;
+    position: relative;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    margin-bottom: 2rem;
+}
+
+.modal-close {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+    background-color: var(--container-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    padding: 0.5rem 0.8rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.modal-close:hover {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* --- CHAT UI STYLING (aus Sitzung 2 verschoben) --- */
+.chat-ui { border: 1px solid var(--border-color); border-radius: 12px; margin-top: 1.5rem; overflow: hidden; background: var(--bg-color); font-family: 'Poppins', sans-serif; }
+.chat-ui-header { background: var(--container-bg); padding: 1rem 1.5rem; font-weight: 600; display: flex; align-items: center; gap: 0.8rem; border-bottom: 1px solid var(--border-color); }
+.chat-ui-body { padding: 1.5rem; display: flex; flex-direction: column; gap: 1.5rem; }
+.chat-msg-left { align-self: flex-start; background: var(--container-bg); color: var(--text-color); padding: 1rem 1.2rem; border-radius: 18px 18px 18px 4px; max-width: 85%; line-height: 1.5; position: relative; border: 1px solid var(--border-color); }
+.chat-msg-left b { display: block; margin-bottom: 0.4rem; font-size: 0.85rem; color: var(--heading-color); }
+.chat-reply-label { cursor: pointer; display: block; max-width: 90%; position: relative; }
+.chat-reply-label input[type="radio"] { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.chat-reply-bubble { display: block; background: transparent; border: 2px solid var(--accent-color); color: var(--text-color); padding: 0.8rem 1.2rem; border-radius: 18px 18px 4px 18px; line-height: 1.4; transition: all 0.2s ease; font-size: 0.95rem; }
+.chat-reply-label input[type="radio"]:checked + .chat-reply-bubble { background: var(--accent-color); color: #ffffff; box-shadow: 0 4px 10px rgba(0,0,0,0.15); border-color: var(--accent-color); }
+.chat-reply-label input[type="radio"]:hover:not(:checked) + .chat-reply-bubble { background: var(--container-bg); }
+.chat-reply-label input[type="radio"]:focus-visible + .chat-reply-bubble { outline: 3px solid var(--heading-color); outline-offset: 2px; }
+
+/* Neue Animationen für den Chat-Verlauf */
+.chat-reveal { opacity: 0; transform: translateY(15px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.chat-reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* --- FLIP CARDS STYLING (Sitzung 1) --- */
+.flip-card {
+    background-color: transparent;
+    perspective: 1000px;
+    cursor: pointer;
+    height: 180px;
+    width: 100%;
+}
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+    transform-style: preserve-3d;
+}
+.flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+}
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 8px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: 500;
+    box-sizing: border-box;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+.flip-card-front {
+    background-color: var(--container-bg);
+    border: 2px solid var(--border-color);
+    color: var(--text-color);
+}
+.flip-card-front::after {
+    content: "Klicken zum Wenden";
+    position: absolute;
+    bottom: 10px;
+    font-size: 0.75rem;
+    color: var(--accent-color);
+    opacity: 0.8;
+}
+.flip-card-back {
+    background-color: var(--accent-color);
+    color: #ffffff;
+    transform: rotateY(180deg);
+    border: 2px solid var(--accent-color);
+}
+
+/* --- RANGE SLIDER STYLING (Sitzung 1) --- */
+input[type=range].step-slider {
+    -webkit-appearance: none;
+    width: 100%;
+    background: transparent;
+    margin: 15px 0;
+    position: relative;
+    z-index: 2; /* Regler liegt über den optischen Ticks */
+}
+input[type=range].step-slider::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 10px;
+    cursor: pointer;
+    background: var(--track-bg, var(--border-color));
+    border-radius: 5px;
+    box-shadow: var(--track-shadow, inset 0 1px 3px rgba(0,0,0,0.1));
+}
+input[type=range].step-slider[style*="--track-bg: transparent"]::-webkit-slider-runnable-track {
+    box-shadow: none; /* Blendet den störenden Schatten-Strich aus, wenn der Track transparent ist */
+}
+input[type=range].step-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    background: var(--accent-color);
+    cursor: grab;
+    margin-top: -7px; /* (10px Track Height / 2) - (24px Thumb Height / 2) */
+    box-shadow: 0 0 0 4px var(--container-bg), 0 2px 5px rgba(0,0,0,0.3);
+    transition: transform 0.1s ease, background-color 0.2s ease;
+}
+input[type=range].step-slider:active::-webkit-slider-thumb {
+    cursor: grabbing;
+    transform: scale(1.15);
+    background: var(--heading-color);
+}
+input[type=range].step-slider:focus {
+    outline: none;
+}
+input[type=range].step-slider:focus-visible::-webkit-slider-thumb {
+    outline: 3px solid var(--heading-color);
+    outline-offset: 2px;
+}
+
+/* --- PROFESSIONELLES UND BARRIEREFREIES PDF-DESIGN --- */
+@media print {
+    @page {
+        size: A4;
+        margin: 20mm;
+    }
+
+    body {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+        padding: 0 !important;
+        font-family: Arial, Helvetica, sans-serif !important;
+        font-size: 11pt !important;
+    }
+
+    p, li, span, td, th {
+        page-break-inside: avoid;
+        break-inside: avoid;
+        line-height: 1.4 !important;
+    }
+
+    h1, h2, h3, h4 {
+        page-break-after: avoid;
+        color: #000000 !important;
+        font-family: Arial, Helvetica, sans-serif !important;
+        margin-top: 1.5em !important;
+    }
+
+    /* Alle störenden UI-Elemente restlos ausblenden */
+    .no-print, .header-actions, .tts-controls, .pdf-btn, header, button, input, select, .chat-reply-label input {
+        display: none !important;
+    }
+
+    .print-only { display: block !important; }
+    .content-section { display: none !important; }
+
+    /* Nur aktiven Inhalt sauber anzeigen */
+    .content-section.active { 
+        display: block !important; 
+        border: none !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        background-color: transparent !important;
+    }
+
+    /* Aufgabenboxen auflösen und in fließenden Text umwandeln */
+    .task-box {
+        background-color: transparent !important;
+        border: none !important;
+        border-top: 1px solid #cccccc !important;
+        padding: 1.5rem 0 !important;
+        margin-bottom: 0 !important;
+        border-radius: 0 !important;
+        page-break-inside: auto; /* Erlaubt Umbrüche, um Lücken zu vermeiden */
+    }
+
+    .task-box h3 {
+        color: #000000 !important;
+        margin-top: 0;
+        font-size: 14pt !important;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+    }
+
+    /* Den Chat-Bereich sauber für das PDF als Text strukturieren */
+    .chat-ui { border: none !important; margin: 0 !important; }
+    .chat-ui-header { display: none !important; }
+    .chat-ui-body { padding: 0 !important; }
+    .chat-msg-left { 
+        background: none !important; 
+        border: none !important; 
+        padding: 0 0 1rem 0 !important; 
+        max-width: 100% !important;
+    }
+    .chat-reply-bubble {
+        display: block;
+        border: 1px dashed #999999 !important;
+        padding: 0.5rem !important;
+        margin-bottom: 0.5rem !important;
+        color: #000000 !important;
+    }
+
+    /* Links lesbar machen */
+    a[href]::after {
+        content: " (" attr(href) ")";
+        font-size: 0.85em;
+        color: #333333 !important;
+        text-decoration: none;
+    }
+
+    textarea {
+        display: none !important;
+    }
+
+    /* Reduziertes Deckblatt-Design */
+    .global-print-header {
+        text-align: left !important;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 2px solid #000000 !important;
+        page-break-after: avoid;
+    }
+
+    .global-print-header h1 {
+        font-size: 18pt !important;
+        margin-bottom: 0.2rem;
+    }
+
+    .global-print-header h2 {
+        font-size: 12pt !important;
+        font-weight: normal;
+        color: #444444 !important;
+    }
+
+    /* Bereich für die eigene Reflexion am Ende */
+    .print-section {
+        margin-top: 2rem;
+        page-break-inside: auto;
+    }
+
+    .print-section h3 {
+        border-bottom: 1px solid #cccccc !important;
+        padding-bottom: 0.2rem;
+    }
+
+    .print-section p span {
+        display: block;
+        padding: 0 !important;
+        margin-top: 0.5rem;
+        background-color: transparent !important;
+        border-left: none !important;
+        font-style: italic;
+    }
+}

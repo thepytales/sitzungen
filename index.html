@@ -3,615 +3,1505 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Schule und Unterricht inklusionssensibel gestalten - Seminar</title>
-    <style>
-        /* Stark barrierefreies UDL Farbschema */
-        :root {
-            /* Hellmodus */
-            --bg-color: #ffffff;
-            --container-bg: #f8f9fa;
-            --text-color: #1a1a1a;
-            --heading-color: #004085;
-            --accent-color: #0056b3;
-            --border-color: #dee2e6;
-            --toc-bg: #e2eef9;
-            --toc-border: #b8daff;
-            --table-header-bg: #004085;
-            --table-header-text: #ffffff;
-            --button-bg: #0056b3;
-            --button-text: #ffffff;
-            --button-stop-bg: #dc3545;
+    <title>Seminar: Schule und Unterricht inklusionssensibel gestalten</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- OPAL ANPASSUNG -->
+    <link rel="stylesheet" href="style.css?v=4">
+    <style media="print">
+        /* Exklusive Druckansicht für Modals aktivieren & leere Seiten verhindern */
+        html, body.print-modal-active {
+            height: auto !important;
+            min-height: auto !important;
+            margin: 0 !important;
+            padding: 0 !important;
         }
-
-        [data-theme="dark"] {
-            /* Neuer Dunkelmodus: Dunkelblaues Design mit weissem Text fuer enormen Kontrast */
-            --bg-color: #0a192f;
-            --container-bg: #112240;
-            --text-color: #ffffff;
-            --heading-color: #64ffda;
-            --accent-color: #64ffda;
-            --border-color: #233554;
-            --toc-bg: #0d2747;
-            --toc-border: #64ffda;
-            --table-header-bg: #020c1b;
-            --table-header-text: #64ffda;
-            --button-bg: #64ffda;
-            --button-text: #0a192f;
-            --button-stop-bg: #ff6b6b;
+        body.print-modal-active > *:not(main) {
+            display: none !important;
         }
-
-        body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            font-size: 18px;
-            transition: all 0.2s ease-in-out;
+        body.print-modal-active main {
+            margin: 0 !important;
+            padding: 0 !important;
+            display: block !important;
         }
-
-        .theme-toggle {
-            background-color: var(--button-bg);
-            color: var(--button-text);
-            border: 2px solid transparent;
-            padding: 12px 20px;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            border-radius: 6px;
-            margin-bottom: 2rem;
-            display: inline-block;
+        body.print-modal-active main > *:not(.modal-overlay.active) {
+            display: none !important;
         }
-
-        .theme-toggle:focus {
-            outline: 4px solid var(--text-color);
+        body.print-modal-active .modal-overlay.active {
+            position: relative !important;
+            display: block !important;
+            background: transparent !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            min-height: auto !important;
+            height: auto !important;
         }
-
-        main {
-            max-width: 1000px;
-            margin: 2rem auto;
-            padding: 0 1rem;
+        body.print-modal-active .modal-content {
+            box-shadow: none !important;
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            max-width: 100% !important;
+            max-height: none !important;
+            height: auto !important;
+            overflow: visible !important;
+            page-break-inside: auto !important;
+            page-break-after: avoid !important;
         }
-
-        /* Kontrastreiches Inhaltsverzeichnis */
-        nav {
-            background-color: var(--toc-bg);
-            border: 3px solid var(--toc-border);
-            padding: 1.5rem 2rem;
-            margin-bottom: 3rem;
-            border-radius: 8px;
+        /* Zwingt das letzte Element, keinen unsichtbaren Rand auf die nächste Seite zu schieben */
+        body.print-modal-active .modal-content > *:last-child {
+            margin-bottom: 0 !important;
+            padding-bottom: 0 !important;
         }
-
-        nav h2 {
-            margin-top: 0;
-            color: var(--text-color);
-            font-size: 1.5rem;
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 0.5rem;
+        body.print-modal-active .modal-header-actions {
+            display: none !important;
         }
-
-        nav ul {
-            list-style: none;
-            padding: 0;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-        }
-
-        nav a {
-            color: var(--text-color);
-            text-decoration: none;
-            font-weight: bold;
-            display: block;
-            padding: 10px;
-            border: 2px solid var(--border-color);
-            border-radius: 4px;
-            background-color: var(--container-bg);
-        }
-
-        nav a:hover, nav a:focus {
-            background-color: var(--accent-color);
-            color: var(--bg-color);
-            border-color: var(--text-color);
-        }
-
-        .slide-container {
-            background-color: var(--container-bg);
-            border-left: 8px solid var(--accent-color);
-            padding: 2.5rem;
-            margin-bottom: 3rem;
-            border-radius: 4px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-        }
-
-        h1, h2, h3, h4 { color: var(--heading-color); margin-top: 0; }
-        h1 { font-size: 2.5rem; border-bottom: 3px solid var(--accent-color); padding-bottom: 1rem; margin-bottom: 2rem; }
-        h2 { font-size: 2rem; margin-bottom: 1.5rem; }
-        h3 { font-size: 1.4rem; margin-top: 1.5rem; }
-        
-        /* Barrierefreie Vorlese-Buttons (Direkt nebeneinander) */
-        .tts-controls {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
-            background-color: var(--bg-color);
-            padding: 10px;
-            border-radius: 6px;
-            border: 1px solid var(--border-color);
-        }
-
-        .btn-read, .btn-stop {
-            padding: 10px 20px;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            border-radius: 4px;
-            border: 2px solid transparent;
-        }
-
-        .btn-read { background-color: var(--button-bg); color: var(--button-text); }
-        .btn-stop { background-color: var(--button-stop-bg); color: #ffffff; }
-
-        .btn-read:hover, .btn-read:focus, .btn-stop:hover:not(:disabled), .btn-stop:focus:not(:disabled) {
-            opacity: 0.9;
-            outline: 3px solid var(--text-color);
-            outline-offset: 2px;
-        }
-
-        /* Ausgegrauter Stopp-Button Status */
-        .btn-stop:disabled {
-            background-color: #cccccc;
-            color: #666666;
-            cursor: not-allowed;
-            opacity: 0.6;
-        }
-
-        /* Komplett lesbare Tabelle */
-        .table-responsive {
-            width: 100%;
-            overflow-x: auto;
-            margin-top: 1.5rem;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background-color: var(--bg-color);
-            min-width: 800px;
-        }
-
-        th, td {
-            border: 2px solid var(--border-color);
-            padding: 16px;
-            text-align: left;
-            vertical-align: top;
-        }
-
-        th {
-            background-color: var(--table-header-bg);
-            color: var(--table-header-text);
-            font-size: 1.1rem;
-        }
-
-        ul, ol { padding-left: 2rem; margin-bottom: 1.5rem; }
-        li { margin-bottom: 0.8rem; }
-        strong { color: var(--heading-color); }
     </style>
 </head>
 <body data-theme="light">
 
-    <main>
-        <h1>Schule und Unterricht inklusionssensibel gestalten</h1>
-        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Zwischen hellem und dunklem Design wechseln">Hell/Dunkel umschalten</button>
+<header class="no-print">
+    <div class="header-container">
+        <div class="header-info">
+            <h1>Schule und Unterricht inklusionssensibel gestalten</h1>
+        </div>
+        <div class="header-toolbar">
+            <div class="header-actions-left">
+                <button id="homeBtn" class="nav-btn" onclick="showView('home')" aria-label="Zur Übersicht">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                    Startmenü
+                </button>
+            </div>
+            <div class="header-actions-right">
+                <button id="externalBtn" class="nav-btn" onclick="window.open(window.location.href, '_blank')" aria-label="Seite in einem neuen Tab öffnen">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    Neuer Tab
+                </button>
+                <button id="examBtn" class="nav-btn" onclick="openModal(event, 'modal-exam')" aria-label="Übersicht der Prüfungsleistung anzeigen">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    Übersicht Prüfungsleistung
+                </button>
+                <button id="infoBtn" class="nav-btn" onclick="openModal(event, 'modal-info')" aria-label="Modulziele und Informationen anzeigen">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                    Modulinfo
+                </button>
+                <button id="settingsBtn" class="nav-btn" onclick="openModal(event, 'modal-settings')" aria-label="Einstellungen öffnen">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                    Einstellungen
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
 
-        <nav aria-label="Inhaltsverzeichnis">
-            <h2>Schnellzugriff auf die Themen</h2>
+<main>
+
+    <div id="view-home" class="content-section active no-print">
+        
+        <div class="dashboard">
+            <div class="tile" id="tile-s1" onclick="showView('s1')">
+                <span class="date-badge">16. Apr. 2026</span>
+                <h3>Sitzung 1</h3>
+                <p>Einführung, Modulziele & Annäherung an den Inklusionsdiskurs (Lindmeier & Lindmeier)</p>
+                <button class="summary-btn" id="btn-s1" onclick="openModal(event, 'modal-s1')">Zusammenfassung lesen</button>
+            </div>
+            
+            <div class="tile" id="tile-s2" onclick="showView('s2')">
+                <span class="date-badge">23. Apr. 2026</span>
+                <h3>Sitzung 2</h3>
+                <p>Inklusionsbegriffe, Leistungsorientierung vs. Inklusion am Gymnasium (Bräu)</p>
+                <button class="summary-btn" id="btn-s2" onclick="openModal(event, 'modal-s2')">Zusammenfassung lesen</button>
+            </div>
+
+            <div class="tile" id="tile-s3" onclick="showView('s3')">
+                <span class="date-badge">30. Apr. 2026</span>
+                <h3>Sitzung 3</h3>
+                <p>Nachteilsausgleich & Diagnostik (Wolf & Dietze)</p>
+                <button class="summary-btn" id="btn-s3" onclick="openModal(event, 'modal-s3')">Zusammenfassung lesen</button>
+            </div>
+
+            <div class="tile" id="tile-s4" onclick="showView('s4')">
+                <span class="date-badge">07. Mai 2026</span>
+                <h3>Sitzung 4</h3>
+                <p>Soziale Integration von Lernenden mit Förderbedarf (Kohrt et al.)</p>
+                <button class="summary-btn" id="btn-s4" onclick="openModal(event, 'modal-s4')">Zusammenfassung lesen</button>
+            </div>
+
+            <div class="tile" style="border-color: transparent; background-color: transparent; box-shadow: none; pointer-events: none;">
+                <span class="date-badge" style="background-color: #6c757d;">14. Mai 2026</span>
+                <h3>Feiertag</h3>
+                <p>Christi Himmelfahrt</p>
+            </div>
+
+            <div class="tile" id="tile-s5" onclick="showView('s5')">
+                <span class="date-badge">21. Mai 2026</span>
+                <h3>Sitzung 5</h3>
+                <p>Evidenzbasierte Praxis / Assessment (Mitchell & Sutherland)</p>
+                <button class="summary-btn" id="btn-s5" onclick="openModal(event, 'modal-s5')">Zusammenfassung lesen</button>
+            </div>
+
+            <div class="tile" style="border-color: transparent; background-color: transparent; box-shadow: none; pointer-events: none;">
+                <span class="date-badge" style="background-color: #6c757d;">28. Mai 2026</span>
+                <h3>Pfingstpause</h3>
+                <p>Keine Präsenzsitzung</p>
+            </div>
+
+            <div class="tile" id="tile-self1" onclick="showView('self1')">
+                <span class="date-badge">04. Juni 2026</span>
+                <h3>Selbstarbeit I</h3>
+                <p>Neurodiversität & Strukturierung (Haider et al.)</p>
+                <button class="summary-btn" id="btn-self1" onclick="openModal(event, 'modal-sa1')">Zusammenfassung lesen</button>
+            </div>
+
+            <div class="tile" id="tile-self2" onclick="showView('self2')">
+                <span class="date-badge">11. Juni 2026</span>
+                <h3>Selbstarbeit II</h3>
+                <p>Lernraumgestaltung & Klassenmanagement (Haider et al.)</p>
+                <button class="summary-btn" id="btn-self2" onclick="openModal(event, 'modal-sa2')">Zusammenfassung lesen</button>
+            </div>
+
+            <div class="tile" id="tile-s6" onclick="showView('s6')">
+                <span class="date-badge">18. Juni 2026</span>
+                <h3>Sitzung 6</h3>
+                <p>Exkurs 1: Förderschwerpunkt Sehen (Lang & Thiele)</p>
+                <button class="summary-btn" id="btn-s6" onclick="openModal(event, 'modal-s6')">Zusammenfassung lesen</button>
+            </div>
+
+            <div class="tile" id="tile-s7" onclick="showView('s7')">
+                <span class="date-badge">25. Juni 2026</span>
+                <h3>Sitzung 7</h3>
+                <p>Exkurs 2: Förderschwerpunkt Hören (Leonhardt)</p>
+                <button class="summary-btn" id="btn-s7" onclick="openModal(event, 'modal-s7')">Zusammenfassung lesen</button>
+            </div>
+
+            <div class="tile" id="tile-s8" onclick="showView('s8')">
+                <span class="date-badge">02. Juli 2026</span>
+                <h3>Sitzung 8</h3>
+                <p>Exkurs 3: KI als UDL-Beschleuniger (Themensitzung)</p>
+                <button class="summary-btn" id="btn-s8" onclick="openModal(event, 'modal-s8')">Zusammenfassung lesen</button>
+            </div>
+
+            <div class="tile" id="tile-s9" onclick="showView('s9')">
+                <span class="date-badge">09. Juli 2026</span>
+                <h3>Sitzung 9</h3>
+                <p>Exkurs 4: Kooperation & multiprofessionelle Teams (Kluge et al.)</p>
+                <button class="summary-btn" id="btn-s9" onclick="openModal(event, 'modal-s9')">Zusammenfassung lesen</button>
+            </div>
+
+            <div class="tile" id="tile-s10" onclick="showView('s10')">
+                <span class="date-badge">16. Juli 2026</span>
+                <h3>Sitzung 10</h3>
+                <p>Seminarauswertung & Vorstellung der Prototypen</p>
+                <button class="summary-btn" id="btn-s10" onclick="openModal(event, 'modal-s10')">Zusammenfassung lesen</button>
+            </div>
+
+            <div class="tile" id="tile-s11" onclick="showView('s11')">
+                <span class="date-badge">23. Juli 2026</span>
+                <h3>Sitzung 11</h3>
+                <p>Abschlusssitzung - Kolloquium & Schreibwerkstatt</p>
+                <button class="summary-btn" id="btn-s11" onclick="openModal(event, 'modal-s11')">Zusammenfassung lesen</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="view-s1" class="content-section">
+        <h2>Sitzung 1: Einführung in das Modul & Vorstellung des Projekts</h2>
+
+        <div class="task-box">
+            <div class="tts-controls no-print">
+                <button class="tts-btn tts-play" onclick="playTTS(this.parentElement.parentElement)" aria-label="Abschnitt vorlesen">Vorlesen</button>
+                <button class="tts-btn tts-pause" onclick="pauseTTS()" aria-label="Vorlesen pausieren" disabled>Pause</button>
+                <button class="tts-btn tts-stop" onclick="stopTTS()" aria-label="Vorlesen stoppen" disabled>Stopp</button>
+            </div>
+            <h3>1. Defizitorientiert vs. Bedarfsorientiert</h3>
+            <p><strong><span class="glossary-term" data-key="Defizitorientiert">Defizitorientiert</span> (Medizinisches Modell / Integration):</strong></p>
             <ul>
-                <li><a href="#slide-1">Seminar-Einführung</a></li>
-                <li><a href="#slide-2">Ablauf</a></li>
-                <li><a href="#slide-3">Seminarkontext und Modulziele</a></li>
-                <li><a href="#slide-4">Defizit- vs. Bedarfsorientierung</a></li>
-                <li><a href="#slide-5">Organisation & Zeitplan</a></li>
-                <li><a href="#slide-6">Theoretischer Input (Lindmeier)</a></li>
-                <li><a href="#slide-7">Praxis-Transfer & Diskussion</a></li>
-                <li><a href="#slide-8">Prüfungsleistung: Portfolio</a></li>
-                <li><a href="#slide-9">Teil 1: Barriere-Analyse</a></li>
-                <li><a href="#slide-10">Teil 2: Gestaltungsoptionen</a></li>
-                <li><a href="#slide-11">Teil 3: OPAL-Lernmodule</a></li>
-                <li><a href="#slide-12">Abschluss und Fragen</a></li>
+                <li>Schaut auf das Kind. "Das Kind hat ADHS oder LRS und scheitert deshalb am Text." (Das Label/die Diagnose steht im Vordergrund).</li>
+                <li>Die klassische Maßnahme: Der <span class="glossary-term" data-key="NTA">Nachteilsausgleich</span> (NTA).</li>
+                <li>Weil das Kind eine diagnostizierte Beeinträchtigung hat, bekommt es als Reaktion darauf eine individuelle Anpassung (z. B. mehr Zeit, einen speziellen Text), um die unveränderte schulische Norm trotzdem erfüllen zu können.</li>
+                <li>Es ist oft defizitär und diskriminierend begründet, zusätzlich wirkt es erst reaktiv (es muss erst jemand scheitern und getestet werden) und lindert die Barriere nur für diese eine Person.</li>
             </ul>
-        </nav>
+            <p><strong><span class="glossary-term" data-key="Bedarfsorientiert">Bedarfsorientiert</span> (Soziales Modell / Inklusion):</strong></p>
+            <ul>
+                <li>Schaut auf die Umgebung. "Der Text ist unstrukturiert. Er stellt eine Barriere dar, weil er den individuellen Bedarf nach visueller Strukturierung nicht erfüllt." (Die Barriere und der Unterstützungsbedarf stehen im Vordergrund).</li>
+                <li>Die zukunftsweisende Maßnahme: <span class="glossary-term" data-key="UDL">Universal Design for Learning</span> (UDL).</li>
+                <li>Die Umgebung (der Text, der Unterricht) wird von Beginn an so flexibel und <span class="glossary-term" data-key="Barrierefreiheit">barrierefrei</span> konzipiert (z. B. klare Strukturierung, alternative Audio-Option, Wahlmöglichkeiten), dass sie einer größtmöglichen Vielfalt an Lernenden gerecht wird.</li>
+                <li>Es ist proaktiv. Barrieren werden abgebaut, bevor jemand daran scheitert. Lernhilfen stehen allen zur Verfügung, ohne dass jemand dafür ein Label oder einen gesonderten Nachteilsausgleich beantragen muss.</li>
+            </ul>
+        </div>
 
-        <section class="slide-container" id="slide-1">
-            <div class="tts-controls">
-                <button class="btn-read" onclick="speakText('slide-1-content', 'stop-btn-1')" aria-label="Abschnitt 1 vorlesen">Vorlesen</button>
-                <button class="btn-stop" id="stop-btn-1" onclick="stopSpeech()" aria-label="Vorlesen stoppen" disabled>Stopp</button>
+        <div class="task-box">
+            <div class="tts-controls no-print" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
+                <div style="display: flex; gap: 0.5rem;">
+                    <button class="tts-btn tts-play" onclick="playTTS(this.parentElement.parentElement.parentElement)" aria-label="Abschnitt vorlesen">Vorlesen</button>
+                    <button class="tts-btn tts-pause" onclick="pauseTTS()" aria-label="Vorlesen pausieren" disabled>Pause</button>
+                    <button class="tts-btn tts-stop" onclick="stopTTS()" aria-label="Vorlesen stoppen" disabled>Stopp</button>
+                </div>
+                <a href="Lindmeier.pdf" target="_blank" class="nav-btn" style="text-decoration: none; width: auto; font-size: 0.9rem; background-color: var(--accent-color); color: white; border-color: var(--accent-color); display: flex; align-items: center; justify-content: center;" aria-label="Text von Lindmeier als PDF in neuem Tab öffnen">
+                    Text als PDF öffnen
+                </a>
             </div>
-            <div id="slide-1-content">
-                <h2>Einführung in das Modul</h2>
-                <p>Dominik Töpper</p>
-                <p>Schule und Unterricht inklusionssensibel gestalten</p>
-                <p>Modul EW-SEGY-BW4</p>
-                <p>Seminar</p>
-                <p>Sommersemester 2026</p>
-            </div>
-        </section>
+            <h3>2. Leseauftrag & Fokus: Lindmeier & Lindmeier (2015)</h3>
+            <p>Lesen Sie den Grundlagentext von <strong>Lindmeier & Lindmeier (2015)</strong>. Der Text thematisiert Inklusion als Menschenrechtsprinzip und grenzt den Inklusionsbegriff historisch und strukturell vom früheren Integrationsbegriff ("Mainstreaming") ab. Fokussieren Sie sich beim Lesen insbesondere auf die Neuinterpretation der drei Kernbegriffe der Menschenrechte (Freiheit, Gleichheit, Brüderlichkeit) nach Bielefeldt. Nach dem vollständigen Lesen bearbeiten Sie bitte die nachfolgenden Aufgaben.</p>
+            
+            <button onclick="unlockFirstTaskS1()" style="width: 100%; margin-top: 1rem; background-color: var(--heading-color);" aria-label="Bestätigen, dass der Text gelesen wurde, um die Aufgaben freizuschalten">
+                Text gelesen, Aufgaben bearbeiten
+            </button>
+        </div>
 
-        <section class="slide-container" id="slide-2">
-            <div class="tts-controls">
-                <button class="btn-read" onclick="speakText('slide-2-content', 'stop-btn-2')" aria-label="Abschnitt 2 vorlesen">Vorlesen</button>
-                <button class="btn-stop" id="stop-btn-2" onclick="stopSpeech()" aria-label="Vorlesen stoppen" disabled>Stopp</button>
-            </div>
-            <div id="slide-2-content">
-                <h2>Ablauf</h2>
-                <p>Modul EW-SEGY-BW4 - Schule und Unterricht inklusionssensibel gestalten I Dominik Töpper</p>
-                <ol>
-                    <li>1. Seminarkontext und Modulziele</li>
-                    <li>2. Organisation & Zeitplan</li>
-                    <li>3. Theoretischer Input: Lindmeier & Lindmeier (2015)</li>
-                    <li>4. Praxis-Transfer & Diskussion</li>
-                    <li>5. Ausblick auf die Prüfungsleistung: Portfolio</li>
-                    <li>6. Abschluss und Fragen</li>
-                </ol>
-            </div>
-        </section>
+        <div class="task-box no-print" id="s1-concept1-box" style="opacity: 0.4; pointer-events: none; transition: opacity 0.5s ease-in-out;">
+            <h3>3. Thesen-Check: Die menschenrechtlichen Kernbegriffe</h3>
+            <p>Bielefeldt (zitiert in Lindmeier & Lindmeier, 2015) deutet die drei klassischen Kernbegriffe der Französischen Revolution für den Inklusionsdiskurs neu. Bewerten Sie die folgenden Aussagen theoriegeleitet als "Korrekt" oder "Inkorrekt".</p>
 
-        <section class="slide-container" id="slide-3">
-            <div class="tts-controls">
-                <button class="btn-read" onclick="speakText('slide-3-content', 'stop-btn-3')" aria-label="Abschnitt 3 vorlesen">Vorlesen</button>
-                <button class="btn-stop" id="stop-btn-3" onclick="stopSpeech()" aria-label="Vorlesen stoppen" disabled>Stopp</button>
-            </div>
-            <div id="slide-3-content">
-                <h2>1. Seminarkontext und Modulziele</h2>
-                <h3>1. Qualifikationsziele</h3>
-                <ul>
-                    <li>Sie identifizieren Barrieren in der gymnasialen Unterrichtspraxis und begründen Ausschlussmechanismen theoriegeleitet (z.B. über Neurodiversität oder den Inklusionsbegriff der UN-BRK).</li>
-                    <li>Sie setzen sich kritisch mit der Spannung zwischen Inklusion und dem Leistungsprinzip am Gymnasium auseinander.</li>
-                    <li>Sie entwerfen präventive Unterrichtsangebote (UDL) und transformieren reaktive Einzelfalllösungen in inklusive Designs für die ganze Lerngruppe.</li>
-                    <li>Sie übersetzen pädagogische Konzepte in digitale, praxisnahe Lernbausteine zur Sensibilisierung anderer Studierender.</li>
-                </ul>
-                <h3>2. Zentrale Inhalte</h3>
-                <ul>
-                    <li>Begriffe von Diversität und sonderpädagogische Grundlagen.</li>
-                    <li>Rechtliche und ethische Grundlagen schulischer Inklusion.</li>
-                    <li>Arbeiten in multiprofessionellen Teams sowie Organisations- und Schulentwicklung.</li>
-                </ul>
-                <h3>3. Struktur & Leistungsnachweis</h3>
-                <ul>
-                    <li>Arbeitsaufwand: 150 Stunden (5 Leistungspunkte).</li>
-                    <li>Prüfungsleistung: Portfolio (Bearbeitungszeit ca. 60 Stunden).</li>
-                </ul>
-            </div>
-        </section>
+            <div style="background-color: var(--bg-color); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color); margin-top: 1.5rem;">
+                
+                <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border-color);">
+                    <div style="flex: 1; min-width: 250px;"><strong>These 1 (Freiheit):</strong> Autonomie im inklusiven Sinne bedeutet, dass ein Mensch völlig isoliert und unabhängig von fremder Hilfe agieren muss.</div>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <button class="nav-btn s1-t1" onclick="toggleThesis(this, 's1-t1', 'inkorrekt')" style="min-width: 90px;" aria-label="These 1 als Inkorrekt bewerten">Inkorrekt</button>
+                        <button class="nav-btn s1-t1" onclick="toggleThesis(this, 's1-t1', 'korrekt')" style="min-width: 90px;" aria-label="These 1 als Korrekt bewerten">Korrekt</button>
+                    </div>
+                </div>
 
-        <section class="slide-container" id="slide-4">
-            <div class="tts-controls">
-                <button class="btn-read" onclick="speakText('slide-4-content', 'stop-btn-4')" aria-label="Abschnitt 4 vorlesen">Vorlesen</button>
-                <button class="btn-stop" id="stop-btn-4" onclick="stopSpeech()" aria-label="Vorlesen stoppen" disabled>Stopp</button>
-            </div>
-            <div id="slide-4-content">
-                <h2>Defizitorientiert vs. Bedarfsorientiert</h2>
-                <h3>Defizitorientiert (Medizinisches Modell / Integration):</h3>
-                <p>Schaut auf das Kind. "Das Kind hat ADHS oder LRS und scheitert deshalb am Text."<br>(Das Label/die Diagnose steht im Vordergrund).</p>
-                <p><strong>Die klassische Maßnahme: Der Nachteilsausgleich (NTA)</strong></p>
-                <p>Weil das Kind eine diagnostizierte Beeinträchtigung hat, bekommt es als Reaktion darauf eine individuelle Anpassung (z. B. mehr Zeit, einen speziellen Text), um die unveränderte schulische Norm trotzdem erfüllen zu können.<br>
-                Es ist oft defizitär und diskriminierend begründet, zusätzlich wirkt es erst reaktiv (es muss erst jemand scheitern und getestet werden) und lindert die Barriere nur für diese eine Person.</p>
+                <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border-color);">
+                    <div style="flex: 1; min-width: 250px;"><strong>These 2 (Gleichheit):</strong> Strukturelle Diskriminierung wird primär durch proaktive Barrierefreiheit und angemessene Vorkehrungen abgebaut.</div>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <button class="nav-btn s1-t2" onclick="toggleThesis(this, 's1-t2', 'inkorrekt')" style="min-width: 90px;" aria-label="These 2 als Inkorrekt bewerten">Inkorrekt</button>
+                        <button class="nav-btn s1-t2" onclick="toggleThesis(this, 's1-t2', 'korrekt')" style="min-width: 90px;" aria-label="These 2 als Korrekt bewerten">Korrekt</button>
+                    </div>
+                </div>
 
-                <h3>Bedarfsorientiert (Soziales Modell / Inklusion):</h3>
-                <p>Schaut auf die Umgebung. "Der Text ist unstrukturiert. Er stellt eine Barriere dar, weil er den individuellen Bedarf nach visueller Strukturierung nicht erfüllt."<br>(Die Barriere und der Unterstützungsbedarf stehen im Vordergrund).</p>
-                <p><strong>Die zukunftsweisende Maßnahme: Universal Design for Learning (UDL)</strong></p>
-                <p>Die Umgebung (der Text, der Unterricht) wird von Beginn an so flexibel und barrierefrei konzipiert (z. B. klare Strukturierung, alternative Audio-Option, Wahlmöglichkeiten), dass sie einer größtmöglichen Vielfalt an Lernenden gerecht wird.<br>
-                Es ist proaktiv. Barrieren werden abgebaut, bevor jemand daran scheitert.<br>
-                Lernhilfen stehen allen zur Verfügung, ohne dass jemand dafür ein Label oder einen gesonderten Nachteilsausgleich beantragen muss.</p>
-            </div>
-        </section>
+                <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem;">
+                    <div style="flex: 1; min-width: 250px;"><strong>These 3 (Brüderlichkeit):</strong> Das Ziel von Inklusion ist erreicht, wenn Lernende mit Förderbedarf formal am Unterricht der Regelschule physisch anwesend sind (Dabeisein).</div>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <button class="nav-btn s1-t3" onclick="toggleThesis(this, 's1-t3', 'inkorrekt')" style="min-width: 90px;" aria-label="These 3 als Inkorrekt bewerten">Inkorrekt</button>
+                        <button class="nav-btn s1-t3" onclick="toggleThesis(this, 's1-t3', 'korrekt')" style="min-width: 90px;" aria-label="These 3 als Korrekt bewerten">Korrekt</button>
+                    </div>
+                </div>
 
-        <section class="slide-container" id="slide-5">
-            <div class="tts-controls">
-                <button class="btn-read" onclick="speakText('slide-5-content', 'stop-btn-5')" aria-label="Abschnitt 5 vorlesen">Vorlesen</button>
-                <button class="btn-stop" id="stop-btn-5" onclick="stopSpeech()" aria-label="Vorlesen stoppen" disabled>Stopp</button>
+                <button onclick="checkS1Theses()" style="width: 100%; margin-top: 2rem; background-color: var(--heading-color);">Auswahl überprüfen</button>
+                <div id="s1-theses-feedback" aria-live="polite" style="margin-top: 1.5rem; font-weight: 500; display: none; padding: 1.2rem; border-radius: 6px; line-height: 1.5;"></div>
             </div>
-            <div id="slide-5-content">
-                <h2>2. Organisation & Zeitplan</h2>
-                <div class="table-responsive">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th scope="col">Datum</th>
-                                <th scope="col">Typ</th>
-                                <th scope="col">Sitzungsinhalt</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>16. Apr. 2026</td>
-                                <td>Präsenz</td>
-                                <td>Sitzung 1: Einführung, Modulziele & Kennenlernen</td>
-                            </tr>
-                            <tr>
-                                <td>23. Apr. 2026</td>
-                                <td>Präsenz</td>
-                                <td>Sitzung 2: Inklusionsbegriff und rechtliche Grundlagen</td>
-                            </tr>
-                            <tr>
-                                <td>30. Apr. 2026</td>
-                                <td>Präsenz</td>
-                                <td>Sitzung 3: Nachteilsausgleich vs. Universal Design for Learning</td>
-                            </tr>
-                            <tr>
-                                <td>7. Mai 2026</td>
-                                <td>Präsenz</td>
-                                <td>Sitzung 4: Neurodiversität im Klassenzimmer</td>
-                            </tr>
-                            <tr>
-                                <td>14. Mai 2026</td>
-                                <td>--</td>
-                                <td>FEIERTAG (Christi Himmelfahrt)</td>
-                            </tr>
-                            <tr>
-                                <td>21. Mai 2026</td>
-                                <td>Präsenz</td>
-                                <td>Sitzung 5: Überleitung zur Portfolioarbeit</td>
-                            </tr>
-                            <tr>
-                                <td>28. Mai 2026</td>
-                                <td>--</td>
-                                <td>PFINGSTPAUSE</td>
-                            </tr>
-                            <tr>
-                                <td>4. Juni 2026</td>
-                                <td>Selbststudium</td>
-                                <td>Selbstarbeit I (Forschungsauftrag zur Barriere-Analyse)</td>
-                            </tr>
-                            <tr>
-                                <td>11. Juni 2026</td>
-                                <td>Selbststudium</td>
-                                <td>Selbstarbeit II (Inhaltserstellung der Lernmodule)</td>
-                            </tr>
-                            <tr>
-                                <td>18. Juni 2026</td>
-                                <td>Präsenz</td>
-                                <td>Sitzung 6: Exkurs 1 "Unsichtbare Barrieren"</td>
-                            </tr>
-                            <tr>
-                                <td>25. Juni 2026</td>
-                                <td>Präsenz</td>
-                                <td>Sitzung 7: Exkurs 2 "Classroom Management"</td>
-                            </tr>
-                            <tr>
-                                <td>2. Juli 2026</td>
-                                <td>Präsenz</td>
-                                <td>Sitzung 8: Exkurs 3 "KI als Unterstützungsmaßnahme"</td>
-                            </tr>
-                            <tr>
-                                <td>9. Juli 2026</td>
-                                <td>Präsenz</td>
-                                <td>Sitzung 9: Exkurs 4 "Kooperation in multiprofessionellen Teams"</td>
-                            </tr>
-                            <tr>
-                                <td>16. Juli 2026</td>
-                                <td>Präsenz</td>
-                                <td>Sitzung 10: Seminarauswertung und Reflexion</td>
-                            </tr>
-                            <tr>
-                                <td>23. Juli 2026</td>
-                                <td>Präsenz</td>
-                                <td>Sitzung 11: Abschlusssitzung und Portfolio-Rückfragen</td>
-                            </tr>
-                        </tbody>
-                    </table>
+        </div>
+
+        <div class="task-box no-print" id="s1-slider-box" style="opacity: 0.4; pointer-events: none; transition: opacity 0.5s ease-in-out;">
+            <h3>4. Interaktive Skala: Von Exklusion zu Inklusion</h3>
+            <p>Die UN-BRK kritisiert veraltete Beschulungssysteme. Bewerten Sie die folgende schulische Situation auf der Systemskala. Ziehen Sie den Regler auf die einzelnen Phasen, um theoriegeleitetes Feedback zu erhalten.</p>
+            
+            <div style="background-color: var(--bg-color); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color); margin-top: 1.5rem;">
+                <p><strong>Die Situation:</strong> Ein Kind mit Förderbedarf darf zwar formal dieselbe gymnasiale Regelschule besuchen wie seine Gleichaltrigen, wird jedoch in allen anspruchsvollen Kernfächern konsequent in einem speziellen Förderraum von einer Sonderpädagogin unterrichtet.</p>
+                
+                <div style="position: relative; height: 20px; font-weight: 600; font-size: 0.85rem; margin-top: 2rem; margin-bottom: 0.8rem; color: var(--text-color);">
+                    <span style="position: absolute; left: 0%; transform: translateX(0%);">Exklusion</span>
+                    <span style="position: absolute; left: 33.33%; transform: translateX(-50%);">Separation</span>
+                    <span style="position: absolute; left: 66.66%; transform: translateX(-50%);">Integration</span>
+                    <span style="position: absolute; left: 100%; transform: translateX(-100%);">Inklusion</span>
+                </div>
+                
+                <div style="position: relative; width: 100%; padding: 0; box-sizing: border-box; display: flex; align-items: center; min-height: 40px;">
+                    <div style="position: absolute; left: 0; right: 0; height: 8px; background: var(--border-color); border-radius: 4px; z-index: 0; pointer-events: none;"></div>
+                    
+                    <div style="position: absolute; left: 6px; right: 6px; height: 10px; pointer-events: none; display: flex; justify-content: space-between; z-index: 1;">
+                        <div style="width: 4px; height: 10px; background: var(--bg-color); border-radius: 2px;"></div>
+                        <div style="width: 4px; height: 10px; background: var(--bg-color); border-radius: 2px;"></div>
+                        <div style="width: 4px; height: 10px; background: var(--bg-color); border-radius: 2px;"></div>
+                        <div style="width: 4px; height: 10px; background: var(--bg-color); border-radius: 2px;"></div>
+                    </div>
+                    
+                    <input type="range" id="s1-slider" class="step-slider" min="1" max="4" step="1" value="1" aria-label="Schieberegler zur Bewertung des Beschulungssystems" oninput="updateSliderFeedback()" style="position: relative; z-index: 2; width: 100%; margin: 0; --track-bg: transparent;">
+                </div>
+                
+                <div id="s1-slider-live-feedback" aria-live="polite" style="margin-top: 1.5rem; font-weight: 500; padding: 1.2rem; border-radius: 6px; line-height: 1.5; background-color: var(--container-bg); border: 1px solid var(--border-color);">
+                    Bitte bewegen Sie den Schieberegler auf einen der 4 Punkte, um die Situation zu analysieren.
+                </div>
+                
+                <button id="s1-slider-btn" onclick="unlockNextFromSlider()" style="width: 100%; margin-top: 1.5rem; background-color: var(--success-color); display: none;">Weiter</button>
+            </div>
+        </div>
+
+        <div class="task-box no-print" id="s1-flip-box" style="opacity: 0.4; pointer-events: none; transition: opacity 0.5s ease-in-out;">
+            <h3>5. Perspektivwechsel: Vom Mainstreaming zur Inklusion</h3>
+            <p>Der Text fordert einen Paradigmenwechsel vom defizitorientierten Mainstreaming zum bedarfsorientierten UDL-Ansatz. Klicken Sie auf die defizitorientierten Aussagen, um die systemische, inklusive UDL-Perspektive aufzudecken.</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+                
+                <div class="flip-card" onclick="this.classList.toggle('flipped')" aria-label="Interaktive Karte 1: Perspektivwechsel beim Textverständnis">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <span>"Das Kind hat eine Leseschwäche und scheitert deshalb am Text. Es bekommt einen Nachteilsausgleich."</span>
+                        </div>
+                        <div class="flip-card-back">
+                            <span>"Der Text ist unstrukturiert. Wir bieten ihn präventiv als Audio und in leichter Sprache an."</span>
+                        </div>
+                    </div>
+                </div>
+                
+                 <div class="flip-card" onclick="this.classList.toggle('flipped')" aria-label="Interaktive Karte 2: Perspektivwechsel beim Leistungsprinzip">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <span>"Die Inklusionskinder müssen sich eben bestmöglich an das vorgegebene gymnasiale Niveau anpassen."</span>
+                        </div>
+                        <div class="flip-card-back">
+                            <span>"Das gymnasiale System muss sich an die Vielfalt anpassen und didaktische Barrieren proaktiv abbauen."</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <button onclick="unlockFirstTaskS1Final()" style="width: 100%; margin-top: 2rem; background-color: var(--heading-color);">Weiter</button>
+        </div>
+
+        <div class="task-box" id="s1-transfer-box" style="opacity: 0.4; pointer-events: none; transition: opacity 0.5s ease-in-out;">
+            <div class="tts-controls no-print">
+                <button class="tts-btn tts-play" onclick="playTTS(this.parentElement.parentElement)" aria-label="Abschnitt vorlesen">Vorlesen</button>
+                <button class="tts-btn tts-pause" onclick="pauseTTS()" aria-label="Vorlesen pausieren" disabled>Pause</button>
+                <button class="tts-btn tts-stop" onclick="stopTTS()" aria-label="Vorlesen stoppen" disabled>Stopp</button>
+            </div>
+            <h3>7. Reflexion & Diskussion</h3>
+            <p><strong>Diskutieren Sie nun leise mit Ihrer Sitznachbar:in:</strong> Inwiefern ist das Gymnasium derzeit eher von defizitorientierten Praktiken (wie Mainstreaming oder Separation) geprägt? Was müsste sich theoriegeleitet grundlegend in der Unterrichtsgestaltung ändern, um das geforderte "Enhanced sense of belonging" (tiefes Zugehörigkeitsgefühl) proaktiv zu schaffen?</p>
+            <textarea id="ans-s1-reflection" rows="6" aria-label="Notizfeld für die Diskussion" placeholder="Ihre gemeinsamen Notizen zur Diskussion hier eintragen..."></textarea>
+        </div>
+        
+        <div class="task-box">
+            <div class="tts-controls no-print">
+                <button class="tts-btn tts-play" onclick="playTTS(this.parentElement.parentElement)" aria-label="Abschnitt vorlesen">Vorlesen</button>
+                <button class="tts-btn tts-pause" onclick="pauseTTS()" aria-label="Vorlesen pausieren" disabled>Pause</button>
+                <button class="tts-btn tts-stop" onclick="stopTTS()" aria-label="Vorlesen stoppen" disabled>Stopp</button>
+            </div>
+            <h3>7. Abschluss und Fragen</h3>
+            <p>Noch Fragen?<br>
+            Erreichbarkeit via Mail: dominik.toepper@tu-dresden.de<br>
+            Sprechzeiten nach Vereinbarung im Raum 405 (MSI)</p>
+        </div>
+    </div>
+
+    <div id="view-s2" class="content-section">
+        <h2>Sitzung 2: Inklusionsbegriffe und das meritokratische Paradoxon (Karin Bräu)</h2>
+
+        <div class="task-box">
+            <div class="tts-controls no-print" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
+                <div style="display: flex; gap: 0.5rem;">
+                    <button class="tts-btn tts-play" onclick="playTTS(this.parentElement.parentElement.parentElement)" aria-label="Abschnitt vorlesen">Vorlesen</button>
+                    <button class="tts-btn tts-pause" onclick="pauseTTS()" aria-label="Vorlesen pausieren" disabled>Pause</button>
+                    <button class="tts-btn tts-stop" onclick="stopTTS()" aria-label="Vorlesen stoppen" disabled>Stopp</button>
+                </div>
+                <a href="Braeu.pdf" target="_blank" class="nav-btn" style="text-decoration: none; width: auto; font-size: 0.9rem; background-color: var(--accent-color); color: white; border-color: var(--accent-color); display: flex; align-items: center; justify-content: center;" aria-label="Text von Karin Bräu als PDF in neuem Tab öffnen">
+                    Text als PDF öffnen
+                </a>
+            </div>
+            <h3>1. Leseauftrag & Fokus</h3>
+            <p>Lesen Sie den Grundlagentext von <strong>Karin Bräu (2021)</strong>. Der Text thematisiert das <span class="glossary-term">meritokratische Leistungsprinzip</span> als zentrale Barriere für schulische Inklusion. Fokussieren Sie sich beim Lesen auf die Dekonstruktion des Leistungsbegriffs sowie auf die Unterscheidung von Differenzverständnissen (Doing vs. Undoing Difference). Nach dem vollständigen Lesen des Textes bearbeiten Sie bitte die nachfolgenden Aufgaben.</p>
+            
+            <button onclick="unlockFirstTaskS2()" style="width: 100%; margin-top: 1rem; background-color: var(--heading-color);" aria-label="Bestätigen, dass der Text gelesen wurde, um die Aufgaben freizuschalten">
+                Text gelesen, Aufgaben bearbeiten
+            </button>
+        </div>
+
+        <div class="task-box no-print" id="s2-concept1-box" style="opacity: 0.4; pointer-events: none; transition: opacity 0.5s ease-in-out;">
+            <h3>2. Konzept-Check I: Die Differenzverständnisse</h3>
+            <p>Karin Bräu unterscheidet grundlegend zwischen zwei Sichtweisen auf Differenzen in der Schule (vgl. S. 208). Ordnen Sie die folgenden Aussagen dem korrekten Differenzverständnis zu.</p>
+
+            <div style="background-color: var(--bg-color); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color); margin-top: 1.5rem;">
+                
+                <fieldset style="border: none; padding: 0; margin-bottom: 2rem;">
+                    <legend style="font-weight: 600; margin-bottom: 0.8rem; line-height: 1.4;">Aussage 1: "Lernschwächen oder Behinderungen sind keine medizinischen Tatsachen, sondern entstehen erst durch die unpassenden Normen und Barrieren der sozialen Umgebung (z.B. der Schule)."</legend>
+                    <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+                        <label style="display: flex; align-items: center; gap: 0.8rem; cursor: pointer; background: var(--container-bg); padding: 0.8rem; border-radius: 6px; border: 1px solid var(--border-color);">
+                            <input type="radio" name="s2_concept_1" value="naturalistisch" style="width: 20px; height: 20px; accent-color: var(--accent-color);">
+                            <span>Naturalistisches Differenzverständnis</span>
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.8rem; cursor: pointer; background: var(--container-bg); padding: 0.8rem; border-radius: 6px; border: 1px solid var(--border-color);">
+                            <input type="radio" name="s2_concept_1" value="konstruktivistisch" style="width: 20px; height: 20px; accent-color: var(--accent-color);">
+                            <span>Konstruktivistisches Differenzverständnis</span>
+                        </label>
+                    </div>
+                </fieldset>
+
+                <fieldset style="border: none; padding: 0; margin-bottom: 1.5rem;">
+                    <legend style="font-weight: 600; margin-bottom: 0.8rem; line-height: 1.4;">Aussage 2: "Unterschiede zwischen Schüler:innen basieren auf angeborenen, medizinisch diagnostizierbaren Merkmalen (z.B. Chromosomen oder neurologische Defizite)."</legend>
+                    <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+                        <label style="display: flex; align-items: center; gap: 0.8rem; cursor: pointer; background: var(--container-bg); padding: 0.8rem; border-radius: 6px; border: 1px solid var(--border-color);">
+                            <input type="radio" name="s2_concept_2" value="naturalistisch" style="width: 20px; height: 20px; accent-color: var(--accent-color);">
+                            <span>Naturalistisches Differenzverständnis</span>
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.8rem; cursor: pointer; background: var(--container-bg); padding: 0.8rem; border-radius: 6px; border: 1px solid var(--border-color);">
+                            <input type="radio" name="s2_concept_2" value="konstruktivistisch" style="width: 20px; height: 20px; accent-color: var(--accent-color);">
+                            <span>Konstruktivistisches Differenzverständnis</span>
+                        </label>
+                    </div>
+                </fieldset>
+
+                <button onclick="checkS2Concept1()" style="width: 100%; margin-top: 1rem; background-color: var(--heading-color);">Eingaben überprüfen</button>
+                <div id="s2-concept1-feedback" aria-live="polite" style="margin-top: 1.5rem; font-weight: 500; display: none; padding: 1.2rem; border-radius: 6px; line-height: 1.5;"></div>
+            </div>
+        </div>
+
+        <div class="task-box no-print" id="s2-concept2-box" style="opacity: 0.4; pointer-events: none; transition: opacity 0.5s ease-in-out;">
+            <h3>3. Bias-Simulator: Die Illusion der objektiven Note</h3>
+            <p>Bräu dekonstruiert mit Verweis auf Bourdieu die angebliche "Objektivität" der schulischen Leistungsmessung (S. 211). Bewertungen messen oft nicht nur reines Fachwissen, sondern unbewusst auch den "kulturellen Habitus" (z.B. bildungssprachlicher Ausdruck, normkonformes Verhalten, soziale Herkunft). Verändern Sie die Parameter einer fiktiven Schüler:in und beobachten Sie, wie das meritokratische System reagiert.</p>
+
+            <div style="background-color: var(--bg-color); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color); margin-top: 1.5rem;">
+                
+                <div style="margin-bottom: 2rem;">
+                    <label for="s2-slider-fach" style="font-weight: 600; display: block; margin-bottom: 0.5rem;">1. Rein kognitive Fachkompetenz (Wissenstest)</label>
+                    <input type="range" id="s2-slider-fach" min="1" max="100" value="50" oninput="updateS2Bias()" style="width: 100%; cursor: pointer;" aria-label="Schieberegler für die tatsächliche kognitive Leistung">
+                    <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--text-color); margin-top: 0.2rem;">
+                        <span>Sehr gering</span>
+                        <span>Sehr hoch (Exzellent)</span>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 2rem;">
+                    <label for="s2-slider-habitus" style="font-weight: 600; display: block; margin-bottom: 0.5rem;">2. Kultureller Habitus (Anpassung an Schulnormen, Sprache, Verhalten)</label>
+                    <input type="range" id="s2-slider-habitus" min="1" max="100" value="50" oninput="updateS2Bias()" style="width: 100%; cursor: pointer;" aria-label="Schieberegler für den kulturellen Habitus">
+                    <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--text-color); margin-top: 0.2rem;">
+                        <span>Abweichend (Unruhig, Dialekt)</span>
+                        <span>Hochgradig angepasst (Bildungssprache)</span>
+                    </div>
+                </div>
+
+                <div style="padding: 1.5rem; background-color: var(--container-bg); border-radius: 8px; border: 2px dashed var(--border-color);">
+                    <h4 style="margin-top: 0; margin-bottom: 1rem; text-align: center;">Wahrgenommene Zeugnisnote durch die Lehrkraft</h4>
+                    <div style="width: 100%; background-color: #e9ecef; border-radius: 6px; height: 30px; overflow: hidden; position: relative;">
+                        <div id="s2-bias-meter" style="width: 50%; height: 100%; background-color: var(--accent-color); transition: width 0.3s ease-out, background-color 0.3s ease-out;"></div>
+                    </div>
+                    <p id="s2-bias-status" style="text-align: center; font-weight: 600; margin-top: 0.5rem; color: var(--accent-color);">Note: Befriedigend (3)</p>
+                </div>
+
+                <button onclick="evaluateS2Bias()" style="width: 100%; margin-top: 1.5rem; background-color: var(--heading-color);">Erkenntnis auswerten</button>
+                <div id="s2-concept2-feedback" aria-live="polite" style="display: none; margin-top: 1.5rem; padding: 1.2rem; border-radius: 6px; font-weight: 500; line-height: 1.5;"></div>
+            </div>
+        </div>
+
+        <div class="task-box no-print" id="s2-dilemma-box" style="opacity: 0.4; pointer-events: none; transition: opacity 0.5s ease-in-out;">
+            <h3>4. Dilemma: Der Lehrkräftezimmer-Chat</h3>
+            <p>Versetzen Sie sich in einen Messenger-Chat mit einer Kolleg:in. Kolleg:in Müller äußert sich kritisch zur Inklusion. Tippen Sie jeweils auf die Chat-Blase, deren Erwiderung K. Bräus theoretischer Argumentation am besten entspricht.</p>
+
+            <div class="chat-ui">
+                <div class="chat-ui-header">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                    Chat mit Kolleg:in Müller
+                </div>
+                <div class="chat-ui-body">
+                    
+                    <div class="chat-msg-left">
+                        <b>Kolleg:in Müller</b>
+                        Ehrlich gesagt finde ich, dass Inklusion das Leistungsprinzip am Gymnasium aushöhlt. Wir müssen nach Leistung selektieren – das ist unser gesellschaftlicher Auftrag. Ständige Nachteilsausgleiche sind doch ungerecht gegenüber jenen, die sich anstrengen.
+                    </div>
+
+                    <fieldset style="border: none; padding: 0; margin: 0; display: flex; flex-direction: column; align-items: flex-end; gap: 0.6rem; width: 100%;">
+                        <legend style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0);">Wählen Sie Ihre Antwort an Kolleg:in Müller (Schritt 1):</legend>
+                        
+                        <label class="chat-reply-label">
+                            <input type="radio" name="s2_dilemma_1" value="wrong1" onchange="revealChatPart2()">
+                            <span class="chat-reply-bubble">Wir müssen das Leistungsprinzip komplett abschaffen. Noten und Selektion haben in einer inklusiven Schule keinen Platz.</span>
+                        </label>
+                        <label class="chat-reply-label">
+                            <input type="radio" name="s2_dilemma_1" value="correct" onchange="revealChatPart2()">
+                            <span class="chat-reply-bubble">Das setzt voraus, dass wir Leistung objektiv messen. Tatsächlich belohnen wir aber oft unbewusst den kulturellen Habitus und reproduzieren soziale Ungleichheit.</span>
+                        </label>
+                        <label class="chat-reply-label">
+                            <input type="radio" name="s2_dilemma_1" value="wrong2" onchange="revealChatPart2()">
+                            <span class="chat-reply-bubble">Die Inklusionskinder müssen sich eben an das Niveau anpassen. Wer den Anforderungen nicht gewachsen ist, gehört an eine andere Schulform.</span>
+                        </label>
+                    </fieldset>
+
+                    <div id="chat-part-2" class="chat-reveal" style="display: none;">
+                        <div class="chat-msg-left" style="margin-top: 1.5rem; margin-bottom: 1.5rem;">
+                            <b>Kolleg:in Müller</b>
+                            Mag sein, dass Noten nicht perfekt objektiv sind. Aber wir stecken trotzdem in einem Dilemma: Das System verlangt Selektion für spätere Bildungswege, aber die Inklusion fordert bedingungslose Förderung aller. Das schließt sich doch logisch aus!
+                        </div>
+
+                        <fieldset style="border: none; padding: 0; margin: 0; display: flex; flex-direction: column; align-items: flex-end; gap: 0.6rem; width: 100%;">
+                            <legend style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0);">Wählen Sie Ihre zweite Antwort an Kolleg:in Müller (Schritt 2):</legend>
+                            
+                            <label class="chat-reply-label">
+                                <input type="radio" name="s2_dilemma_2" value="wrong1" onchange="revealChatPart3()">
+                                <span class="chat-reply-bubble">Das stimmt. Daher sollten wir die Förderung institutionell trennen: Wir unterrichten fachlich, und Sonderpädagog:innen kümmern sich isoliert um die Förderung.</span>
+                            </label>
+                            <label class="chat-reply-label">
+                                <input type="radio" name="s2_dilemma_2" value="wrong2" onchange="revealChatPart3()">
+                                <span class="chat-reply-bubble">Das schließt sich nicht aus. Ein wirklich guter inklusiver Unterricht hebt das Leistungsniveau aller derart an, dass wir gar nicht mehr selektieren müssen.</span>
+                            </label>
+                            <label class="chat-reply-label">
+                                <input type="radio" name="s2_dilemma_2" value="correct" onchange="revealChatPart3()">
+                                <span class="chat-reply-bubble">Genau, das ist eine strukturelle Antinomie. Wir können sie nicht auflösen, müssen aber lernen, in diesem Spannungsfeld unsere eigenen Zuschreibungspraktiken zu reflektieren.</span>
+                            </label>
+                        </fieldset>
+                    </div>
+
+                    <div id="chat-part-3" class="chat-reveal" style="display: none;">
+                        <div class="chat-msg-left" style="margin-top: 1.5rem; margin-bottom: 1.5rem;">
+                            <b>Kolleg:in Müller</b>
+                            Und wie soll das in der Praxis aussehen? Ich muss am Ende des Halbjahres Zeugnisnoten vergeben. Wie bleibe ich "professionell" in dieser Antinomie, ohne Inklusion als reine Fassade zu betreiben?
+                        </div>
+
+                        <fieldset style="border: none; padding: 0; margin: 0; display: flex; flex-direction: column; align-items: flex-end; gap: 0.6rem; width: 100%;">
+                            <legend style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0);">Wählen Sie Ihre dritte Antwort an Kolleg:in Müller (Schritt 3):</legend>
+                            
+                            <label class="chat-reply-label">
+                                <input type="radio" name="s2_dilemma_3" value="wrong1" onchange="revealChatSubmit()">
+                                <span class="chat-reply-bubble">Indem du bei der Notenvergabe explizit betonst, wer welche Nachteilsausgleiche bekommen hat. So machst du die unterschiedlichen Bedingungen transparent.</span>
+                            </label>
+                            <label class="chat-reply-label">
+                                <input type="radio" name="s2_dilemma_3" value="correct" onchange="revealChatSubmit()">
+                                <span class="chat-reply-bubble">Indem wir versuchen, Differenzen im Alltag zu "entdramatisieren". Wir etablieren flexible Lehrformate (UDL) für alle und reduzieren so das ständige "Doing Difference".</span>
+                            </label>
+                            <label class="chat-reply-label">
+                                <input type="radio" name="s2_dilemma_3" value="wrong2" onchange="revealChatSubmit()">
+                                <span class="chat-reply-bubble">Wir vergeben einfach grundsätzlich bessere Noten und verzichten auf strenge Fehlerkorrekturen. So fühlt sich niemand exkludiert.</span>
+                            </label>
+                        </fieldset>
+                    </div>
+
                 </div>
             </div>
-        </section>
 
-        <section class="slide-container" id="slide-6">
-            <div class="tts-controls">
-                <button class="btn-read" onclick="speakText('slide-6-content', 'stop-btn-6')" aria-label="Abschnitt 6 vorlesen">Vorlesen</button>
-                <button class="btn-stop" id="stop-btn-6" onclick="stopSpeech()" aria-label="Vorlesen stoppen" disabled>Stopp</button>
-            </div>
-            <div id="slide-6-content">
-                <h2>3. Theoretischer Input: Lindmeier & Lindmeier (2015)</h2>
-                <h3>Leseauftrag (15 Minuten):</h3>
-                <ul>
-                    <li>Lest von Lindmeier & Lindmeier (2015) das Kapitel 2 („Inklusion als Menschenrechtsprinzip“, S. 45–47).</li>
-                    <li>Markiert, wie die Kernbegriffe der Menschenrechte (Freiheit, Gleichheit, Brüderlichkeit) im Inklusionsdiskurs neu gedeutet werden.</li>
-                </ul>
-                <p><strong>Einordnung:</strong> UN-Behindertenrechtskonvention (UN-BRK) ist ein völkerrechtlich bindender Vertrag der Vereinten Nationen von 2006, der die Rechte von Menschen mit Beeinträchtigungen schützt und fördert.</p>
+            <button id="chat-submit-btn" onclick="checkS2Dilemma()" style="width: 100%; margin-top: 1.5rem; background-color: var(--heading-color); display: none; opacity: 0; transition: opacity 0.5s ease;">Nachrichten absenden & prüfen</button>
+            <div id="s2-dilemma-feedback" aria-live="polite" style="margin-top: 1.5rem; font-weight: 500; display: none; padding: 1.2rem; border-radius: 6px; line-height: 1.5;"></div>
+        </div>
 
-                <h3>Aufgabe 1 - Dekonstruktion (Think-/Paararbeit - 10 Min.)</h3>
-                <p>Wählt gemeinsam eines der folgenden Konzepte aus:</p>
-                <ul>
-                    <li>Assistierte Freiheit (statt reiner Autonomie)</li>
-                    <li>Diskriminierungsverbot & Barrierefreiheit (als Abbau struktureller Normen)</li>
-                    <li>Gesellschaftliche Inklusion / enhanced sense of belonging (statt bloßem „Dabeisein“)</li>
-                </ul>
-                <p>Diskutiert darüber und erläutert euch gegenseitig, worin genau der Paradigmenwechsel im Verständnis besteht.</p>
+        <div class="task-box no-print" id="s2-fallanalyse-box" style="opacity: 0.4; pointer-events: none; transition: opacity 0.5s ease-in-out;">
+            <h3>5. Fallanalyse: Ausschlussmechanismen im Alltag</h3>
+            <p>Ordnen Sie die folgenden Unterrichtssituationen theoriegeleitet ein. Fördert die Lehrkraft durch ihr Handeln unbewusst eine Stigmatisierung (Doing Difference) oder handelt sie inklusiv und abbauend (Undoing Difference)?</p>
 
-                <h3>Aufgabe 2 - Transfer auf das System Gymnasium (Paararbeit - 10 Min.)</h3>
-                <ul>
-                    <li>Übertragt das gewählte Konzept aus Aufgabe 1 kritisch auf die Institution Gymnasium.</li>
-                    <li>Inwiefern ist das Thema “Inklusion” für das Gymnasium relevant? Notiert zunächst euren eigenen Standpunkt.</li>
-                    <li>Tauscht euch dann mit einer zweiten Person aus und kommentiert den Standpunkt der anderen Person in ca. 5 Sätzen.</li>
-                    <li>Geht dabei darauf ein, inwiefern Ihr dem Standpunkt zustimmt / widersprecht.</li>
-                </ul>
-            </div>
-        </section>
-
-        <section class="slide-container" id="slide-7">
-            <div class="tts-controls">
-                <button class="btn-read" onclick="speakText('slide-7-content', 'stop-btn-7')" aria-label="Abschnitt 7 vorlesen">Vorlesen</button>
-                <button class="btn-stop" id="stop-btn-7" onclick="stopSpeech()" aria-label="Vorlesen stoppen" disabled>Stopp</button>
-            </div>
-            <div id="slide-7-content">
-                <h2>4. Praxis-Transfer & Diskussion</h2>
-                <ul>
-                    <li>Inklusion ist am Gymnasium eigentlich unwichtig, weil der historische und gesellschaftliche Kernauftrag dieser Schulform die Elitenförderung und Auslese ist. Wer das Gymnasium inklusiv machen will, schafft es de facto ab.</li>
-                    <li>Inklusion schadet dem Gymnasium, weil die ständige Gewährung von Nachteilsausgleichen das objektive Leistungsprinzip ad absurdum führt und die harte Arbeit der regulären Schülerschaft entwertet.</li>
-                    <li>Inklusion hat am Gymnasium keine Priorität, weil wir als Gymnasiallehrkräfte primär Fachwissenschaftler sind, die auf das Abitur vorbereiten sollen. Therapeutische und sonderpädagogische Aufgaben übersteigen schlichtweg unser Berufsbild.</li>
-                    <li>Inklusion am Gymnasium ist reine Zeitverschwendung, weil ein System, das durch Zentralabitur und enormen Notendruck geprägt ist, strukturell gar keinen Raum für individuelle Förderung oder ‚assistierte Freiheit‘ zulässt.</li>
-                </ul>
-            </div>
-        </section>
-
-        <section class="slide-container" id="slide-8">
-            <div class="tts-controls">
-                <button class="btn-read" onclick="speakText('slide-8-content', 'stop-btn-8')" aria-label="Abschnitt 8 vorlesen">Vorlesen</button>
-                <button class="btn-stop" id="stop-btn-8" onclick="stopSpeech()" aria-label="Vorlesen stoppen" disabled>Stopp</button>
-            </div>
-            <div id="slide-8-content">
-                <h2>5. Ausblick auf die Prüfungsleistung: Portfolio</h2>
+            <div style="background-color: var(--bg-color); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color); margin-top: 1.5rem;">
                 
-                <h3>Anmeldung auf Selma</h3>
-                <p>An- und Abmeldezeitraum 1: 27.04.2026 - 18.05.2026</p>
-                <p>Ich bin noch nicht als Prüfer eingetragen! (Stand 16.04.2026)</p>
+                <fieldset style="border: none; padding: 0; margin-bottom: 2rem;">
+                    <legend style="font-weight: 600; margin-bottom: 0.8rem; line-height: 1.4;">Fall A: Die Lehrkraft lässt die Noten der letzten Klassenarbeit laut vorlesen, um die punktbesten Lernenden als Ansporn für das restliche Plenum zu nutzen.</legend>
+                    <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+                        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                            <input type="radio" name="s2_fall_a" value="doing" style="width: 20px; height: 20px; accent-color: var(--accent-color);"> <span>Doing Difference</span>
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                            <input type="radio" name="s2_fall_a" value="undoing" style="width: 20px; height: 20px; accent-color: var(--accent-color);"> <span>Undoing Difference</span>
+                        </label>
+                    </div>
+                </fieldset>
+
+                <fieldset style="border: none; padding: 0; margin-bottom: 2rem;">
+                    <legend style="font-weight: 600; margin-bottom: 0.8rem; line-height: 1.4;">Fall B: Ein Text wird im Fremdsprachenunterricht standardmäßig für alle Lernenden zusätzlich als strukturierte Audio-Datei bereitgestellt, unabhängig von Diagnosen.</legend>
+                    <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+                        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                            <input type="radio" name="s2_fall_b" value="doing" style="width: 20px; height: 20px; accent-color: var(--accent-color);"> <span>Doing Difference</span>
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                            <input type="radio" name="s2_fall_b" value="undoing" style="width: 20px; height: 20px; accent-color: var(--accent-color);"> <span>Undoing Difference</span>
+                        </label>
+                    </div>
+                </fieldset>
+
+                <fieldset style="border: none; padding: 0; margin-bottom: 1.5rem;">
+                    <legend style="font-weight: 600; margin-bottom: 0.8rem; line-height: 1.4;">Fall C: Ein:e Schüler:in wird im Kollegium als "unser Inklusionskind" bezeichnet und erhält eine dauerhafte Einzel-Sitzordnung neben der sonderpädagogischen Fachkraft.</legend>
+                    <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+                        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                            <input type="radio" name="s2_fall_c" value="doing" style="width: 20px; height: 20px; accent-color: var(--accent-color);"> <span>Doing Difference</span>
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                            <input type="radio" name="s2_fall_c" value="undoing" style="width: 20px; height: 20px; accent-color: var(--accent-color);"> <span>Undoing Difference</span>
+                        </label>
+                    </div>
+                </fieldset>
+
+                <button onclick="checkS2Cases()" style="width: 100%; margin-top: 1rem; background-color: var(--heading-color);">Fälle überprüfen</button>
+                <div id="s2-feedback" aria-live="polite" style="margin-top: 1.5rem; font-weight: 500; display: none; padding: 1.2rem; border-radius: 6px; line-height: 1.5;"></div>
+            </div>
+        </div>
+
+        <div class="task-box" id="s2-transfer-box" style="opacity: 0.4; pointer-events: none; transition: opacity 0.5s ease-in-out;">
+            <div class="tts-controls no-print">
+                <button class="tts-btn tts-play" onclick="playTTS(this.parentElement.parentElement)" aria-label="Abschnitt vorlesen">Vorlesen</button>
+                <button class="tts-btn tts-pause" onclick="pauseTTS()" aria-label="Vorlesen pausieren" disabled>Pause</button>
+                <button class="tts-btn tts-stop" onclick="stopTTS()" aria-label="Vorlesen stoppen" disabled>Stopp</button>
+            </div>
+            <h3>6. Reflexion & Diskussion</h3>
+            <p><strong>Diskutieren Sie nun leise mit Ihrer Sitznachbar:in:</strong> Das Gymnasium ist historisch stark auf das Leistungsprinzip (<span class="glossary-term">Meritokratie</span>) ausgerichtet. Inklusion fordert jedoch Teilhabe und den Abbau von Leistungshierarchien. Wie können Sie als Lehrkraft mit dieser strukturellen <span class="glossary-term">Antinomie</span> im Alltag umgehen, ohne in ein medizinisches, defizitorientiertes Denken zurückzufallen?</p>
+            <textarea id="ans-s2-reflection" rows="6" aria-label="Notizfeld für die Diskussion" placeholder="Ihre gemeinsamen Notizen zur Diskussion hier eintragen..."></textarea>
+        </div>
+    </div>
+
+    <div id="view-s3" class="content-section">
+        <h2>Sitzung 3: Nachteilsausgleich & Diagnostik (Wolf & Dietze)</h2>
+
+        <div class="task-box">
+            <div class="tts-controls no-print" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
+                <div style="display: flex; gap: 0.5rem;">
+                    <button class="tts-btn tts-play" onclick="playTTS(this.parentElement.parentElement.parentElement)" aria-label="Abschnitt vorlesen">Vorlesen</button>
+                    <button class="tts-btn tts-pause" onclick="pauseTTS()" aria-label="Vorlesen pausieren" disabled>Pause</button>
+                    <button class="tts-btn tts-stop" onclick="stopTTS()" aria-label="Vorlesen stoppen" disabled>Stopp</button>
+                </div>
+                <a href="wolfdietze.pdf" target="_blank" class="nav-btn" style="text-decoration: none; width: auto; font-size: 0.9rem; background-color: var(--accent-color); color: white; border-color: var(--accent-color); display: flex; align-items: center; justify-content: center;" aria-label="Text von Wolf und Dietze als PDF in neuem Tab öffnen">
+                    Text als PDF öffnen
+                </a>
+            </div>
+            <h3>1. Leseauftrag & Fokus</h3>
+            <p>Lesen Sie den Text von <strong>Wolf & Dietze (2022)</strong>. Der Text beleuchtet die historische Entwicklung und die aktuellen rechtlich-organisatorischen Rahmenbedingungen der Feststellungsdiagnostik in Deutschland. Achten Sie besonders auf das Subsidiaritätsprinzip, das Trennungsgebot sowie das Spannungsfeld zwischen Elternwille und Ressourcenvorbehalt. Nach dem Lesen bearbeiten Sie bitte die folgenden Aufgaben.</p>
+            
+            <button onclick="unlockFirstTaskS3()" style="width: 100%; margin-top: 1rem; background-color: var(--heading-color);" aria-label="Bestätigen, dass der Text gelesen wurde, um die Aufgaben freizuschalten">
+                Text gelesen, Aufgaben bearbeiten
+            </button>
+        </div>
+
+        <div class="task-box no-print" id="s3-task1-box" style="opacity: 0.4; pointer-events: none; transition: opacity 0.5s ease-in-out;">
+            <h3>2. Entscheidungsbaum: Darf ein Verfahren eingeleitet werden?</h3>
+            <p>Die Feststellung eines sonderpädagogischen Förderbedarfs greift massiv in die Schullaufbahn ein. Daher gilt in der Regel das <span class="glossary-term" data-key="Subsidiär">Subsidiaritätsprinzip</span>. Navigieren Sie durch den rechtlichen Entscheidungsprozess einer fiktiven Regelschule, indem Sie die theoriegeleitet korrekten Abzweigungen wählen.</p>
+            
+            <div id="s3-tree-container" style="background-color: var(--bg-color); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color); margin-top: 1.5rem;">
+                <div id="s3-tree-step1">
+                    <p><strong>Schritt 1:</strong> Ein Kind im ersten Schuljahr zeigt unerwartet massive Lernschwierigkeiten. Die Lehrkraft möchte sofort ein formelles Feststellungsverfahren (Förderbedarf Lernen) einleiten, um schnellstmöglich eine sonderpädagogische Fachkraft anfordern zu können. Darf sie das?</p>
+                    <div style="display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap;">
+                        <button onclick="s3TreeAnswer(1, false)" style="background-color: var(--container-bg); color: var(--accent-color); border: 1px solid var(--accent-color);">Ja, je früher Diagnostik stattfindet, desto besser.</button>
+                        <button onclick="s3TreeAnswer(1, true)" style="background-color: var(--container-bg); color: var(--accent-color); border: 1px solid var(--accent-color);">Nein, das Vorgehen ist subsidiär.</button>
+                    </div>
+                </div>
+                
+                <div id="s3-tree-step2" style="display: none; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
+                    <p><strong>Korrekt!</strong> Zuerst müssen alle präventiven und allgemeinpädagogischen Maßnahmen der Regelschule (z.B. Nachteilsausgleiche, Binnendifferenzierung) nachweislich ausgeschöpft sein. Ausnahme: Starke Beeinträchtigungen (z.B. geistige Entwicklung) können schon vor Schuleintritt festgestellt werden. <br><br><strong>Schritt 2:</strong> Die Schule hat nun ein Jahr lang alle innererschulischen Fördermaßnahmen dokumentiert angewandt, jedoch ohne ausreichenden Erfolg. Wer darf das Verfahren nun formell beantragen?</p>
+                    <div style="display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap;">
+                        <button onclick="s3TreeAnswer(2, true)" style="background-color: var(--container-bg); color: var(--accent-color); border: 1px solid var(--accent-color);">Die Erziehungsberechtigten und subsidiär die Schule.</button>
+                        <button onclick="s3TreeAnswer(2, false)" style="background-color: var(--container-bg); color: var(--accent-color); border: 1px solid var(--accent-color);">Ausschließlich das zuständige Jugendamt.</button>
+                    </div>
+                </div>
+                
+                <div id="s3-tree-step3" style="display: none; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
+                     <p><strong>Richtig!</strong> Primär stellen die Eltern den Antrag, in Ausnahmefällen oder subsidiär die Schule. <br><br><strong>Schritt 3:</strong> Um den Prozess zu beschleunigen, beauftragt die Schulleitung kurzerhand die an der eigenen Schule tätige Sonderpädagogin mit der Diagnostik und der Erstellung des Gutachtens. Ist das systemisch zulässig?</p>
+                     <div style="display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap;">
+                        <button onclick="s3TreeAnswer(3, false)" style="background-color: var(--container-bg); color: var(--accent-color); border: 1px solid var(--accent-color);">Ja, da sie das Kind im Alltag am besten kennt.</button>
+                        <button onclick="s3TreeAnswer(3, true)" style="background-color: var(--container-bg); color: var(--accent-color); border: 1px solid var(--accent-color);">Nein, das verstößt gegen das Trennungsgebot.</button>
+                    </div>
+                </div>
+                
+                <div id="s3-tree-feedback" aria-live="polite" style="display: none; margin-top: 1.5rem; padding: 1.2rem; border-radius: 6px; font-weight: 500; line-height: 1.5;"></div>
+                <button id="s3-tree-next" onclick="unlockSecondTaskS3()" style="display: none; width: 100%; margin-top: 1.5rem; background-color: var(--success-color);">Zum nächsten Themenblock</button>
+            </div>
+        </div>
+
+        <div class="task-box no-print" id="s3-task2-box" style="opacity: 0.4; pointer-events: none; transition: opacity 0.5s ease-in-out;">
+            <h3>3. Konflikt-Simulator: Elternwille vs. Ressourcenvorbehalt</h3>
+            <p>Die UN-BRK stärkt den Elternwillen bei der Wahl des Lernortes (Inklusion vs. Förderschule). Dennoch existiert in den Schulgesetzen der <span class="glossary-term" data-key="Ressourcenvorbehalt">Ressourcenvorbehalt</span>. Wählen Sie aus den folgenden Begründungen der Schulaufsicht alle aus, die rechtlich ausreichen, um den Wunsch der Eltern nach inklusiver Beschulung an der zuständigen Regelschule abzulehnen.</p>
+            
+            <div style="background-color: var(--bg-color); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color); margin-top: 1.5rem;">
+                <p><strong>Die Situation:</strong> Die Eltern eines Kindes mit diagnostiziertem Förderbedarf im Bereich emotionale und soziale Entwicklung fordern die Aufnahme an der lokalen gymnasialen Regelschule.</p>
+                
+                <fieldset style="border: none; padding: 0; margin-top: 1.5rem;">
+                    <legend class="print-only">Wählen Sie die korrekten Begründungen:</legend>
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <label style="display: flex; align-items: flex-start; gap: 0.8rem; cursor: pointer; padding: 1rem; background: var(--container-bg); border-radius: 6px; border: 1px solid var(--border-color);">
+                            <input type="checkbox" id="s3_chk_1" style="width: 20px; height: 20px; margin-top: 0.2rem; accent-color: var(--accent-color);">
+                            <span style="line-height: 1.4;">"Die Regelschule hat aktuell nachweislich nicht die personellen oder räumlichen Ressourcen, um den Bedarf abzudecken."</span>
+                        </label>
+                        <label style="display: flex; align-items: flex-start; gap: 0.8rem; cursor: pointer; padding: 1rem; background: var(--container-bg); border-radius: 6px; border: 1px solid var(--border-color);">
+                            <input type="checkbox" id="s3_chk_2" style="width: 20px; height: 20px; margin-top: 0.2rem; accent-color: var(--accent-color);">
+                            <span style="line-height: 1.4;">"Das Kind gefährdet durch sein Verhalten akut Dritte (Fremdgefährdung) und beeinträchtigt die Funktionsfähigkeit des Unterrichts erheblich."</span>
+                        </label>
+                        <label style="display: flex; align-items: flex-start; gap: 0.8rem; cursor: pointer; padding: 1rem; background: var(--container-bg); border-radius: 6px; border: 1px solid var(--border-color);">
+                            <input type="checkbox" id="s3_chk_3" style="width: 20px; height: 20px; margin-top: 0.2rem; accent-color: var(--accent-color);">
+                            <span style="line-height: 1.4;">"Das Kollegium der Regelschule hat mehrheitlich abgestimmt, dass sie sich subjektiv nicht für Inklusion qualifiziert fühlen."</span>
+                        </label>
+                        <label style="display: flex; align-items: flex-start; gap: 0.8rem; cursor: pointer; padding: 1rem; background: var(--container-bg); border-radius: 6px; border: 1px solid var(--border-color);">
+                            <input type="checkbox" id="s3_chk_4" style="width: 20px; height: 20px; margin-top: 0.2rem; accent-color: var(--accent-color);">
+                            <span style="line-height: 1.4;">"Die gymnasialen Lehrpläne sehen keine zieldifferente Beschulung vor, daher muss das Kind zwingend an eine Förderschule."</span>
+                        </label>
+                    </div>
+                </fieldset>
+                
+                <button onclick="checkS3Simulator()" style="width: 100%; margin-top: 1.5rem; background-color: var(--heading-color);">Einschätzung prüfen</button>
+                <div id="s3-simulator-feedback" aria-live="polite" style="display: none; margin-top: 1.5rem; padding: 1.2rem; border-radius: 6px; font-weight: 500; line-height: 1.5;"></div>
+            </div>
+        </div>
+
+        <div class="task-box" id="s3-transfer-box" style="opacity: 0.4; pointer-events: none; transition: opacity 0.5s ease-in-out;">
+            <div class="tts-controls no-print">
+                <button class="tts-btn tts-play" onclick="playTTS(this.parentElement.parentElement)" aria-label="Abschnitt vorlesen">Vorlesen</button>
+                <button class="tts-btn tts-pause" onclick="pauseTTS()" aria-label="Vorlesen pausieren" disabled>Pause</button>
+                <button class="tts-btn tts-stop" onclick="stopTTS()" aria-label="Vorlesen stoppen" disabled>Stopp</button>
+            </div>
+            <h3>4. Reflexion & Diskussion</h3>
+            <p><strong>Diskutieren Sie nun leise mit Ihrer Sitznachbar:in:</strong> Das Feststellungsverfahren führt systembedingt zum <span class="glossary-term" data-key="Ressourcen-Etikettierungs-Dilemma">Ressourcen-Etikettierungs-Dilemma</span>. Um individuelle Unterstützung zu erhalten, muss einem Kind zuvor ein formelles Defizit ("Etikett") gutachterlich attestiert werden. Wie ließe sich die Zuteilung von Ressourcen an Schulen perspektivisch (etwa im Sinne des UDL) organisieren, um personelle Unterstützung bereitzustellen, ohne Lernende defizitorientiert etikettieren zu müssen?</p>
+            <textarea id="ans-s3-reflection" rows="6" aria-label="Notizfeld für die Diskussion" placeholder="Ihre gemeinsamen Notizen zur Diskussion hier eintragen..."></textarea>
+        </div>
+    </div>
+
+    <div id="view-s4" class="content-section">
+        <h2>Sitzung 4: Soziale Integration von Lernenden mit Förderbedarf</h2>
+
+        <div class="task-box">
+            <div class="tts-controls no-print" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
+                <div style="display: flex; gap: 0.5rem;">
+                    <button class="tts-btn tts-play" onclick="playTTS(this.parentElement.parentElement.parentElement)" aria-label="Abschnitt vorlesen">Vorlesen</button>
+                    <button class="tts-btn tts-pause" onclick="pauseTTS()" aria-label="Vorlesen pausieren" disabled>Pause</button>
+                    <button class="tts-btn tts-stop" onclick="stopTTS()" aria-label="Vorlesen stoppen" disabled>Stopp</button>
+                </div>
+                <a href="kohrt.pdf" target="_blank" class="nav-btn" style="text-decoration: none; width: auto; font-size: 0.9rem; background-color: var(--accent-color); color: white; border-color: var(--accent-color); display: flex; align-items: center; justify-content: center;" aria-label="Text von Kohrt et al. als PDF in neuem Tab öffnen">
+                    Text als PDF öffnen
+                </a>
+            </div>
+            <h3>1. Leseauftrag & Fokus (Kohrt et al., 2021)</h3>
+            <p>Ein zentrales Ziel inklusiver Beschulung ist die bessere gesellschaftliche Integration von Lernenden mit Förderbedarf. Doch spiegelt sich diese bildungspolitische Hoffnung im Erleben der Kinder wider?</p>
+            <p>Lesen Sie bitte den <strong>vollständigen Artikel von Kohrt et al. (2021)</strong>. Fokussieren Sie sich dabei besonders auf die zugrundeliegenden Theorien (Kapitel 2.2), die methodische Erfassung der Daten sowie die paradoxen empirischen Befunde (Kapitel 4 & 5).</p>
+            <p>Nach dem Lesen bearbeiten Sie bitte die nachfolgenden Aufgaben.</p>
+            
+            <button onclick="unlockTaskS4('s4-task1-box')" style="width: 100%; margin-top: 1rem; background-color: var(--heading-color);" aria-label="Bestätigen, dass der Text gelesen wurde, um die Aufgaben freizuschalten">
+                Text vollständig gelesen, Aufgaben bearbeiten
+            </button>
+        </div>
+
+        <div class="task-box no-print" id="s4-task1-box" style="opacity: 0.4; pointer-events: none; transition: opacity 0.5s ease-in-out;">
+            <h3>2. Theorie-Sorter</h3>
+            <p>Kohrt et al. nutzen zwei Theorien zur Erklärung sozialer Integration. Ordnen Sie die empirischen Annahmen der passenden Theorie zu. Klicken Sie auf den korrekten Button.</p>
+
+            <div style="background-color: var(--bg-color); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color); margin-top: 1.5rem; text-align: center;">
+                <div style="min-height: 120px; display: flex; align-items: center; justify-content: center; background-color: var(--container-bg); padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem; border: 2px dashed var(--accent-color);">
+                    <p id="s4-theory-card-text" style="font-weight: 600; margin: 0; font-size: 1.1rem; line-height: 1.5;">"Personen evaluieren ihre eigenen Fähigkeiten bevorzugt durch den Vergleich mit ähnlichen Personen (Ähnlichkeitshypothese)."</p>
+                </div>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+                    <button onclick="checkS4Theory('vergleich')" style="flex: 1; min-width: 250px; background-color: var(--card-bg); color: var(--heading-color); border: 2px solid var(--heading-color);">Theorie sozialer Vergleichsprozesse</button>
+                    <button onclick="checkS4Theory('integrativ')" style="flex: 1; min-width: 250px; background-color: var(--card-bg); color: var(--heading-color); border: 2px solid var(--heading-color);">Theorie integrativer Prozesse</button>
+                </div>
+                <div style="margin-top: 1.5rem; font-size: 0.9rem;">Fortschritt: <span id="s4-theory-progress">1</span> / 3</div>
+                <div id="s4-theory-feedback" aria-live="polite" style="display: none; margin-top: 1.5rem; padding: 1.2rem; border-radius: 6px; font-weight: 500; text-align: left;"></div>
+            </div>
+        </div>
+
+        <div class="task-box no-print" id="s4-task2-box" style="opacity: 0.4; pointer-events: none; transition: opacity 0.5s ease-in-out;">
+            <h3>3. Das Klassenraum-Labor: Leistung & Heterogenität</h3>
+            <p>Experimentieren Sie mit der Zusammensetzung einer inklusiven Schulklasse. Verändern Sie die Regler für <strong>Klassenleistung</strong> und <strong>Heterogenität</strong>. Beobachten Sie, wie das System – streng nach den Regressionsmodellen von Kohrt et al. – die soziale Integration eines Kindes mit Förderbedarf berechnet.</p>
+            
+            <div style="background-color: var(--bg-color); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color); margin-top: 1.5rem;">
+                
+                <div style="margin-bottom: 2rem;">
+                    <label for="s4-slider-leistung" style="font-weight: 600; display: block; margin-bottom: 0.5rem;">Durchschnittliche Klassenleistung (Mathematik)</label>
+                    <input type="range" id="s4-slider-leistung" min="1" max="100" value="50" oninput="updateS4Lab()" style="width: 100%; cursor: pointer;" aria-label="Schieberegler für das mittlere Leistungsniveau der Klasse">
+                    <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--text-color); margin-top: 0.2rem;">
+                        <span>Sehr gering</span>
+                        <span>Sehr hoch</span>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 2rem;">
+                    <label for="s4-slider-hetero" style="font-weight: 600; display: block; margin-bottom: 0.5rem;">Leistungsheterogenität (Varianz in der Klasse)</label>
+                    <input type="range" id="s4-slider-hetero" min="1" max="100" value="50" oninput="updateS4Lab()" style="width: 100%; cursor: pointer;" aria-label="Schieberegler für die Vielfalt und Leistungsunterschiede in der Klasse">
+                    <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--text-color); margin-top: 0.2rem;">
+                        <span>Homogen (Alle ähnlich)</span>
+                        <span>Extrem Heterogen (Alle verschieden)</span>
+                    </div>
+                </div>
+
+                <div style="padding: 1.5rem; background-color: var(--container-bg); border-radius: 8px; border: 2px dashed var(--border-color);">
+                    <h4 style="margin-top: 0; margin-bottom: 1rem; text-align: center;">Live-Ergebnis: Soziale Integration (SPF-LSE)</h4>
+                    <div style="width: 100%; background-color: #e9ecef; border-radius: 6px; height: 30px; overflow: hidden; position: relative;">
+                        <div id="s4-lab-meter" style="width: 50%; height: 100%; background-color: var(--accent-color); transition: width 0.3s ease-out;"></div>
+                    </div>
+                    <p id="s4-lab-status" style="text-align: center; font-weight: 600; margin-top: 0.5rem; color: var(--accent-color);">Mittelmäßig integriert</p>
+                </div>
+
+                <button onclick="evaluateS4Lab()" style="width: 100%; margin-top: 1.5rem; background-color: var(--heading-color);">Auswertung anzeigen</button>
+                <div id="s4-lab-feedback" aria-live="polite" style="display: none; margin-top: 1.5rem; padding: 1.2rem; border-radius: 6px; font-weight: 500; line-height: 1.5;"></div>
+            </div>
+        </div>
+
+        <div class="task-box no-print" id="s4-task3-box" style="opacity: 0.4; pointer-events: none; transition: opacity 0.5s ease-in-out;">
+            <h3>4. Hypothesen-Waage: Der Schulform-Vergleich</h3>
+            <p>Wir haben nun gelernt, dass hohe Klassenleistungen die soziale Integration (durch negative Vergleiche) erschweren und Heterogenität sie nicht auffangen kann. Treffen Sie nun eine quantitative Vorhersage: Wo schätzen die betroffenen Kinder (N=1924) ihre soziale Integration auf einer Skala von 0 bis 4 insgesamt höher ein? Schieben Sie den Regler auf Ihre Vermutung und lösen Sie auf.</p>
+            
+            <div style="background-color: var(--bg-color); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color); margin-top: 1.5rem;">
+                
+                <div id="s4-waage-container">
+                    <label for="s4-slider-waage" style="font-weight: 600; display: block; margin-bottom: 1.5rem; text-align: center; font-size: 1.1rem;">Ihre Prognose: Wo gelingt Integration besser?</label>
+                    <input type="range" id="s4-slider-waage" min="-100" max="100" value="0" style="width: 100%; cursor: pointer; height: 8px;" aria-label="Schieberegler zur Einschätzung der Integration nach Schulform">
+                    <div style="display: flex; justify-content: space-between; font-size: 0.9rem; font-weight: 600; color: var(--accent-color); margin-top: 1rem;">
+                        <span style="width: 33%; text-align: left;">&larr; Deutlich besser an Förderschulen</span>
+                        <span style="width: 33%; text-align: center;">Genau gleich</span>
+                        <span style="width: 33%; text-align: right;">Deutlich besser an Allgemeinen Schulen &rarr;</span>
+                    </div>
+                    <button id="s4-btn-waage" onclick="resolveS4Waage()" style="width: 100%; margin-top: 2rem; background-color: var(--heading-color);">Empirische Studie auflösen</button>
+                </div>
+
+                <div id="s4-waage-result" style="display: none; padding-top: 2rem; border-top: 1px solid var(--border-color); margin-top: 2rem;">
+                    <h4 style="margin-bottom: 1.5rem; text-align: center;">Tatsächliches Studienergebnis (Mittelwerte)</h4>
+                    <div style="margin-bottom: 1.5rem;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-weight: 600;"><span>Allgemeine Schulen (Inklusiv)</span><span id="s4-val-allg">0.00</span></div>
+                        <div style="width: 100%; background: var(--container-bg); border-radius: 6px; height: 24px; overflow: hidden;"><div id="s4-bar-allg" style="width: 0%; height: 100%; background: var(--text-color); transition: width 2s ease-out;"></div></div>
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-weight: 600;"><span>Förderschulen (Separiert)</span><span id="s4-val-foer">0.00</span></div>
+                        <div style="width: 100%; background: var(--container-bg); border-radius: 6px; height: 24px; overflow: hidden;"><div id="s4-bar-foer" style="width: 0%; height: 100%; background: var(--accent-color); transition: width 2s ease-out;"></div></div>
+                    </div>
+                    <div id="s4-waage-feedback" aria-live="polite" style="margin-top: 1.5rem; padding: 1.2rem; border-radius: 6px; font-weight: 500; line-height: 1.5;"></div>
+                    <button onclick="unlockTaskS4('s4-transfer-box')" style="width: 100%; margin-top: 1.5rem; background-color: var(--success-color);">Zur Abschlussreflexion</button>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="task-box" id="s4-transfer-box" style="opacity: 0.4; pointer-events: none; transition: opacity 0.5s ease-in-out;">
+            <div class="tts-controls no-print">
+                <button class="tts-btn tts-play" onclick="playTTS(this.parentElement.parentElement)" aria-label="Abschnitt vorlesen">Vorlesen</button>
+                <button class="tts-btn tts-pause" onclick="pauseTTS()" aria-label="Vorlesen pausieren" disabled>Pause</button>
+                <button class="tts-btn tts-stop" onclick="stopTTS()" aria-label="Vorlesen stoppen" disabled>Stopp</button>
+            </div>
+            <h3>5. Reflexion & Methodik-Diskussion</h3>
+            <p><strong>Diskutieren Sie nun leise mit Ihrer Sitznachbar:in:</strong> Die explorativen Ergebnisse zeigen, dass eine physische Platzierung in (leistungsstarken und heterogenen) allgemeinen Schulen paradoxerweise zu <em>weniger</em> Integrationsempfinden führt, da negative Vergleichsprozesse dominieren. Wenn einfache Umgebungsfaktoren versagen – welche tiefgreifenden pädagogischen und didaktischen Maßnahmen (etwa nach Prinzipien des <span class="glossary-term" data-key="UDL">UDL</span>) müssen Lehrkräfte an allgemeinen Schulen ergreifen, um Beziehungen gezielt zu gestalten?</p>
+            <textarea id="ans-s4-reflection" rows="6" aria-label="Notizfeld für die Diskussion" placeholder="Ihre gemeinsamen Notizen hier eintragen..."></textarea>
+        </div>
+    </div>
+
+    <div id="view-s5" class="content-section">
+        <h2>Sitzung 5: Evidenzbasierte Praxis & Assessment (Mitchell & Sutherland)</h2>
+
+        <div class="task-box">
+            <div class="tts-controls no-print" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
+                <div style="display: flex; gap: 0.5rem;">
+                    <button class="tts-btn tts-play" onclick="playTTS(this.parentElement.parentElement.parentElement)" aria-label="Abschnitt vorlesen">Vorlesen</button>
+                    <button class="tts-btn tts-pause" onclick="pauseTTS()" aria-label="Vorlesen pausieren" disabled>Pause</button>
+                    <button class="tts-btn tts-stop" onclick="stopTTS()" aria-label="Vorlesen stoppen" disabled>Stopp</button>
+                </div>
+                <a href="mitchell.pdf" target="_blank" class="nav-btn" style="text-decoration: none; width: auto; font-size: 0.9rem; background-color: var(--accent-color); color: white; border-color: var(--accent-color); display: flex; align-items: center; justify-content: center;" aria-label="Text von Mitchell und Sutherland als PDF in neuem Tab öffnen">
+                    Text als PDF öffnen
+                </a>
+            </div>
+            <h3>1. Leseauftrag & Fokus</h3>
+            <p>Lesen Sie die bereitgestellten Auszüge aus dem englischsprachigen Fachbuch von <strong>Mitchell & Sutherland (2020)</strong>. Fokussieren Sie sich auf folgende Abschnitte, um die Wirksamkeit inklusiver Beschulung sowie die Rolle formativer Diagnostik zu erfassen:</p>
+            <ul>
+                <li><strong>Kapitel 4: Inclusive Education</strong> (S. 49-69 im Originalbuch; S. 1-25 im bereitgestellten PDF). Achten Sie hier besonders auf die Bestandteile der "Magic Formula" für inklusive Bildung und die systematisch zusammengefassten Forschungsbefunde.</li>
+                <li><strong>Kapitel 10: Formative assessment and feedback</strong> (S. 27-37 im bereitgestellten PDF). Fokussieren Sie sich auf den <span class="glossary-term" data-key="Kybernetik">kybernetischen</span> Feedback-Ansatz und die beschriebenen neurobiologischen Reaktionen (Stresshormone) von Lernenden auf Feedback.</li>
+            </ul>
+            <p>Bearbeiten Sie nach dem Lesen die folgenden interaktiven Aufgaben, um die theoretischen Modelle aus dem Text auf die Praxis zu transferieren.</p>
+            
+            <button onclick="unlockFirstTaskS5()" style="width: 100%; margin-top: 1rem; background-color: var(--heading-color);" aria-label="Bestätigen, dass der Text gelesen wurde, um die Aufgaben freizuschalten">
+                Text gelesen, Aufgaben bearbeiten
+            </button>
+        </div>
+
+        <div class="task-box no-print" id="s5-formula-box" style="opacity: 0.4; pointer-events: none; transition: opacity 0.5s ease-in-out;">
+            <h3>2. Praxis-Simulator: Schulprofil entwickeln</h3>
+            <p>Bauen Sie im folgenden Simulator eine fiktive Schule auf. Achtung: Viele der angebotenen Handlungsoptionen (wie z. B. Nachteilsausgleiche oder Schulbegleitungen) sind im heutigen Schulalltag zwar <strong>gängige, vermeintlich positive Praxis</strong>, gelten theoriegeleitet (nach Mitchell & Sutherland) jedoch als defizitäre Formen der <strong>Mikro-Exklusion</strong>. Überlegen Sie theoriegeleitet präzise: Was ist wirklich Inklusion?</p>
+            
+            <div style="background-color: var(--bg-color); padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color); margin-top: 1rem;">
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+                    
+                    <div>
+                        <h4 style="margin-top: 0; margin-bottom: 0.5rem; font-size: 0.95rem;">Vision & Leitbild (V)</h4>
+                        <div style="display: flex; flex-direction: column; gap: 0.3rem;">
+                            <button class="nav-btn s5-btn-v" onclick="selectS5Config('v', 'correct', this)" style="height: auto; padding: 0.6rem; font-size: 0.85rem; text-align: left; white-space: normal; justify-content: flex-start; color: var(--text-color); border-color: var(--border-color); font-weight: normal; background-color: var(--card-bg);">Barrierefreiheit für alle Diversitätsdimensionen ist fest verankert.</button>
+                            <button class="nav-btn s5-btn-v" onclick="selectS5Config('v', 'wrong1', this)" style="height: auto; padding: 0.6rem; font-size: 0.85rem; text-align: left; white-space: normal; justify-content: flex-start; color: var(--text-color); border-color: var(--border-color); font-weight: normal; background-color: var(--card-bg);">Chancengleichheit wird durch faire Nachteilsausgleiche gewährt.</button>
+                            <button class="nav-btn s5-btn-v" onclick="selectS5Config('v', 'wrong2', this)" style="height: auto; padding: 0.6rem; font-size: 0.85rem; text-align: left; white-space: normal; justify-content: flex-start; color: var(--text-color); border-color: var(--border-color); font-weight: normal; background-color: var(--card-bg);">Inklusion als gezieltes Spezial-Konzept für Kinder mit Diagnosen.</button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 style="margin-top: 0; margin-bottom: 0.5rem; font-size: 0.95rem;">Placement (P)</h4>
+                        <div style="display: flex; flex-direction: column; gap: 0.3rem;">
+                            <button class="nav-btn s5-btn-p" onclick="selectS5Config('p', 'wrong1', this)" style="height: auto; padding: 0.6rem; font-size: 0.85rem; text-align: left; white-space: normal; justify-content: flex-start; color: var(--text-color); border-color: var(--border-color); font-weight: normal; background-color: var(--card-bg);">Regelklasse, aber für Kernfächer gibt es einen speziellen Förderraum.</button>
+                            <button class="nav-btn s5-btn-p" onclick="selectS5Config('p', 'correct', this)" style="height: auto; padding: 0.6rem; font-size: 0.85rem; text-align: left; white-space: normal; justify-content: flex-start; color: var(--text-color); border-color: var(--border-color); font-weight: normal; background-color: var(--card-bg);">Bedingungslose Platzierung im heimatnahen Regelklassenraum.</button>
+                            <button class="nav-btn s5-btn-p" onclick="selectS5Config('p', 'wrong2', this)" style="height: auto; padding: 0.6rem; font-size: 0.85rem; text-align: left; white-space: normal; justify-content: flex-start; color: var(--text-color); border-color: var(--border-color); font-weight: normal; background-color: var(--card-bg);">Kooperation: Förderschulklasse teilt sich Projekte mit Regelklasse.</button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 style="margin-top: 0; margin-bottom: 0.5rem; font-size: 0.95rem;">The 5 As (Curriculum)</h4>
+                        <div style="display: flex; flex-direction: column; gap: 0.3rem;">
+                            <button class="nav-btn s5-btn-a5" onclick="selectS5Config('a5', 'wrong1', this)" style="height: auto; padding: 0.6rem; font-size: 0.85rem; text-align: left; white-space: normal; justify-content: flex-start; color: var(--text-color); border-color: var(--border-color); font-weight: normal; background-color: var(--card-bg);">Feste Differenzierung durch A-, B- und C-Lernniveaus.</button>
+                            <button class="nav-btn s5-btn-a5" onclick="selectS5Config('a5', 'wrong2', this)" style="height: auto; padding: 0.6rem; font-size: 0.85rem; text-align: left; white-space: normal; justify-content: flex-start; color: var(--text-color); border-color: var(--border-color); font-weight: normal; background-color: var(--card-bg);">Standardlehrplan für alle, flankiert durch Zeitzugaben.</button>
+                            <button class="nav-btn s5-btn-a5" onclick="selectS5Config('a5', 'correct', this)" style="height: auto; padding: 0.6rem; font-size: 0.85rem; text-align: left; white-space: normal; justify-content: flex-start; color: var(--text-color); border-color: var(--border-color); font-weight: normal; background-color: var(--card-bg);">Universal Design (UDL): Proaktiv flexible Lernziele für alle.</button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 style="margin-top: 0; margin-bottom: 0.5rem; font-size: 0.95rem;">Support (S)</h4>
+                        <div style="display: flex; flex-direction: column; gap: 0.3rem;">
+                            <button class="nav-btn s5-btn-s" onclick="selectS5Config('s', 'correct', this)" style="height: auto; padding: 0.6rem; font-size: 0.85rem; text-align: left; white-space: normal; justify-content: flex-start; color: var(--text-color); border-color: var(--border-color); font-weight: normal; background-color: var(--card-bg);">Gleichberechtigtes, flexibles Co-Teaching im gesamten Raum.</button>
+                            <button class="nav-btn s5-btn-s" onclick="selectS5Config('s', 'wrong1', this)" style="height: auto; padding: 0.6rem; font-size: 0.85rem; text-align: left; white-space: normal; justify-content: flex-start; color: var(--text-color); border-color: var(--border-color); font-weight: normal; background-color: var(--card-bg);">Sonderpädagog:in berät wöchentlich bei der Materialerstellung.</button>
+                            <button class="nav-btn s5-btn-s" onclick="selectS5Config('s', 'wrong2', this)" style="height: auto; padding: 0.6rem; font-size: 0.85rem; text-align: left; white-space: normal; justify-content: flex-start; color: var(--text-color); border-color: var(--border-color); font-weight: normal; background-color: var(--card-bg);">Schulbegleitung ist als 1:1 Assistenz fest an ein Kind gebunden.</button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 style="margin-top: 0; margin-bottom: 0.5rem; font-size: 0.95rem;">Resources (R)</h4>
+                        <div style="display: flex; flex-direction: column; gap: 0.3rem;">
+                            <button class="nav-btn s5-btn-r" onclick="selectS5Config('r', 'wrong1', this)" style="height: auto; padding: 0.6rem; font-size: 0.85rem; text-align: left; white-space: normal; justify-content: flex-start; color: var(--text-color); border-color: var(--border-color); font-weight: normal; background-color: var(--card-bg);">Bewilligung der Stunden strikt nach medizinischer Diagnose.</button>
+                            <button class="nav-btn s5-btn-r" onclick="selectS5Config('r', 'correct', this)" style="height: auto; padding: 0.6rem; font-size: 0.85rem; text-align: left; white-space: normal; justify-content: flex-start; color: var(--text-color); border-color: var(--border-color); font-weight: normal; background-color: var(--card-bg);">Präventiver Ressourcenfluss in die Regelschule (Backpack).</button>
+                            <button class="nav-btn s5-btn-r" onclick="selectS5Config('r', 'wrong2', this)" style="height: auto; padding: 0.6rem; font-size: 0.85rem; text-align: left; white-space: normal; justify-content: flex-start; color: var(--text-color); border-color: var(--border-color); font-weight: normal; background-color: var(--card-bg);">Eigenes Inklusionsbudget für die Einrichtung eines Ruheraums.</button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 style="margin-top: 0; margin-bottom: 0.5rem; font-size: 0.95rem;">Leadership (L)</h4>
+                        <div style="display: flex; flex-direction: column; gap: 0.3rem;">
+                            <button class="nav-btn s5-btn-l" onclick="selectS5Config('l', 'wrong1', this)" style="height: auto; padding: 0.6rem; font-size: 0.85rem; text-align: left; white-space: normal; justify-content: flex-start; color: var(--text-color); border-color: var(--border-color); font-weight: normal; background-color: var(--card-bg);">Delegation der Leitung an eine Fachkraft (Inklusionsbeauftragte).</button>
+                            <button class="nav-btn s5-btn-l" onclick="selectS5Config('l', 'wrong2', this)" style="height: auto; padding: 0.6rem; font-size: 0.85rem; text-align: left; white-space: normal; justify-content: flex-start; color: var(--text-color); border-color: var(--border-color); font-weight: normal; background-color: var(--card-bg);">Quotierung: Maximal 2 Förderkinder pro Klasse zum Schutz.</button>
+                            <button class="nav-btn s5-btn-l" onclick="selectS5Config('l', 'correct', this)" style="height: auto; padding: 0.6rem; font-size: 0.85rem; text-align: left; white-space: normal; justify-content: flex-start; color: var(--text-color); border-color: var(--border-color); font-weight: normal; background-color: var(--card-bg);">Proaktive Verantwortung und Barriereabbau durch Schulleitung.</button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div style="padding: 1.2rem; background-color: var(--container-bg); border-radius: 8px; border: 2px dashed var(--border-color); text-align: center;">
+                    <div id="s5-formula-status" style="font-size: 1.1rem; font-weight: 700; color: var(--text-color); margin-bottom: 0.5rem;">System-Diagnose: Ausstehend</div>
+                    <div id="s5-formula-feedback" style="font-size: 0.95rem; line-height: 1.4;">Bitte wählen Sie in allen 6 Bereichen eine theoriegeleitete Strategie aus.</div>
+                </div>
+
+                <button id="btn-s5-formula-next" onclick="unlockTaskS5('s5-neuro-box')" style="width: 100%; margin-top: 1rem; background-color: var(--success-color); display: none;">Diagnose bestätigt - Weiter zur Neuro-Analyse</button>
+            </div>
+        </div>
+
+        <div class="task-box no-print" id="s5-neuro-box" style="opacity: 0.4; pointer-events: none; transition: opacity 0.5s ease-in-out;">
+            <h3>3. Live-Mischpult: Kybernetisches Feedback & Neuro-Scan</h3>
+            <p>Verändern Sie im folgenden Labor stufenlos die Parameter Ihres Feedbacks. <strong>Beobachten Sie, wie sich der generierte Satz Wort für Wort anpasst</strong> und wie das Gehirn in Echtzeit reagiert (Side-by-Side Ansicht).</p>
+            
+            <div style="background-color: var(--bg-color); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color); margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 2rem; align-items: flex-start;">
+                
+                <div style="flex: 1 1 250px; display: flex; flex-direction: column; gap: 1.5rem;">
+                    <div>
+                        <label style="font-weight: 600; display: block; margin-bottom: 0.5rem; font-size: 0.95rem;">1. Fokus des Feedbacks?</label>
+                        <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-color); margin-bottom: 0.2rem;">
+                            <span>Defizite (Person)</span>
+                            <span>Ursache (Strategie)</span>
+                        </div>
+                        <input type="range" id="s5-slide-focus" min="0" max="100" value="10" oninput="updateS5Neuro()" style="width: 100%; cursor: pointer;" aria-label="Schieberegler für Feedback-Fokus">
+                    </div>
+
+                    <div>
+                        <label style="font-weight: 600; display: block; margin-bottom: 0.5rem; font-size: 0.95rem;">2. Kommunikationsebene?</label>
+                        <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-color); margin-bottom: 0.2rem;">
+                            <span>Normativ (Vergleich)</span>
+                            <span>Instruktiv (Sachlich)</span>
+                        </div>
+                        <input type="range" id="s5-slide-norm" min="0" max="100" value="10" oninput="updateS5Neuro()" style="width: 100%; cursor: pointer;" aria-label="Schieberegler für Fehlerkommunikation">
+                    </div>
+
+                    <div>
+                        <label style="font-weight: 600; display: block; margin-bottom: 0.5rem; font-size: 0.95rem;">3. Geforderte Konsequenz?</label>
+                        <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-color); margin-bottom: 0.2rem;">
+                            <span>Appell ("Anstrengen!")</span>
+                            <span>Kybernetisch ("Prüfen!")</span>
+                        </div>
+                        <input type="range" id="s5-slide-action" min="0" max="100" value="10" oninput="updateS5Neuro()" style="width: 100%; cursor: pointer;" aria-label="Schieberegler für Konsequenz">
+                    </div>
+                </div>
+
+                <div style="flex: 1.6 1 350px; display: flex; flex-direction: column;">
+                    <h4 style="margin-top: 0; margin-bottom: 0.8rem; font-size: 0.95rem; color: var(--text-color);">Synthetisierter Feedback-Satz</h4>
+                    
+                    <div style="font-size: 1rem; font-weight: 500; font-style: italic; padding: 1.2rem; border-left: 4px solid #dc3545; background-color: var(--container-bg); margin-bottom: 1.5rem; border-radius: 4px; box-shadow: 0 1px 4px rgba(0,0,0,0.05); line-height: 1.5; transition: border-color 0.3s; width: 100%; box-sizing: border-box;" id="s5-fb-sentence-box">
+                        "<span id="s5-fb-text-1" style="color: #dc3545; transition: color 0.3s;">Du bist in Mathe einfach unfähig,</span> 
+                         <span id="s5-fb-text-2" style="color: #dc3545; transition: color 0.3s;">und alle anderen waren viel schneller fertig als du.</span> 
+                         <span id="s5-fb-text-3" style="color: #dc3545; transition: color 0.3s;">Streng dich gefälligst mehr an!</span>"
+                    </div>
+
+                    <h4 style="margin-top: 0; margin-bottom: 0.8rem; font-size: 0.95rem; color: var(--text-color); border-top: 1px solid var(--border-color); padding-top: 1rem;">Echtzeit-Neuro-Scan</h4>
+                    
+                    <div style="margin-bottom: 0.8rem;">
+                        <div style="display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 0.2rem; font-size: 0.85rem;">
+                            <span>Cortisol (Stress)</span>
+                        </div>
+                        <div style="width: 100%; background: #e9ecef; border-radius: 4px; height: 12px; overflow: hidden;">
+                            <div id="s5-bar-cortisol" style="width: 100%; height: 100%; background: #dc3545; transition: width 0.2s ease-out;"></div>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 1rem;">
+                        <div style="display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 0.2rem; font-size: 0.85rem;">
+                            <span>Dopamin (Lernbereitschaft)</span>
+                        </div>
+                        <div style="width: 100%; background: #e9ecef; border-radius: 4px; height: 12px; overflow: hidden;">
+                            <div id="s5-bar-dopamin" style="width: 5%; height: 100%; background: var(--success-color); transition: width 0.2s ease-out;"></div>
+                        </div>
+                    </div>
+
+                    <div id="s5-neuro-feedback-text" aria-live="polite" style="font-weight: 500; font-size: 0.85rem; line-height: 1.4; color: #dc3545;">
+                        <strong>Akute Bedrohung:</strong> Das Gehirn wird mit Stresshormonen geflutet. Lernen ist momentan unmöglich.
+                    </div>
+                </div>
+
+                <div style="flex: 1 1 100%; margin-top: 0.5rem;">
+                    <button id="btn-s5-neuro-next" onclick="unlockTaskS5('s5-effect-box')" style="width: 100%; background-color: var(--success-color); display: none;">Optimale Neuro-Plastizität erreicht - Weiter</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="task-box no-print" id="s5-effect-box" style="opacity: 0.4; pointer-events: none; transition: opacity 0.5s ease-in-out;">
+            <h3>4. Interaktives Thermometer: Effektstärken ($d$)</h3>
+            <p>Wie stark wirken sich <span class="glossary-term" data-key="Formatives Assessment">formatives Assessment</span> und qualitatives Feedback in der empirischen Praxis tatsächlich auf den Lernerfolg aus? Schätzen Sie die durchschnittliche Effektstärke nach Cohen ($d$) auf der wissenschaftlichen Skala.</p>
+            
+            <div style="background-color: var(--bg-color); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color); margin-top: 1.5rem;">
+                
+                <label for="s5-slider-effect" style="font-weight: 600; display: block; margin-bottom: 0.5rem; text-align: center; font-size: 1.1rem;">Ihre Schätzung der Effektstärke: <span id="s5-live-guess" style="color: var(--accent-color);">d = 0.20</span></label>
+                <div style="text-align: center; margin-bottom: 1.5rem; font-size: 0.9rem; color: var(--text-color);">Verschieben Sie den Regler, um zu prüfen.</div>
+                
+                <div style="position: relative; width: 100%; padding-bottom: 2rem;">
+                    <div style="position: absolute; top: -25px; left: 0; width: 100%; display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-color); font-weight: 600;">
+                        <span style="transform: translateX(0%);">-0.2 (Schädlich)</span>
+                        <span style="position: absolute; left: 28.5%; transform: translateX(-50%);">0.2 (Gering)</span>
+                        <span style="position: absolute; left: 42.8%; transform: translateX(-50%); color: var(--accent-color);">0.4 (Umschlagspunkt)</span>
+                        <span style="position: absolute; left: 71.4%; transform: translateX(-50%);">0.8 (Exzellent)</span>
+                        <span style="transform: translateX(0%);">1.2 (Maximal)</span>
+                    </div>
+
+                    <input type="range" id="s5-slider-effect" min="-20" max="120" value="20" style="width: 100%; cursor: pointer; height: 12px;" aria-label="Schieberegler zur Schätzung der empirischen Effektstärke">
+                    
+                    <div style="display: flex; width: 100%; height: 6px; margin-top: 5px; border-radius: 3px; overflow: hidden; opacity: 0.6;">
+                        <div style="width: 14.3%; background: #dc3545;"></div> <div style="width: 28.5%; background: #ffc107;"></div> <div style="width: 57.2%; background: var(--success-color);"></div> </div>
+                </div>
+
+                <div id="s5-effect-result" style="display: none; padding: 1.5rem; background-color: var(--container-bg); border-radius: 8px; border: 1px solid var(--border-color); margin-top: 1.5rem;">
+                    <h4 style="margin-top: 0; text-align: center; margin-bottom: 1.5rem;">Hattie-Meta-Analysen: Tatsächliche Befunde</h4>
+                    <div style="margin-bottom: 1.5rem;">
+                        <div style="display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 0.5rem;">
+                            <span>Formatives Assessment</span>
+                            <span id="s5-val-formative" style="color: var(--accent-color);">d = 0.00</span>
+                        </div>
+                        <div style="width: 100%; background: #e9ecef; border-radius: 6px; height: 24px; overflow: hidden;">
+                            <div id="s5-bar-formative" style="width: 0%; height: 100%; background: var(--accent-color); transition: width 1.5s cubic-bezier(0.2, 0.8, 0.2, 1);"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div style="display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 0.5rem;">
+                            <span>Feedback (instruktiv)</span>
+                            <span id="s5-val-feedback" style="color: var(--heading-color);">d = 0.00</span>
+                        </div>
+                        <div style="width: 100%; background: #e9ecef; border-radius: 6px; height: 24px; overflow: hidden;">
+                            <div id="s5-bar-feedback" style="width: 0%; height: 100%; background: var(--heading-color); transition: width 1.5s cubic-bezier(0.2, 0.8, 0.2, 1);"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="s5-effect-feedback-text" aria-live="polite" style="display: none; margin-top: 1.5rem; padding: 1.2rem; border-radius: 6px; font-weight: 500; line-height: 1.5;"></div>
+
+                <button id="btn-s5-effect" onclick="resolveS5Effect()" style="width: 100%; background-color: var(--heading-color);">Wissenschaftliche Daten auflösen</button>
+            </div>
+        </div>
+
+        <div class="task-box" id="s5-transfer-box" style="opacity: 0.4; pointer-events: none; transition: opacity 0.5s ease-in-out;">
+            <div class="tts-controls no-print">
+                <button class="tts-btn tts-play" onclick="playTTS(this.parentElement.parentElement)" aria-label="Abschnitt vorlesen">Vorlesen</button>
+                <button class="tts-btn tts-pause" onclick="pauseTTS()" aria-label="Vorlesen pausieren" disabled>Pause</button>
+                <button class="tts-btn tts-stop" onclick="stopTTS()" aria-label="Vorlesen stoppen" disabled>Stopp</button>
+            </div>
+            <h3>5. Reflexion & Diskussion: Das Policy-Practice-Gap</h3>
+            <p><strong>Diskutieren Sie nun leise mit Ihrer Sitznachbar:in:</strong> Mitchell & Sutherland betonen, dass weltweit eine Lücke zwischen inklusiver Rhetorik (Gesetze, Visionen) und der tatsächlichen Praxis im Klassenzimmer klafft. Wenn wir wissen, dass formatives Assessment und fehlerfreundliches Feedback derart massive empirische Effekte ($d = 0.90$) haben, warum dominieren dann an Gymnasien in der Realität nach wie vor oft summatives Assessment (Noten) und defizitorientierte Leistungsvergleiche?</p>
+            <textarea id="ans-s5-reflection" rows="6" aria-label="Notizfeld für die Diskussion" placeholder="Ihre gemeinsamen Notizen hier eintragen..."></textarea>
+        </div>
+    </div>
+
+    <div id="modal-s1" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header-actions" style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">
+                <button class="pdf-btn" style="position: static; margin: 0; min-width: 180px; text-align: center; padding: 0.6rem 1.2rem; font-size: 0.95rem; border-radius: 6px;" onclick="printModalContent()" aria-label="Diese Zusammenfassung als PDF Datei speichern">Als PDF speichern</button>
+                <button class="tts-btn tts-play" style="position: static; margin: 0; min-width: 180px; text-align: center; padding: 0.6rem 1.2rem; font-size: 0.95rem; border-radius: 6px; background-color: var(--accent-color); color: white; border: none; cursor: pointer;" onclick="playTTS(this.parentElement.parentElement)" aria-label="Diese Seite vorlesen">Diese Seite vorlesen</button>
+                <button class="modal-close" style="position: static; margin: 0; min-width: 180px; text-align: center; padding: 0.6rem 1.2rem; font-size: 0.95rem; border-radius: 6px; font-weight: 600;" onclick="closeModal('modal-s1')" aria-label="Aktuelles Fenster schließen">Fenster schließen</button>
+            </div>
+            
+            <h2 style="margin-top: 0;">Zusammenfassung: Lindmeier & Lindmeier (2015)</h2>
+            <p><strong>Quelle:</strong> Lindmeier, C. & Lindmeier, B. (2015). Inklusion aus der Perspektive des rechtlichen und ethischen Begründungsdiskurses. In: Erziehungswissenschaft 26 (51), S. 43-51.</p>
+            
+            <h3>Einleitung: Verortung des Inklusionsdiskurses</h3>
+            <p>In der Erziehungswissenschaft besteht Konsens darüber, dass Inklusion eine zentrale und zugleich schwierige Frage des Bildungssystems darstellt (vgl. Tenorth 2013, S. 43). Lindmeier und Lindmeier (2015) unterscheiden nach Dyson (1999) grundsätzlich zwei Diskursstränge:</p>
+            <ul>
+                <li><strong>Realisierungsdiskurs:</strong> Fokussiert sich auf die Umsetzung in der Praxis (vgl. Dyson 1999, S. 43).</li>
+                <li><strong>Begründungsdiskurs:</strong> Legitimiert Inklusion rechtlich sowie ethisch und steht im Fokus des Textes (vgl. Lindmeier/Lindmeier 2015, S. 43).</li>
+            </ul>
+            
+            <h3>1. Entwicklung des internationalen Diskurses zu inklusiver Bildung</h3>
+            <ul>
+                <li><strong>Abkehr vom <span class="glossary-term" data-key="Mainstreaming">Mainstreaming</span>:</strong> Die Forderung nach Inklusion wurde seit Anfang der 1990er Jahre durch die UNESCO als „globale Agenda“ vorangetrieben (Kiuppis 2014, S. 43). Dies war eine direkte Reaktion auf das integrationspädagogische „mainstreaming“ in den USA (vgl. Lindmeier/Lindmeier 2015, S. 43).</li>
+                <li><strong>Kritik am Integrationsmodell:</strong> Beim Mainstreaming wurden lediglich leichter beeinträchtigte Kinder in Regelschulen platziert, während die Differenzlinien und Ausgrenzungen bestehen blieben; wer nicht passte, verblieb in „Resteinrichtungen“ (vgl. Lindmeier/Lindmeier 2015, S. 43).</li>
+                <li><strong>Das <span class="glossary-term" data-key="Kaskadenmodell">Kaskadenmodell</span>:</strong> Weil das Behinderungsmodell starr an der Person festgemacht wurde, wurden Kinder durch Vorbereitungsklassen und Sonderschulen „geschleust“ (vgl. Hinz 2008, S. 44).</li>
+                <li><strong>Meilensteine der Inklusion:</strong> Die Salamanca-Erklärung der UNESCO von 1994 forderte erstmals eine inklusive, an individuellen Bedürfnissen orientierte Bildung („child-centred-pedagogy“) (vgl. UNESCO 1994, S. 44). Mit der Ratifizierung der <span class="glossary-term" data-key="UN-BRK">UN-BRK</span> im Jahr 2009 verpflichtete sich Deutschland völkerrechtlich zur Gewährleistung eines inklusiven Bildungssystems nach Art. 24 (vgl. Klemm 2014, S. 44).</li>
+            </ul>
+
+            <h3>2. Inklusion als Menschenrechtsprinzip</h3>
+            <p><strong>Innovationspotenzial der UN-BRK:</strong> Inklusion wird direkt mit dem menschenrechtlichen Anspruch auf Achtung der Würde, Chancengleichheit und Nichtdiskriminierung verknüpft (vgl. Degener/Mogge-Grotjahn 2012, S. 45). Es werden keine neuen Menschenrechte geschaffen, sondern allgemeine Rechte auf den Kontext von Behinderung zugeschnitten (vgl. Lindmeier/Lindmeier 2015, S. 45).</p>
+            <p><strong>Neuinterpretation der Menschenrechte nach Bielefeldt (2012):</strong> Die Ideale der Französischen Revolution werden grundlegend erweitert (vgl. Bielefeldt 2012, S. 45):</p>
+            <ul>
+                <li><strong>Freiheit als „<span class="glossary-term" data-key="Assistierte Freiheit">assistierte Freiheit</span>“:</strong> Die klassische Autonomie blendet aus, dass jeder Mensch Unterstützung benötigt. Freiheit wird neu als „assistierte Freiheit“ definiert, bei der soziale Assistenz die Autonomie des Einzelnen nicht einschränkt (vgl. Graumann 2011, S. 45).</li>
+                <li><strong>Gleichheit durch <span class="glossary-term" data-key="Barrierefreiheit">Barrierefreiheit</span>:</strong> Diskriminierung ist nicht nur böswillig, sondern manifestiert sich in mentalen und strukturellen Barrieren (vgl. Bielefeldt 2012, S. 46). Das Vorenthalten von „angemessene[n] Vorkehrungen“ (UN-BRK, S. 46) gilt bereits als handfeste Diskriminierung (vgl. Aichele 2012, S. 46).</li>
+                <li><strong>Brüderlichkeit als gesellschaftliche Inklusion:</strong> Inklusion verlangt, dass die gesamte Architektur der Gesellschaft auf den Prüfstand gestellt wird, damit Zugehörigkeit („<span class="glossary-term" data-key="Belonging">enhanced sense of belonging</span>“) dauerhaft entstehen kann (vgl. Bielefeldt 2012, S. 46). Bloßes Dabeisein reicht nicht aus und darf nicht als Verzicht auf Unterstützung missverstanden werden (vgl. Wocken 2011, S. 47).</li>
+            </ul>
+
+            <h3>3. Implikationen für eine Bildungstheorie im inklusiven Kontext</h3>
+            <ul>
+                <li><strong>Erweiterung des Bildungsbegriffs:</strong> Die universalistische Idee der Bildung eines autonomen Subjekts muss um eine sozialtheoretische Perspektive ergänzt werden (vgl. Tenorth 2012, S. 47). Hierzu dient Ricken (2013) mit dem Verweis auf Tomasellos (2009) „relationale Anthropologie“, die die soziale Verfasstheit des Menschen betont (vgl. Lindmeier/Lindmeier 2015, S. 47).</li>
+                <li><strong>Anerkennung als Basis:</strong> Die Genese des eigenen Selbst ist konstitutiv von anderen abhängig, was im Diskurs der Anerkennungstheorie tief verankert ist (vgl. Lindmeier/Lindmeier 2012, S. 47-48). Subjektivität muss als soziale Genese begriffen werden (vgl. Lindmeier/Lindmeier 2015, S. 48).</li>
+                <li><strong>Soziale Konstruktion von Behinderung:</strong> Der Inklusionsdiskurs schließt an sozialpädagogische Linien an, indem Behinderung nicht im Menschen verortet wird (vgl. Lindmeier/Lindmeier 2015, S. 48). Laut Präambel der UN-BRK entsteht Behinderung erst aus der „Wechselwirkung zwischen Menschen mit Beeinträchtigungen und einstellungs- und umweltbedingten Barrieren“ (UN-BRK, S. 48). Erst dieses Verständnis ermöglicht es, Behinderung als strukturelles Unrecht zu adressieren (vgl. Lindmeier/Lindmeier 2015, S. 48).</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="modal-s2" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header-actions" style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">
+                <button class="pdf-btn" style="position: static; margin: 0; min-width: 180px; text-align: center; padding: 0.6rem 1.2rem; font-size: 0.95rem; border-radius: 6px;" onclick="printModalContent()" aria-label="Diese Zusammenfassung als PDF Datei speichern">Als PDF speichern</button>
+                <button class="tts-btn tts-play" style="position: static; margin: 0; min-width: 180px; text-align: center; padding: 0.6rem 1.2rem; font-size: 0.95rem; border-radius: 6px; background-color: var(--accent-color); color: white; border: none; cursor: pointer;" onclick="playTTS(this.parentElement.parentElement)" aria-label="Diese Seite vorlesen">Diese Seite vorlesen</button>
+                <button class="modal-close" style="position: static; margin: 0; min-width: 180px; text-align: center; padding: 0.6rem 1.2rem; font-size: 0.95rem; border-radius: 6px; font-weight: 600;" onclick="closeModal('modal-s2')" aria-label="Aktuelles Fenster schließen">Fenster schließen</button>
+            </div>
+
+            <h2 style="margin-top: 0;">Zusammenfassung: Karin Bräu (2021)</h2>
+            <p><strong>Quelle:</strong> Bräu, K. (2021). Kapitel 2.7 Inklusion und Leistung. S. 207–222.</p>
+            
+            <h3>Einleitung: Der grundlegende Konflikt zwischen Schule und Inklusion</h3>
+            <ul>
+                <li><strong>Ausgangslage im Schulsystem:</strong> Das deutsche Schulsystem ist traditionell darauf ausgerichtet, Schüler*innen besonders früh anhand ihrer Leistungen einzustufen, zu selektieren und in unterschiedliche Bildungsgänge mit verschiedenen Abschlussmöglichkeiten zu sortieren (vgl. Bräu 2021, S. 207).</li>
+                <li><strong>Der aktuelle Wendepunkt:</strong> Durch die Forderung nach Inklusion und der Zusammenführung von Schularten stellt sich die Frage, inwiefern die gemeinsame Beschulung (Inklusion) und das selektive Leistungsprinzip der Schule überhaupt miteinander vereinbar sind (vgl. Bräu 2021, S. 207).</li>
+            </ul>
+
+            <h3>1. Begriffsklärungen</h3>
+            <h4>1.1 Inklusion und ihre vier Diskurslinien</h4>
+            <p>Bräu unterscheidet vier ineinandergreifende Diskurslinien, um das komplexe Verständnis von Inklusion aufzuzeigen (vgl. Bräu 2021, S. 207):</p>
+            <ul>
+                <li><strong>Enges vs. weites Inklusionsverständnis:</strong> Ein enges (bzw. spezifisches) Verständnis zielt ausschließlich auf die gemeinsame Beschulung von behinderten und nicht-behinderten Kindern ab, vorangetrieben durch die <span class="glossary-term" data-key="UN-BRK">UN-BRK</span> von 2006 (vgl. Bräu 2021, S. 207f.). Ein weites (allgemeines) Verständnis meint hingegen das gemeinsame Lernen aller ohne jegliche Abgrenzung nach Personenmerkmalen und fordert eine intersektionale Perspektive zur Maximierung sozialer Teilhabe (vgl. Bräu 2021, S. 208).</li>
+                <li><strong><span class="glossary-term" data-key="Naturalistisch">Naturalistisches</span> vs. <span class="glossary-term" data-key="Konstruktivismus">sozialkonstruktivistisches</span> Differenzverständnis:</strong> Differenzen wie Behinderung, Geschlecht oder Migrationshintergrund können entweder als biologisch bzw. naturalistisch vorgegeben verstanden werden oder als sozial konstruiert (vgl. Bräu 2021, S. 208). Im sozialkonstruktivistischen Sinne werden Menschen aktiv behindert oder durch Praktiken zu den "Anderen" gemacht, was sich in Konzepten wie "<span class="glossary-term" data-key="Doing Difference">Doing Difference</span>" niederschlägt (vgl. Bräu 2021, S. 208).</li>
+                <li><strong>Spannungsfeld von Inklusion und Exklusion:</strong> Inklusion (Teilhabe) ist analytisch untrennbar mit Exklusion (Behinderung von Teilhabe) verbunden (vgl. Bräu 2021, S. 208). Exkludierende und differenzherstellende Praktiken existieren auch an Schulen, die sich eigentlich als inklusiv verstehen (vgl. Bräu 2021, S. 209).</li>
+                <li><strong>Begründungen für Inklusion:</strong> Inklusion wird pädagogisch als allgemeines Menschenrecht auf vollumfängliche Teilhabe begründet, aber parallel auch volkswirtschaftlich (Kosteneinsparungen vs. Mehrkosten) oder leistungsorientiert argumentiert, da bessere Schulabschlüsse auch die wirtschaftliche Potenz eines Landes fördern (vgl. Bräu 2021, S. 209f.).</li>
+            </ul>
+
+            <h4>1.2 Schulische Leistung und das meritokratische Prinzip</h4>
+            <ul>
+                <li><strong>Legitimation durch Leistung:</strong> Schulische Leistung dient als legitimes Verteilungskriterium für spätere berufliche Optionen und Lebenschancen, was das <span class="glossary-term" data-key="meritokratische Leistungsprinzip">meritokratische Prinzip</span> darstellt und ständische Privilegien ablösen soll (vgl. Bräu 2021, S. 210).</li>
+                <li><strong>Kritik am Leistungsprinzip:</strong> Das Schulsystem gerät in die Kritik, da Leistungsbewertungen nicht objektiv messbar sind; vielmehr reproduzieren Schulen soziale Ungleichheiten (vgl. Bräu 2021, S. 211). Bewertungen hängen oft vom ungleichen kulturellen Kapital der Familien, von Fehlern in der Messung oder von impliziten Vorurteilen ("Images") der Lehrkräfte ab (vgl. Bräu 2021, S. 211).</li>
+                <li><strong>Subjektivierende Folgen:</strong> Dauerhafte Leistungsbeurteilungen und frühe Selektion können bei den "Verlierer*innen" zu Selbstzweifeln führen und das Selbstwertgefühl massiv mindern (vgl. Bräu 2021, S. 212).</li>
+            </ul>
+
+            <h4>1.3 Das <span class="glossary-term" data-key="Paradoxon">Paradoxon</span> von Inklusion und schulischer Leistung</h4>
+            <ul>
+                <li><strong>Paradigmata im Widerspruch:</strong> Das meritokratische System der Schule zielt auf die Produktion von Leistungsdifferenzen ab, während Inklusion (als Menschenrecht) den Abbau von Differenzherstellung und Benachteiligung verlangt (vgl. Bräu 2021, S. 212f.).</li>
+                <li><strong>Kommunikatives vs. konjunktives Wissen:</strong> Der Konflikt zeigt sich bei Lehrkräften: Das kommunikative Wissen orientiert sich an Förderidealen und Inklusion, während das habitualisierte (konjunktive) Erfahrungswissen unreflektiert Praktiken der Leistungsdifferenzierung antreibt (vgl. Bräu 2021, S. 213).</li>
+            </ul>
+
+            <h3>2. Empirische Befunde zum Verhältnis von Inklusion und Leistung</h3>
+            <h4>2.1 Folgen und Ergebnisse der Herstellung von Leistungsdifferenz</h4>
+            <ul>
+                <li><strong>Leistungsentwicklung nach Geschlecht:</strong> Bei (partieller) Monoedukation (z.B. reinen Mädchenschulen) zeigen Mädchen in den Fächern Mathematik, Physik und Muttersprache tendenziell leichte Leistungsvorteile sowie ein höheres Selbstkonzept (vgl. Bräu 2021, S. 214).</li>
+                <li><strong>Förderbedarf und Inklusion:</strong> Schüler*innen mit attestiertem Förderbedarf profitieren langfristig leistungsmäßig deutlich stärker von inklusiven Regelschulen als in Sonderschulen (vgl. Bräu 2021, S. 214).</li>
+                <li><strong>Auswirkungen auf Regelschüler*innen:</strong> Die Befürchtung, Inklusion senke die Leistung der Mehrheitsgruppe ohne Förderbedarf, wird nicht bestätigt; Studien zeigen eher keine signifikanten Unterschiede oder sogar leichte Vorteile für Kinder mit geringerem oder mittlerem Leistungsniveau in inklusiven Klassen (vgl. Bräu 2021, S. 215).</li>
+            </ul>
+
+            <h4>2.2 Prozesse der Herstellung von Leistungsdifferenz in inklusiven Settings</h4>
+            <ul>
+                <li><strong>Kategorisierung durch Bezeichnungen:</strong> Auch in scheinbar inklusiven Settings vollzieht sich ein "Doing difference". Schüler*innen klassifizieren Lehrkräfte als "richtige Lehrkraft" für Normalschüler*innen und als "Hilfslehrerin" für leistungsschwache Kinder, wodurch Differenzen zementiert werden (vgl. Bräu 2021, S. 215f.). Lehrkräfte erfinden zudem Stigmatisierungen wie "Kinder aus dem Niemandsland" für solche, die knapp am besonderen Förderbedarf vorbeischrammen (vgl. Bräu 2021, S. 216).</li>
+                <li><strong>Exklusion in der Praxis:</strong> Es lässt sich beobachten, dass Schüler*innen mit Förderbedarf oft von gemeinsamen Klassenaufgaben ausgeschlossen werden, weil sich eine Heilpädagogin abgetrennt um sie kümmert. Sie werden von der Leistungskonkurrenz entbunden, was ihren Ausschluss verfestigt und die Beteiligung am Gruppenlernen behindert (<span class="glossary-term" data-key="Othering">Othering</span>) (vgl. Bräu 2021, S. 216f.).</li>
+                <li><strong>Individualisierung als Falle:</strong> Im individualisierten Unterricht werden Entscheidungsfreiräume oft an "Selbstständigkeit" gekoppelt. Hohe Leistungserwartungen bringen Privilegien bei der Aufgabenwahl; als unselbstständig definierte Kinder werden im zirkulären Schluss rasch auch als leistungsschwach adressiert (vgl. Bräu 2021, S. 217).</li>
+            </ul>
+
+            <h3>3. Fazit</h3>
+            <ul>
+                <li><strong>Unaufhebbare Widersprüche:</strong> Die differenzvermeidende Logik der Inklusion und die differenzschaffende Logik der Meritokratie bleiben im Kern unvereinbar (vgl. Bräu 2021, S. 217).</li>
+                <li><strong>Notwendige Entdramatisierung:</strong> Um eine gerechte Schule zu formen, müssen Differenzen auf struktureller Ebene entdramatisiert werden. Dies erfordert von Lehrkräften, eigene Zuschreibungspraktiken zu reflektieren und ein performatives "<span class="glossary-term" data-key="Undoing Difference">Undoing difference</span>" zu etablieren (vgl. Bräu 2021, S. 218).</li>
+                <li><strong>Umbau des Leistungsprinzips:</strong> Das aktuelle schulische Leistungs-Dispositiv fungiert als Barriere für echte Inklusion. Universalistische Leistungsorientierungen und berufsrelevante Selektionen sollten erst sehr viel später in der Laufbahn (z.B. bei Abschlussprüfungen) ansetzen (vgl. Bräu 2021, S. 218).</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="modal-s3" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header-actions" style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">
+                <button class="pdf-btn" style="position: static; margin: 0; min-width: 180px; text-align: center; padding: 0.6rem 1.2rem; font-size: 0.95rem; border-radius: 6px;" onclick="printModalContent()" aria-label="Diese Zusammenfassung als PDF Datei speichern">Als PDF speichern</button>
+                <button class="tts-btn tts-play" style="position: static; margin: 0; min-width: 180px; text-align: center; padding: 0.6rem 1.2rem; font-size: 0.95rem; border-radius: 6px; background-color: var(--accent-color); color: white; border: none; cursor: pointer;" onclick="playTTS(this.parentElement.parentElement)" aria-label="Diese Seite vorlesen">Diese Seite vorlesen</button>
+                <button class="modal-close" style="position: static; margin: 0; min-width: 180px; text-align: center; padding: 0.6rem 1.2rem; font-size: 0.95rem; border-radius: 6px; font-weight: 600;" onclick="closeModal('modal-s3')" aria-label="Aktuelles Fenster schließen">Fenster schließen</button>
+            </div>
+
+            <h2 style="margin-top: 0;">Zusammenfassung: Wolf & Dietze (2022)</h2>
+            <p><strong>Quelle:</strong> Wolf, L. M. & Dietze, T. (2022). Ein Überblick über die Organisation der Feststellung von sonderpädagogischen Förderbedarfen in Deutschland. In: Gebhardt, M., Scheer, D. & Schurig, M. (Hrsg.): Handbuch der sonderpädagogischen Diagnostik. Regensburg: Universitätsbibliothek. S. 325–344.</p>
+            
+            <h3>1. Bedeutung und historische Entwicklung der Feststellungsdiagnostik</h3>
+            <ul>
+                <li><strong>Paradigmenwechsel:</strong> Bis Mitte der 1980er Jahre führte ein festgestellter Bedarf fast zwangsläufig zur Überweisung an eine Sonderschule. Durch die KMK-Empfehlung von 1994 wurde der belastete Begriff der "Feststellung der Sonderschulbedürftigkeit" durch die "Feststellung von sonderpädagogischen Förderbedarfen" abgelöst, was den Weg für eine gemeinsame Beschulung in Regelschulen rechtlich ebnete (vgl. Wolf/Dietze 2022, S. 326).</li>
+                <li><strong>Grundlage individueller Förderung:</strong> Spätestens seit der Empfehlung zur Umsetzung der <span class="glossary-term" data-key="UN-BRK">UN-BRK</span> (2011) gilt das Feststellungsverfahren primär als Basis für die Einleitung individueller Förderung und nicht mehr alleinig als Zuweisungsinstrument für einen speziellen Lernort (vgl. Wolf/Dietze 2022, S. 326).</li>
+                <li><strong>Kritik und Relevanz:</strong> Formale Diagnosen greifen nach wie vor stark in kindliche Schullaufbahnen ein, obwohl die sonderpädagogische Diagnostik häufig qualitative Mängel aufweist und dem sogenannten <span class="glossary-term" data-key="Ressourcen-Etikettierungs-Dilemma">Ressourcen-Etikettierungs-Dilemma</span> unterliegt (vgl. Wolf/Dietze 2022, S. 326).</li>
+            </ul>
+
+            <h3>2. Einleitung des Feststellungsverfahrens</h3>
+            <ul>
+                <li><strong>Prävention vor Feststellung:</strong> Sonderpädagogische Förderung nach Schuleintritt ist <span class="glossary-term" data-key="Subsidiär">subsidiär</span>. Ein förmliches Feststellungsverfahren darf erst dann eingeleitet werden, wenn alle anderen allgemeinpädagogischen Maßnahmen und präventiven Unterstützungen der Regelschule nachweislich ausgeschöpft sind (vgl. Wolf/Dietze 2022, S. 327).</li>
+                <li><strong>Ausnahmen vor Schuleintritt:</strong> Bei starken, evidenten Beeinträchtigungen (etwa im Bereich der geistigen oder motorischen Entwicklung) kann ein Verfahren bereits vor Schuleintritt, z.B. durch Früherkennungsuntersuchungen, initiiert werden (vgl. Wolf/Dietze 2022, S. 327).</li>
+                <li><strong>Antragstellende:</strong> Primär stellen die Erziehungsberechtigten oder die Schule den Antrag. In Ausnahmefällen können (je nach Landesrecht) auch Schüler:innen ab 14 Jahren oder Schulärzt:innen einen Antrag anregen (vgl. Wolf/Dietze 2022, S. 328).</li>
+            </ul>
+
+            <h3>3. Organisation, Prozessverantwortung und Beteiligte</h3>
+            <ul>
+                <li><strong>Das Trennungsgebot:</strong> Um den Verdacht einer interessensgeleiteten Diagnostik abzuwenden (z.B. das "Abschieben" ressourcenintensiver Kinder), gilt der Grundsatz, dass "keine Diagnostik für die eigene Schule" stattfinden soll. Dies führt zu einer regionalen Zentralisierung der Feststellungsverfahren (vgl. Wolf/Dietze 2022, S. 329).</li>
+                <li><strong>Vier Strukturmodelle in Deutschland</strong> (vgl. Wolf/Dietze 2022, S. 329–330):
+                    <ol>
+                        <li>Eigens beauftragte Institutionen (z.B. zentrale Fachbereiche oder SIBUZe in Berlin).</li>
+                        <li>Diagnostikdienste, die administrativ an Förderschulen angegliedert sind (z.B. in Bayern).</li>
+                        <li>Übergreifende Beratungs- und Förderzentren (z.B. in Hessen).</li>
+                        <li>Direkte Beauftragung einer sonderpädagogischen Lehrkraft durch die Schulaufsicht (z.B. in NRW).</li>
+                    </ol>
+                </li>
+            </ul>
+
+            <h3>4. Elternbeteiligung und finale Lernortentscheidung</h3>
+            <ul>
+                <li><strong>Rolle der Eltern:</strong> Die Einvernehmlichkeit mit den Erziehungsberechtigten hat historisch massiv an Bedeutung gewonnen. Sie müssen während des gesamten Prozesses informiert und beraten werden (vgl. Wolf/Dietze 2022, S. 337).</li>
+                <li><strong><span class="glossary-term" data-key="Ressourcenvorbehalt">Ressourcenvorbehalt</span>:</strong> Grundsätzlich entscheiden die Eltern über den Lernort (Inklusion an der Regelschule vs. Förderschule). Die Schulaufsichtsbehörde kann diesen Elternwillen jedoch rechtlich aushebeln, wenn z.B. räumliche oder personelle Ressourcen an der Regelschule fehlen, eine akute Fremdgefährdung besteht oder die Funktionsfähigkeit des allgemeinen Unterrichts erheblich beeinträchtigt würde (vgl. Wolf/Dietze 2022, S. 337).</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="modal-s4" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header-actions" style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">
+                <button class="pdf-btn" style="position: static; margin: 0; min-width: 180px; text-align: center; padding: 0.6rem 1.2rem; font-size: 0.95rem; border-radius: 6px;" onclick="printModalContent()" aria-label="Diese Zusammenfassung als PDF Datei speichern">Als PDF speichern</button>
+                <button class="tts-btn tts-play" style="position: static; margin: 0; min-width: 180px; text-align: center; padding: 0.6rem 1.2rem; font-size: 0.95rem; border-radius: 6px; background-color: var(--accent-color); color: white; border: none; cursor: pointer;" onclick="playTTS(this.parentElement.parentElement)" aria-label="Diese Seite vorlesen">Diese Seite vorlesen</button>
+                <button class="modal-close" style="position: static; margin: 0; min-width: 180px; text-align: center; padding: 0.6rem 1.2rem; font-size: 0.95rem; border-radius: 6px; font-weight: 600;" onclick="closeModal('modal-s4')" aria-label="Aktuelles Fenster schließen">Fenster schließen</button>
+            </div>
+
+            <h2 style="margin-top: 0;">Zusammenfassung: Kohrt et al. (2021)</h2>
+            <p><strong>Quelle:</strong> Kohrt, P., Gresch, C., & Mahler, N. (2021). Die soziale Integration von Schülerinnen und Schülern mit sonderpädagogischem Förderbedarf an allgemeinen Schulen und Förderschulen: Die Rolle individueller und klassenbezogener Kompetenzen. <em>Zeitschrift für Erziehungswissenschaft</em>, 24, 1205–1229.</p>
+            
+            <h3>1. Ausgangslage und Zielsetzung der Studie</h3>
+            <ul>
+                <li><strong>Bildungspolitischer Auftrag:</strong> Die inklusive Beschulung ist ein zentraler Auftrag in Deutschland, flankiert durch die Ratifizierung der UN-Behindertenrechtskonvention. Ein elementares Ziel dieses gemeinsamen Unterrichts ist die aktive Teilhabe und tiefgehende soziale Integration von Kindern mit sonderpädagogischem Förderbedarf (SPF) in die Gesellschaft.</li>
+                <li><strong>Erwartungshaltung:</strong> Eltern sowie integrationspädagogische Initiativen erhoffen sich durch den Besuch allgemeiner Schulen positive Kontakte und den Abbau von Diskriminierung (Förderung der Inklusion).</li>
+                <li><strong>Forschungsdesiderat:</strong> Die Studie widmet sich der Frage, inwiefern diese Hoffnungen im realen Schulalltag eingelöst werden und ob Kinder mit SPF (Förderschwerpunkte Lernen, Sprache sowie emotionale und soziale Entwicklung, kurz: LSE) an allgemeinen Schulen tatsächlich besser integriert sind als an Förderschulen.</li>
+            </ul>
+
+            <h3>2. Theoretischer Rahmen</h3>
+            <p>Die Autorinnen kontrastieren zwei grundlegende theoretische Strömungen:</p>
+            <ul>
+                <li><strong>Theorie sozialer Vergleichsprozesse (Festinger, 1954):</strong> Personen vergleichen sich primär mit <em>ähnlichen</em> Bezugsgruppen, um ihren Selbstwert zu evaluieren (Ähnlichkeitshypothese). Fällt dieser leistungsbezogene Vergleich im Gymnasium oder der Grundschule für ein Kind mit Förderbedarf überwiegend negativ aus, steigt die Gefahr der Ausgrenzung. <em>Ableitung:</em> An Förderschulen sollten sich Kinder durch den Vergleich mit ähnlichen Peers sozial integrierter fühlen.</li>
+                <li><strong><span class="glossary-term" data-key="Theorie integrativer Prozesse">Theorie integrativer Prozesse</span> (z.B. Prengel, Wocken):</strong> Dieser Ansatz geht davon aus, dass Heterogenität in einer Gruppe Ausgrenzungen aktiv verhindert, da individuelle Unterschiede in einer sehr bunten Gruppe nicht mehr als singuläre "Abweichung" stigmatisiert werden. <em>Ableitung:</em> An leistungsheterogenen allgemeinen Schulen sollten sich Kinder mit SPF stärker integriert fühlen, da der Anpassungsdruck geringer sei.</li>
+            </ul>
+
+            <h3>3. Methodik und Datengrundlage</h3>
+            <ul>
+                <li><strong>Datensatz:</strong> Genutzt wurden bundesweite Daten aus dem IQB-Bildungstrend 2016 von Lernenden der vierten Jahrgangsstufe.</li>
+                <li><strong>Stichprobe:</strong> N = 26.899 Schüler:innen, davon n = 1924 explizit mit dem Förderbedarf LSE.</li>
+                <li><strong>Operationalisierung:</strong> Die soziale Integration wurde durch die <em>subjektive Selbsteinschätzung</em> der Lernenden selbst erhoben ("Ich bin beliebt in meiner Klasse") und nicht durch Fremdeinschätzungen der Lehrkräfte.</li>
+            </ul>
+
+            <h3>4. Zentrale empirische Befunde</h3>
+            <ul>
+                <li><strong>Der Hauptbefund:</strong> Entgegen der bildungspolitischen Hoffnungen ist die wahrgenommene soziale Integration von Schüler:innen mit SPF-LSE an Förderschulen signifikant <strong>höher</strong> ausgeprägt als an allgemeinen Regelschulen.</li>
+                <li><strong>Keine Erklärung durch schulische Leistung:</strong> Zwar weisen Klassen an Regelschulen eine höhere Kompetenz und größere Heterogenität auf, doch diese Leistungsfaktoren können die Unterschiede in der sozialen Integration zwischen den Schulformen <em>nicht</em> aufklären oder begründen.</li>
+            </ul>
+
+            <h3>5. Diskussion und Implikationen für die Inklusion</h3>
+            <ul>
+                <li><strong>Kritische Reflexion des gemeinsamen Unterrichts:</strong> Der bloße Weg in die Regelschule ist im Schulalltag noch nicht durch gelingende soziale Integration geprägt. Das physische "Dabeisein" führt nicht zwingend zu einem Zugehörigkeitsgefühl.</li>
+                <li><strong>Pädagogischer Handlungsbedarf:</strong> Da weder individuelle Leistungen noch Leistungsheterogenität die Ausgrenzung an Regelschulen beenden, müssen an allgemeinen Schulen gezielt die sozialen Beziehungen der Kinder untereinander (Peers) proaktiv gestärkt werden. Es bedarf weitreichender Reflexionen bezüglich Unterrichtsgestaltung und Lehrkräftefeedback, um Ausgrenzungsmechanismen präventiv abzubauen.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="modal-s5" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header-actions" style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">
+                <button class="pdf-btn" style="position: static; margin: 0; min-width: 180px; text-align: center; padding: 0.6rem 1.2rem; font-size: 0.95rem; border-radius: 6px;" onclick="printModalContent()" aria-label="Diese Zusammenfassung als PDF Datei speichern">Als PDF speichern</button>
+                <button class="tts-btn tts-play" style="position: static; margin: 0; min-width: 180px; text-align: center; padding: 0.6rem 1.2rem; font-size: 0.95rem; border-radius: 6px; background-color: var(--accent-color); color: white; border: none; cursor: pointer;" onclick="playTTS(this.parentElement.parentElement)" aria-label="Diese Seite vorlesen">Diese Seite vorlesen</button>
+                <button class="modal-close" style="position: static; margin: 0; min-width: 180px; text-align: center; padding: 0.6rem 1.2rem; font-size: 0.95rem; border-radius: 6px; font-weight: 600;" onclick="closeModal('modal-s5')" aria-label="Aktuelles Fenster schließen">Fenster schließen</button>
+            </div>
+
+            <h2 style="margin-top: 0;">Zusammenfassung: Evidenzbasierte Praxis & Assessment</h2>
+            <p><strong>Quelle:</strong> Mitchell, D. & Sutherland, D. (2020). <em>What really works in special and inclusive education: using evidence-based teaching strategies.</em> Routledge. (Kapitel 4 & 10).</p>
+            
+            <h3>1. Die "Magic Formula" der inklusiven Bildung</h3>
+            <p>Die Autoren definieren inklusive Bildung nicht nur als reinen Standortwechsel (Placement), sondern als hochkomplexe Systemstrategie ("multi-component mega-strategy"). Die wesentlichen Gelingensbedingungen werden in einer Formel summiert: <strong>Inclusive Education = V + P + 5As + S + R + L</strong>. Fehlt eine dieser Komponenten, droht das System zu scheitern oder in defizitorientierte "Integration" zurückzufallen.</p>
+            <ul>
+                <li><strong>V (Vision):</strong> Ein klares Bekenntnis zu Inklusion auf allen Ebenen, verankert in Gesetzgebung und Schulpolitik.</li>
+                <li><strong>P (Placement):</strong> Die physische Platzierung in einer altersgerechten Regelklasse im Wohnort. Ohne pädagogische Begleitung führt dies jedoch zur "Mikro-Exklusion".</li>
+                <li><strong>5 As:</strong>
+                    <ul>
+                        <li><em>Adapted Curriculum:</em> Ein flexibler Lehrplan, der an verschiedene Entwicklungsniveaus anpassbar ist.</li>
+                        <li><em>Adapted Assessment:</em> Angepasste Prüfungsverfahren (z. B. Nachteilsausgleiche oder alternative Leistungsnachweise).</li>
+                        <li><em>Adapted Teaching:</em> Der Einsatz wissenschaftlich validierter, evidenzbasierter Lehrmethoden.</li>
+                        <li><em>Acceptance:</em> Eine proaktive Kultur der Akzeptanz bei Lehrkräften, Lernenden und Eltern.</li>
+                        <li><em>Access:</em> Umfassende physische und infrastrukturelle Zugänglichkeit (Rampen, Akustik, Raumgestaltung).</li>
+                    </ul>
+                </li>
+                <li><strong>S (Support):</strong> Zusammenarbeit in multiprofessionellen Teams (Sonderpädagog:innen, Therapeut:innen, Assistenz).</li>
+                <li><strong>R (Resources):</strong> Die Notwendigkeit angemessener finanzieller und personeller Ressourcen, die dem Kind folgen sollten (Backpack-System), anstatt an spezielle Schulformen gebunden zu sein.</li>
+                <li><strong>L (Leadership):</strong> Führungskräfte, die die inklusive Kultur aktiv vorleben und strukturelle Hürden abbauen.</li>
+            </ul>
+
+            <h3>2. Empirische Befunde: Wirkt Inklusion?</h3>
+            <p>Internationale Meta-Analysen (u. a. von Hehir, 2016) belegen konsistent den Nutzen von inklusiven Settings:</p>
+            <ul>
+                <li>Lernende mit Förderbedarf erzielen in Regelklassen stärkere Fortschritte in Lesen und Mathematik, weisen höhere Anwesenheitsquoten auf und erlangen häufiger formale Abschlüsse als in separierten Förderschulen.</li>
+                <li>Die Leistungen der Lernenden <em>ohne</em> Förderbedarf sinken durch die Inklusion nicht; im Gegenteil profitieren sie häufig von den differenzierten Lehrmethoden, die Lehrkräfte durch die gesteigerte Heterogenität anwenden.</li>
+            </ul>
+
+            <h3>3. Formatives Assessment und kybernetisches Feedback</h3>
+            <p>Kapitel 10 beleuchtet die mit Abstand wirkungsvollsten pädagogischen Instrumente im inklusiven Unterricht: <span class="glossary-term" data-key="Formatives Assessment">formatives Assessment</span> und qualitatives Feedback.</p>
+            <ul>
+                <li><strong>Das kybernetische Prinzip:</strong> Feedback wird als Steuerungsprozess verstanden (griech. <em>kubernētēs</em> = Steuermann). Es schließt aktiv die kognitive Lücke zwischen dem aktuellen Leistungsstand und dem angestrebten Lernziel.</li>
+                <li><strong>Formativ vs. Summativ:</strong> <span class="glossary-term" data-key="Summatives Assessment">Summatives Assessment</span> bewertet am <em>Ende</em> eines Prozesses (Noten), formatives Assessment steuert <em>während</em> des Prozesses und ermöglicht Anpassungen des Lehrverhaltens und der Methoden.</li>
+                <li><strong>Feedback-Qualität:</strong> Effektiv ist "instruktives" Feedback, welches prozessbezogene Strategien fokussiert anstatt rein die Person oder deren Anstrengung ("Du hast die Formel richtig angewandt, aber prüfe nochmal Schritt 2..."). Normative Vergleiche ("Du bist schlechter als...") sind strikt zu vermeiden.</li>
+            </ul>
+
+            <h3>4. Neurobiologie und Effektstärken</h3>
+            <ul>
+                <li><strong>Neurobiologische Reaktionen:</strong> Die schulische Fehlerkultur beeinflusst das Gehirn massiv. Negatives, normatives Feedback wird neurobiologisch als soziale Bedrohung ("social-evaluative threat") interpretiert. Dies führt zu einer Cortisol-Ausschüttung (Stress), welche die kognitive Leistungsfähigkeit und Empathie blockiert. Konstruktives, lösungsorientiertes Feedback hingegen fördert die Ausschüttung von Oxytocin und Dopamin, was Lernen und Bindung begünstigt.</li>
+                <li><strong>Empirische Daten:</strong> In Meta-Analysen zeigt formatives Assessment eine herausragende Effektstärke von $d = 0.90$. Instruktiv formuliertes Feedback liegt im Mittel bei $d = 0.73$ (und in manchen Erhebungen sogar über $d = 1.13$) und zählt damit zu den nachweislich stärksten Einflussfaktoren auf den schulischen Bildungserfolg überhaupt.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="modal-placeholder" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header-actions" style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">
+                <button class="pdf-btn" style="position: static; margin: 0; min-width: 180px; text-align: center; padding: 0.6rem 1.2rem; font-size: 0.95rem; border-radius: 6px;" onclick="printModalContent()" aria-label="Diese Ansicht als PDF Datei speichern">Als PDF speichern</button>
+                <button class="tts-btn tts-play" style="position: static; margin: 0; min-width: 180px; text-align: center; padding: 0.6rem 1.2rem; font-size: 0.95rem; border-radius: 6px; background-color: var(--accent-color); color: white; border: none; cursor: pointer;" onclick="playTTS(this.parentElement.parentElement)" aria-label="Diese Seite vorlesen">Diese Seite vorlesen</button>
+                <button class="modal-close" style="position: static; margin: 0; min-width: 180px; text-align: center; padding: 0.6rem 1.2rem; font-size: 0.95rem; border-radius: 6px; font-weight: 600;" onclick="closeModal('modal-placeholder')" aria-label="Aktuelles Fenster schließen">Fenster schließen</button>
+            </div>
+            <h2 style="margin-top: 0;">Hinweis</h2>
+            <p>Die inhaltliche Zusammenfassung für diese Sitzung wird nach Abschluss der Veranstaltung freigeschaltet.</p>
+        </div>
+    </div>
+
+    <div id="modal-exam" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="exam-title">
+        <div class="modal-content">
+            <div class="modal-header-actions" style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">
+                <button class="pdf-btn" style="position: static; margin: 0; min-width: 180px; text-align: center; padding: 0.6rem 1.2rem; font-size: 0.95rem; border-radius: 6px;" onclick="printModalContent()" aria-label="Diese Ansicht als PDF Datei speichern">Als PDF speichern</button>
+                <button class="tts-btn tts-play" style="position: static; margin: 0; min-width: 180px; text-align: center; padding: 0.6rem 1.2rem; font-size: 0.95rem; border-radius: 6px; background-color: var(--accent-color); color: white; border: none; cursor: pointer;" onclick="playTTS(this.parentElement.parentElement)" aria-label="Diese Seite vorlesen">Diese Seite vorlesen</button>
+                <button class="modal-close" style="position: static; margin: 0; min-width: 180px; text-align: center; padding: 0.6rem 1.2rem; font-size: 0.95rem; border-radius: 6px; font-weight: 600;" onclick="closeModal('modal-exam')" aria-label="Aktuelles Fenster schließen">Fenster schließen</button>
+            </div>
+            
+            <h2 id="exam-title" style="margin-top: 0;">Prüfungsleistung: Portfolio</h2>
+            
+            <div class="task-box" style="border-left: none; background-color: transparent; padding: 0;">
+                <div class="seminar-info-block" style="margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border-color);">
+                    <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.8rem;">
+                        <li><strong>Anmeldung auf SELMA</strong></li>
+                        <li><strong>An- und Abmeldezeitraum 1:</strong> 27.04.2026 - 18.05.2026</li>
+                    </ul>
+                </div>
 
                 <h3>Die Prüfungsleistung</h3>
-                <p>Portfolio zum Thema: Entwicklung inklusionspädagogischer Lernbausteine für das Gymnasium</p>
-
-                <h3>Der Arbeitsauftrag</h3>
-                <p>Jede Arbeitsgruppe (4-5 Studierende) erhält ein inklusionspädagogisches Themen-Paar. Eure Aufgabe ist es, für jeden der beiden Themenbereiche einen eigenen multimedialen OPAL-Lernbaustein zu entwickeln.</p>
-                <p>Diese Bausteine sollen Gymnasiallehrkräfte für existierende Barrieren im Schulalltag sensibilisieren und konkrete, präventive Lösungswege aufzeigen.</p>
-                <p>Die Prüfungsleistung (das Portfolio, ca. 12-15 Seiten) dokumentiert den theoriegeleiteten Entwicklungsprozess eurer beiden OPAL-Bausteine in drei Schritten. Für jeden Baustein sind die drei Schritte separat zu erbringen.</p>
-            </div>
-        </section>
-
-        <section class="slide-container" id="slide-9">
-            <div class="tts-controls">
-                <button class="btn-read" onclick="speakText('slide-9-content', 'stop-btn-9')" aria-label="Abschnitt 9 vorlesen">Vorlesen</button>
-                <button class="btn-stop" id="stop-btn-9" onclick="stopSpeech()" aria-label="Vorlesen stoppen" disabled>Stopp</button>
-            </div>
-            <div id="slide-9-content">
-                <h2>Teil 1: Die theoriegeleitete Barriere-Analyse (ca. 4-5 Seiten insgesamt)</h2>
-                <p>Geht von euren OPAL-Themen (Ihren Lösungsansätzen) aus und erarbeitet eine zugrundeliegende Problemstellungen im Unterrichtsalltag.</p>
+                <p><strong>Portfolio zum Thema: Entwicklung inklusionspädagogischer Lernbausteine für das Gymnasium</strong></p>
                 
-                <h3>Situationskonstruktion:</h3>
-                <p>Entwerft für jeden eurer beiden OPAL-Bausteine eine realistische, exkludierende Unterrichtssituation am Gymnasium.<br>
-                (Ein Beispiel für das Thema Live-Untertitelung: Ein schnelles, unstrukturiertes Plenumsgespräch ohne visuelle Absicherung der Redebeiträge).</p>
+                <h3>Der Arbeitsauftrag</h3>
+                <p>Jede Arbeitsgruppe (4-5 Studierende) erhält ein inklusionspädagogisches Themen-Paar. Eure Aufgabe ist es, für jeden der beiden Themenbereiche einen eigenen multimedialen OPAL-Lernbaustein zu entwickeln. Diese Bausteine sollen Gymnasiallehrkräfte für existierende Barrieren im Schulalltag sensibilisieren und konkrete, präventive Lösungswege aufzeigen.</p>
+                <p>Die Prüfungsleistung (das Portfolio, ca. 12-15 Seiten) dokumentiert den theoriegeleiteten Entwicklungsprozess eurer beiden OPAL-Bausteine in drei Schritten. Für jeden Baustein sind die drei Schritte seperat zu erbringen.</p>
 
-                <h3>Barrieren statt Diagnosen:</h3>
-                <p>Definiert die funktionalen Bedarfe, die in dieser Lernumgebung ignoriert werden, anstatt sich auf medizinische Diagnosen zu stützen.<br>
-                (Beispiel: Das rein auditive Setting exkludiert Lernende mit einem Bedarf nach visueller Sprachunterstützung).</p>
+                <h4>Teil 1: Die theoriegeleitete Barriere-Analyse (ca. 4-5 Seiten insgesamt)</h4>
+                <p>Geht von euren OPAL-Themen (Ihren Lösungsansätzen) aus und erarbeitet eine zugrundeliegenden Problemstellungen im Unterrichtsalltag.</p>
+                <ul>
+                    <li><strong>Situationskonstruktion:</strong> Entwerft für jeden eurer beiden OPAL-Bausteine eine realistische, exkludierende Unterrichtssituation am Gymnasium. (Ein Beispiel für das Thema Live-Untertitelung: Ein schnelles, unstrukturiertes Plenumsgespräch ohne visuelle Absicherung der Redebeiträge).</li>
+                    <li><strong>Barrieren statt Diagnosen:</strong> Definiert die funktionalen Bedarfe, die in dieser Lernumgebung ignoriert werden, anstatt sich auf medizinische Diagnosen zu stützen. (Beispiel: Das rein auditive Setting exkludiert Lernende mit einem Bedarf nach visueller Sprachunterstützung).</li>
+                    <li><strong>Theoretische Fundierung:</strong> Begründet dabei fortlaufend theoriegeleitet (u.a. durch Rückgriff auf Seminarliteratur), warum diese Unterrichtssituation eine Barriere darstellt und Mechanismen des Ausschlusses produziert. Richtungsweisend ist hierbei der Grundsatz: „Die Ausgestaltung des Unterrichts und anderer schulischer Veranstaltungen orientiert sich an den individuellen Lern- und Entwicklungsvoraussetzungen der Schüler“ (SMK 2015, S. 10). Inklusion bedeutet grundlegend, diese systemischen „Barrieren abzubauen“ (SMK 2015, S. 5).</li>
+                </ul>
 
-                <h3>Theoretische Fundierung:</h3>
-                <p>Begründet dabei fortlaufend theoriegeleitet (u.a. durch Rückgriff auf Seminarliteratur), warum diese Unterrichtssituation eine Barriere darstellt und Mechanismen des Ausschlusses produziert.</p>
-                <p>Richtungsweisend ist hierbei der Grundsatz: „Die Ausgestaltung des Unterrichts und anderer schulischer Veranstaltungen orientiert sich an den individuellen Lern- und Entwicklungsvoraussetzungen der Schüler“ (SMK 2015, S. 10).</p>
-                <p>Inklusion bedeutet grundlegend, diese systemischen „Barrieren abzubauen“ (SMK 2015, S. 5).</p>
-            </div>
-        </section>
-
-        <section class="slide-container" id="slide-10">
-            <div class="tts-controls">
-                <button class="btn-read" onclick="speakText('slide-10-content', 'stop-btn-10')" aria-label="Abschnitt 10 vorlesen">Vorlesen</button>
-                <button class="btn-stop" id="stop-btn-10" onclick="stopSpeech()" aria-label="Vorlesen stoppen" disabled>Stopp</button>
-            </div>
-            <div id="slide-10-content">
-                <h2>Teil 2: Bedarfsorientierte Gestaltungsoptionen (ca. 4-5 Seiten insgesamt)</h2>
+                <h4>Teil 2: Bedarfsorientierte Gestaltungsoptionen (ca. 4-5 Seiten insgesamt)</h4>
                 <p>Erläutert für jeden eurer beiden Bausteine den Weg von der reaktiven Sonderlösung hin zum präventiven, inklusiven Lern-Design.</p>
+                <ul>
+                    <li><strong>Der reaktive Nachteilsausgleich:</strong> Skizziert kurz, wie die in Teil 1 identifizierte Barriere zunächst als klassischer Nachteilsausgleich für ein spezifisches Kind abgebaut werden könnte. Der Nachteilsausgleich dient formal dazu, „Einschränkungen durch Beeinträchtigungen oder Behinderungen auszugleichen oder zu verringern“ (Defizitorientierte Herangehensweise; KMK 2011 zitiert nach SMK 2015, S. 28). Reflektiert hier kurz die (organisatorischen oder stigmatisierenden) Grenzen dieses Ansatzes.</li>
+                    <li><strong>Der präventive Perspektivwechsel (UDL):</strong> Vollzieht nun den Perspektivwechsel vom Individuum hin zur gesamten Lerngruppe. Wie können eure beiden OPAL-Themen jeweils präventiv in das Design Ihres Unterrichts integriert werden, sodass individuelle Sonderlösungen obsolet werden? (Ansatz des Universal Design for Learning).</li>
+                    <li><strong>Der Mehrwert für alle:</strong> Inwiefern profitieren alle Lernenden (z. B. auch Kinder ohne Diagnosen, mehrsprachig aufwachsende Kinder, Lernende mit temporären Einschränkungen) von euren proaktiven Anpassungen der Lernumgebung?</li>
+                </ul>
 
-                <h3>Der reaktive Nachteilsausgleich:</h3>
-                <p>Skizziert kurz, wie die in Teil 1 identifizierte Barriere zunächst als klassischer Nachteilsausgleich für ein spezifisches Kind abgebaut werden könnte.</p>
-                <p>Der Nachteilsausgleich dient formal dazu, „Einschränkungen durch Beeinträchtigungen oder Behinderungen auszugleichen oder zu verringern“ (Defizitorientierte Herangehensweise; KMK 2011 zitiert nach SMK 2015, S. 28).<br>
-                Reflektiert hier kurz die (organisatorischen oder stigmatisierenden) Grenzen dieses Ansatzes.</p>
-
-                <h3>Der präventive Perspektivwechsel (UDL):</h3>
-                <p>Vollzieht nun den Perspektivwechsel vom Individuum hin zur gesamten Lerngruppe.<br>
-                Wie können eure beiden OPAL-Themen jeweils präventiv in das Design Ihres Unterrichts integriert werden, sodass individuelle Sonderlösungen obsolet werden?<br>
-                (Ansatz des Universal Design for Learning).</p>
-
-                <h3>Der Mehrwert für alle:</h3>
-                <p>Inwiefern profitieren alle Lernenden (z. B. auch Kinder ohne Diagnosen, mehrsprachig aufwachsende Kinder, Lernende mit temporären Einschränkungen) von euren proaktiven Anpassungen der Lernumgebung?</p>
-            </div>
-        </section>
-
-        <section class="slide-container" id="slide-11">
-            <div class="tts-controls">
-                <button class="btn-read" onclick="speakText('slide-11-content', 'stop-btn-11')" aria-label="Abschnitt 11 vorlesen">Vorlesen</button>
-                <button class="btn-stop" id="stop-btn-11" onclick="stopSpeech()" aria-label="Vorlesen stoppen" disabled>Stopp</button>
-            </div>
-            <div id="slide-11-content">
-                <h2>Teil 3: Die OPAL-Lernmodule (ca. 3-4 Seiten Begleittext + 2 Medienprodukte)</h2>
+                <h4>Teil 3: Die OPAL-Lernmodule (ca. 3-4 Seiten Begleittext + 2 Medienprodukte)</h4>
                 <p>Überführt eure theoriegeleiteten Erkenntnisse aus Teil 1 und 2 in die Praxis und entwerft Lernmodule.</p>
-
-                <h3>Medienproduktion:</h3>
-                <p>Erstellt für beide Themen eures Themen-Paares jeweils ein pragmatisches Lernmedium (z. B. ein 3 bis 5-Minuten-Erklärvideo, ein interaktives H5P-Quiz, einen interaktiven Vorher-Nachher-Vergleich usw.). Die Zielgruppe sind Gymnasiallehrkräfte, die Sie für den Barriereabbau sensibilisieren möchten.</p>
-
-                <h3>OPAL-Skript:</h3>
-                <p>Dokumentiert im Portfolio den Begleittext, der im OPAL-Kurs neben Ihrem Medium stehen wird.</p>
-
-                <h3>Mediendidaktische Reflexion:</h3>
-                <p>Begründet abschließend kurz eure mediale Umsetzung. Warum habe ihr genau dieses Format gewählt, um über die beiden inklusionspädagogischen Handlungsfelder zu informieren?</p>
+                <ul>
+                    <li><strong>Medienproduktion:</strong> Erstellt für beide Themen eures Themen-Paares jeweils ein pragmatisches Lernmedium (z. B. ein 3 bis 5-Minuten-Erklärvideo, ein interaktives H5P-Quiz, einen interaktiven Vorher-Nachher-Vergleich usw.). Die Zielgruppe sind Gymnasiallehrkräfte, die Sie für den Barriereabbau sensibilisieren möchten.</li>
+                    <li><strong>OPAL-Skript:</strong> Dokumentiert im Portfolio den Begleittext, der im OPAL-Kurs neben Ihrem Medium stehen wird.</li>
+                    <li><strong>Mediendidaktische Reflexion:</strong> Begründet abschließend kurz eure mediale Umsetzung. Warum habe ihr genau dieses Format gewählt, um über die beiden inklusionspädagogischen Handlungsfelder zu informieren?</li>
+                </ul>
             </div>
-        </section>
-
-        <section class="slide-container" id="slide-12">
-            <div class="tts-controls">
-                <button class="btn-read" onclick="speakText('slide-12-content', 'stop-btn-12')" aria-label="Abschnitt 12 vorlesen">Vorlesen</button>
-                <button class="btn-stop" id="stop-btn-12" onclick="stopSpeech()" aria-label="Vorlesen stoppen" disabled>Stopp</button>
+            
+            <div style="margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
+                <button onclick="closeModal('modal-exam')" style="width: 100%; padding: 1rem;" aria-label="Prüfungsübersicht schließen">Verstanden</button>
             </div>
-            <div id="slide-12-content">
-                <h2>6. Abschluss und Fragen</h2>
-                <p>Noch Fragen?</p>
-                <p>Erreichbarkeit via Mail: dominik.toepper@tu-dresden.de</p>
-                <p>und</p>
-                <p>Sprechzeiten nach Vereinbarung im Raum 405 (MS1)</p>
+        </div>
+    </div>
+
+    <div id="modal-info" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="info-title">
+        <div class="modal-content">
+            <div class="modal-header-actions" style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">
+                <button class="pdf-btn" style="position: static; margin: 0; min-width: 180px; text-align: center; padding: 0.6rem 1.2rem; font-size: 0.95rem; border-radius: 6px;" onclick="printModalContent()" aria-label="Diese Ansicht als PDF Datei speichern">Als PDF speichern</button>
+                <button class="tts-btn tts-play" style="position: static; margin: 0; min-width: 180px; text-align: center; padding: 0.6rem 1.2rem; font-size: 0.95rem; border-radius: 6px; background-color: var(--accent-color); color: white; border: none; cursor: pointer;" onclick="playTTS(this.parentElement.parentElement)" aria-label="Diese Seite vorlesen">Diese Seite vorlesen</button>
+                <button class="modal-close" style="position: static; margin: 0; min-width: 180px; text-align: center; padding: 0.6rem 1.2rem; font-size: 0.95rem; border-radius: 6px; font-weight: 600;" onclick="closeModal('modal-info')" aria-label="Aktuelles Fenster schließen">Fenster schließen</button>
             </div>
-        </section>
-    </main>
-
-    <script>
-        // Logik für den Dark/Light Mode Toggle
-        function toggleTheme() {
-            const body = document.body;
-            const currentTheme = body.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            body.setAttribute('data-theme', newTheme);
-        }
-
-        // Hilfsfunktion: Alle Stop-Buttons deaktivieren
-        function disableAllStopButtons() {
-            const buttons = document.querySelectorAll('.btn-stop');
-            buttons.forEach(btn => btn.disabled = true);
-        }
-
-        // Sprachausgabe mit strikter Verhinderung von Überlappungen
-        function speakText(elementId, stopBtnId) {
-            // Vorherige Ausgabe stoppen und alle Buttons zurücksetzen
-            window.speechSynthesis.cancel();
-            disableAllStopButtons();
             
-            const element = document.getElementById(elementId);
-            if (!element) return;
+            <h2 id="info-title" style="margin-top: 0;">Modulziele & Allgemeine Informationen</h2>
             
-            const textToRead = element.innerText;
-            const utterance = new SpeechSynthesisUtterance(textToRead);
+            <div class="task-box" style="border-left: none; background-color: transparent; padding: 0;">
+                <div class="seminar-info-block" style="margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border-color);">
+                    <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.8rem;">
+                        <li><strong>Dozent:</strong> Dominik Töpper</li>
+                        <li><strong>Modul:</strong> EW-SEGY-BW4</li>
+                        <li><strong>Format:</strong> Seminar im Universal Design for Learning (UDL)</li>
+                    </ul>
+                </div>
+
+                <h3>1. Qualifikationsziele</h3>
+                <ul>
+                    <li>Identifikation von Barrieren in der gymnasialen Unterrichtspraxis und theoriegeleitete Begründung von Ausschlussmechanismen (z. B. Neurodiversität, <span class="glossary-term" data-key="UN-BRK">UN-BRK</span>).</li>
+                    <li>Kritische Auseinandersetzung mit der Spannung zwischen Inklusion und Leistungsprinzip.</li>
+                    <li>Entwurf präventiver Unterrichtsangebote (<span class="glossary-term" data-key="UDL">UDL</span>) und Transformation reaktiver Lösungen in inklusive Designs.</li>
+                    <li>Übersetzung pädagogischer Konzepte in digitale, praxisnahe Lernbausteine.</li>
+                </ul>
+                
+                <h3>2. Zentrale Inhalte</h3>
+                <ul>
+                    <li>Diversitätsbegriffe und sonderpädagogische Grundlagen.</li>
+                    <li>Rechtliche und ethische Grundlagen schulischer Inklusion.</li>
+                    <li>Kooperation in multiprofessionellen Teams und Schulentwicklung.</li>
+                </ul>
+                
+                <h3>3. Struktur & Leistungsnachweis</h3>
+                <ul>
+                    <li><strong>Arbeitsaufwand:</strong> 150 Stunden (5 Leistungspunkte).</li>
+                    <li><strong>Prüfungsleistung:</strong> Portfolio (Bearbeitungszeit ca. 60 Stunden).</li>
+                </ul>
+            </div>
             
-            utterance.lang = 'de-DE';
-            utterance.rate = 0.95; 
+            <div style="margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
+                <button onclick="closeModal('modal-info')" style="width: 100%; padding: 1rem;" aria-label="Informationsfenster schließen">Verstanden</button>
+            </div>
+        </div>
+    </div>
 
-            const stopBtn = document.getElementById(stopBtnId);
-            if (stopBtn) {
-                stopBtn.disabled = false; // Mache diesen Button klickbar
-            }
-
-            // Wenn Vorlesen natürlich endet oder Fehler wirft -> Button ausgrauen
-            utterance.onend = function() {
-                if (stopBtn) stopBtn.disabled = true;
-            };
-            utterance.onerror = function() {
-                if (stopBtn) stopBtn.disabled = true;
-            };
+    <div id="modal-settings" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="settings-title" aria-describedby="settings-desc">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal-settings')" aria-label="Einstellungsmenü schließen">Fenster schließen</button>
             
-            // Startet das Vorlesen exklusiv für diesen Abschnitt
-            window.speechSynthesis.speak(utterance);
-        }
+            <h2 id="settings-title">Anzeige-Einstellungen</h2>
+            <p id="settings-desc">Passen Sie die Lernumgebung an Ihre Bedürfnisse an. Diese Einstellungen werden sofort angewendet.</p>
+            
+            <div class="settings-grid">
+                <div class="settings-group">
+                    <label for="set-theme">Design-Modus</label>
+                    <select id="set-theme" class="settings-control" onchange="toggleTheme(this.value)" aria-label="Wählen Sie den gewünschten Kontrast-Modus aus">
+                        <option value="light">Helle Ansicht</option>
+                        <option value="dark">Dunkelansicht</option>
+                    </select>
+                </div>
+                <div class="settings-group">
+                    <label for="set-fontsize">Globale Skalierung</label>
+                    <select id="set-fontsize" class="settings-control" onchange="updateAccessibility('fontSize', this.value)" aria-label="Wählen Sie eine für Sie angenehme Darstellungsebene aus">
+                        <option value="">Automatisch (empfohlen)</option>
+                        <option value="18px">Standard (18px)</option>
+                        <option value="21px">Groß (21px)</option>
+                        <option value="24px">Sehr groß (24px)</option>
+                        <option value="28px">Maximal (28px)</option>
+                    </select>
+                </div>
+                <div class="settings-group">
+                    <label for="set-fontfamily">Schriftart</label>
+                    <select id="set-fontfamily" class="settings-control" onchange="updateAccessibility('fontFamily', this.value)" aria-label="Wählen Sie eine gut lesbare Schriftart aus">
+                        <option value="'Poppins', sans-serif">Poppins (Modern)</option>
+                        <option value="Arial, sans-serif">Arial (Serifenlos)</option>
+                        <option value="'OpenDyslexic', sans-serif">Barrierefrei (System)</option>
+                    </select>
+                </div>
+                <div class="settings-group">
+                    <label for="set-glossary">Glossar-Farbe</label>
+                    <select id="set-glossary" class="settings-control" onchange="updateAccessibility('glossaryColor', this.value)" aria-label="Wählen Sie die Hervorhebungsfarbe für Glossar-Begriffe">
+                        <option value="#00305e">Standard Blau</option>
+                        <option value="#28a745">Kontrast Grün</option>
+                        <option value="#6f42c1">Barrierefrei Lila</option>
+                    </select>
+                </div>
+            </div>
+            <div style="margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color); display: flex; justify-content: flex-end;">
+                <button onclick="closeModal('modal-settings')" style="width: auto; padding: 0.8rem 1.5rem; font-size: 1rem;" aria-label="Einstellungen speichern und dieses Fenster schließen">Einstellungen speichern & schließen</button>
+            </div>
+        </div>
+    </div>
+</main>
+<!-- OPAL ANPASSUNG -->
+<script src="script.js?v=4"></script>
 
-        function stopSpeech() {
-            // Bricht das aktuelle Vorlesen sofort ab
-            window.speechSynthesis.cancel();
-            disableAllStopButtons();
-        }
-    </script>
 </body>
 </html>
