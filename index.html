@@ -6,7 +6,7 @@
     <title>Seminar: Schule und Unterricht inklusionssensibel gestalten</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <!-- OPAL ANPASSUNG -->
-    <link rel="stylesheet" href="style.css?v=4">
+    <link rel="stylesheet" href="style.css?v=6">
     <style media="print">
         /* Exklusive Druckansicht für Modals aktivieren & leere Seiten verhindern */
         html, body.print-modal-active {
@@ -249,7 +249,7 @@
         </div>
 
         <div class="task-box no-print" id="s1-concept1-box" style="opacity: 0.4; pointer-events: none; transition: opacity 0.5s ease-in-out;">
-            <h3>3. Thesen-Check: Die menschenrechtlichen Kernbegriffe</h3>
+            <h3>3. Die menschenrechtlichen Kernbegriffe</h3>
             <p>Bielefeldt (zitiert in Lindmeier & Lindmeier, 2015) deutet die drei klassischen Kernbegriffe der Französischen Revolution für den Inklusionsdiskurs neu. Bewerten Sie die folgenden Aussagen theoriegeleitet als "Korrekt" oder "Inkorrekt".</p>
 
             <div style="background-color: var(--bg-color); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color); margin-top: 1.5rem;">
@@ -284,7 +284,7 @@
         </div>
 
         <div class="task-box no-print" id="s1-slider-box" style="opacity: 0.4; pointer-events: none; transition: opacity 0.5s ease-in-out;">
-            <h3>4. Interaktive Skala: Von Exklusion zu Inklusion</h3>
+            <h3>4. Von Exklusion zu Inklusion</h3>
             <p>Die UN-BRK kritisiert veraltete Beschulungssysteme. Bewerten Sie die folgende schulische Situation auf der Systemskala. Ziehen Sie den Regler auf die einzelnen Phasen, um theoriegeleitetes Feedback zu erhalten.</p>
             
             <div style="background-color: var(--bg-color); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color); margin-top: 1.5rem;">
@@ -319,7 +319,7 @@
         </div>
 
         <div class="task-box no-print" id="s1-flip-box" style="opacity: 0.4; pointer-events: none; transition: opacity 0.5s ease-in-out;">
-            <h3>5. Perspektivwechsel: Vom Mainstreaming zur Inklusion</h3>
+            <h3>5. Vom Mainstreaming zur Inklusion</h3>
             <p>Der Text fordert einen Paradigmenwechsel vom defizitorientierten Mainstreaming zum bedarfsorientierten UDL-Ansatz. Klicken Sie auf die defizitorientierten Aussagen, um die systemische, inklusive UDL-Perspektive aufzudecken.</p>
             
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
@@ -358,7 +358,13 @@
             </div>
             <h3>7. Reflexion & Diskussion</h3>
             <p><strong>Diskutieren Sie nun leise mit Ihrer Sitznachbar:in:</strong> Inwiefern ist das Gymnasium derzeit eher von defizitorientierten Praktiken (wie Mainstreaming oder Separation) geprägt? Was müsste sich theoriegeleitet grundlegend in der Unterrichtsgestaltung ändern, um das geforderte "Enhanced sense of belonging" (tiefes Zugehörigkeitsgefühl) proaktiv zu schaffen?</p>
-            <textarea id="ans-s1-reflection" rows="6" aria-label="Notizfeld für die Diskussion" placeholder="Ihre gemeinsamen Notizen zur Diskussion hier eintragen..."></textarea>
+            <div class="reflection-container">
+                <div class="reflection-toolbar">
+                    <button type="button" class="template-btn" onclick="loadReflectionTemplate('ans-s1-reflection', 'bullets')" aria-label="Stichpunkt-Raster in das Textfeld laden">Stichpunkt-Raster laden</button>
+                    <button type="button" class="template-btn" onclick="loadReflectionTemplate('ans-s1-reflection', 'structure')" aria-label="Strukturierte Leitfragen in das Textfeld laden">Leitfragen laden</button>
+                </div>
+                <textarea id="ans-s1-reflection" rows="6" aria-label="Notizfeld für die Diskussion" placeholder="Wählen Sie oben ein Raster oder tippen Sie hier Ihre Notizen ein..."></textarea>
+            </div>
         </div>
         
         <div class="task-box">
@@ -397,7 +403,7 @@
         </div>
 
         <div class="task-box no-print" id="s2-concept1-box" style="opacity: 0.4; pointer-events: none; transition: opacity 0.5s ease-in-out;">
-            <h3>2. Konzept-Check I: Die Differenzverständnisse</h3>
+            <h3>2. Die Differenzverständnisse</h3>
             <p>Karin Bräu unterscheidet grundlegend zwischen zwei Sichtweisen auf Differenzen in der Schule (vgl. S. 208). Ordnen Sie die folgenden Aussagen dem korrekten Differenzverständnis zu.</p>
 
             <div style="background-color: var(--bg-color); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color); margin-top: 1.5rem;">
@@ -436,7 +442,7 @@
         </div>
 
         <div class="task-box no-print" id="s2-concept2-box" style="opacity: 0.4; pointer-events: none; transition: opacity 0.5s ease-in-out;">
-            <h3>3. Bias-Simulator: Die Illusion der objektiven Note</h3>
+            <h3>3. Die Illusion der objektiven Note</h3>
             <p>Bräu dekonstruiert mit Verweis auf Bourdieu die angebliche "Objektivität" der schulischen Leistungsmessung (S. 211). Bewertungen messen oft nicht nur reines Fachwissen, sondern unbewusst auch den "kulturellen Habitus" (z.B. bildungssprachlicher Ausdruck, normkonformes Verhalten, soziale Herkunft). Verändern Sie die Parameter einer fiktiven Schüler:in und beobachten Sie, wie das meritokratische System reagiert.</p>
 
             <div style="background-color: var(--bg-color); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color); margin-top: 1.5rem;">
@@ -473,7 +479,7 @@
         </div>
 
         <div class="task-box no-print" id="s2-dilemma-box" style="opacity: 0.4; pointer-events: none; transition: opacity 0.5s ease-in-out;">
-            <h3>4. Dilemma: Der Lehrkräftezimmer-Chat</h3>
+            <h3>4. Dilemma im Lehrkräfte-Chat</h3>
             <p>Versetzen Sie sich in einen Messenger-Chat mit einer Kolleg:in. Kolleg:in Müller äußert sich kritisch zur Inklusion. Tippen Sie jeweils auf die Chat-Blase, deren Erwiderung K. Bräus theoretischer Argumentation am besten entspricht.</p>
 
             <div class="chat-ui">
@@ -561,7 +567,7 @@
         </div>
 
         <div class="task-box no-print" id="s2-fallanalyse-box" style="opacity: 0.4; pointer-events: none; transition: opacity 0.5s ease-in-out;">
-            <h3>5. Fallanalyse: Ausschlussmechanismen im Alltag</h3>
+            <h3>5. Ausschlussmechanismen im Alltag</h3>
             <p>Ordnen Sie die folgenden Unterrichtssituationen theoriegeleitet ein. Fördert die Lehrkraft durch ihr Handeln unbewusst eine Stigmatisierung (Doing Difference) oder handelt sie inklusiv und abbauend (Undoing Difference)?</p>
 
             <div style="background-color: var(--bg-color); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color); margin-top: 1.5rem;">
@@ -615,7 +621,13 @@
             </div>
             <h3>6. Reflexion & Diskussion</h3>
             <p><strong>Diskutieren Sie nun leise mit Ihrer Sitznachbar:in:</strong> Das Gymnasium ist historisch stark auf das Leistungsprinzip (<span class="glossary-term">Meritokratie</span>) ausgerichtet. Inklusion fordert jedoch Teilhabe und den Abbau von Leistungshierarchien. Wie können Sie als Lehrkraft mit dieser strukturellen <span class="glossary-term">Antinomie</span> im Alltag umgehen, ohne in ein medizinisches, defizitorientiertes Denken zurückzufallen?</p>
-            <textarea id="ans-s2-reflection" rows="6" aria-label="Notizfeld für die Diskussion" placeholder="Ihre gemeinsamen Notizen zur Diskussion hier eintragen..."></textarea>
+            <div class="reflection-container">
+                <div class="reflection-toolbar">
+                    <button type="button" class="template-btn" onclick="loadReflectionTemplate('ans-s2-reflection', 'bullets')" aria-label="Stichpunkt-Raster in das Textfeld laden">Stichpunkt-Raster laden</button>
+                    <button type="button" class="template-btn" onclick="loadReflectionTemplate('ans-s2-reflection', 'structure')" aria-label="Strukturierte Leitfragen in das Textfeld laden">Leitfragen laden</button>
+                </div>
+                <textarea id="ans-s2-reflection" rows="6" aria-label="Notizfeld für die Diskussion" placeholder="Wählen Sie oben ein Raster oder tippen Sie hier Ihre Notizen ein..."></textarea>
+            </div>
         </div>
     </div>
 
@@ -642,31 +654,31 @@
         </div>
 
         <div class="task-box no-print" id="s3-task1-box" style="opacity: 0.4; pointer-events: none; transition: opacity 0.5s ease-in-out;">
-            <h3>2. Entscheidungsbaum: Darf ein Verfahren eingeleitet werden?</h3>
+            <h3>2. Verfahrenseinleitung</h3>
             <p>Die Feststellung eines sonderpädagogischen Förderbedarfs greift massiv in die Schullaufbahn ein. Daher gilt in der Regel das <span class="glossary-term" data-key="Subsidiär">Subsidiaritätsprinzip</span>. Navigieren Sie durch den rechtlichen Entscheidungsprozess einer fiktiven Regelschule, indem Sie die theoriegeleitet korrekten Abzweigungen wählen.</p>
             
             <div id="s3-tree-container" style="background-color: var(--bg-color); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color); margin-top: 1.5rem;">
                 <div id="s3-tree-step1">
                     <p><strong>Schritt 1:</strong> Ein Kind im ersten Schuljahr zeigt unerwartet massive Lernschwierigkeiten. Die Lehrkraft möchte sofort ein formelles Feststellungsverfahren (Förderbedarf Lernen) einleiten, um schnellstmöglich eine sonderpädagogische Fachkraft anfordern zu können. Darf sie das?</p>
                     <div style="display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap;">
-                        <button onclick="s3TreeAnswer(1, false)" style="background-color: var(--container-bg); color: var(--accent-color); border: 1px solid var(--accent-color);">Ja, je früher Diagnostik stattfindet, desto besser.</button>
-                        <button onclick="s3TreeAnswer(1, true)" style="background-color: var(--container-bg); color: var(--accent-color); border: 1px solid var(--accent-color);">Nein, das Vorgehen ist subsidiär.</button>
+                        <button onclick="s3TreeAnswer(1, false)" style="background-color: var(--container-bg); color: var(--accent-color); border: 1px solid var(--accent-color); font-size: 1rem; padding: 0.8rem 1.2rem;">Ja, je früher Diagnostik stattfindet, desto besser.</button>
+                        <button onclick="s3TreeAnswer(1, true)" style="background-color: var(--container-bg); color: var(--accent-color); border: 1px solid var(--accent-color); font-size: 1rem; padding: 0.8rem 1.2rem;">Nein, das Vorgehen ist subsidiär.</button>
                     </div>
                 </div>
                 
                 <div id="s3-tree-step2" style="display: none; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
                     <p><strong>Korrekt!</strong> Zuerst müssen alle präventiven und allgemeinpädagogischen Maßnahmen der Regelschule (z.B. Nachteilsausgleiche, Binnendifferenzierung) nachweislich ausgeschöpft sein. Ausnahme: Starke Beeinträchtigungen (z.B. geistige Entwicklung) können schon vor Schuleintritt festgestellt werden. <br><br><strong>Schritt 2:</strong> Die Schule hat nun ein Jahr lang alle innererschulischen Fördermaßnahmen dokumentiert angewandt, jedoch ohne ausreichenden Erfolg. Wer darf das Verfahren nun formell beantragen?</p>
                     <div style="display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap;">
-                        <button onclick="s3TreeAnswer(2, true)" style="background-color: var(--container-bg); color: var(--accent-color); border: 1px solid var(--accent-color);">Die Erziehungsberechtigten und subsidiär die Schule.</button>
-                        <button onclick="s3TreeAnswer(2, false)" style="background-color: var(--container-bg); color: var(--accent-color); border: 1px solid var(--accent-color);">Ausschließlich das zuständige Jugendamt.</button>
+                        <button onclick="s3TreeAnswer(2, true)" style="background-color: var(--container-bg); color: var(--accent-color); border: 1px solid var(--accent-color); font-size: 1rem; padding: 0.8rem 1.2rem;">Die Erziehungsberechtigten und subsidiär die Schule.</button>
+                        <button onclick="s3TreeAnswer(2, false)" style="background-color: var(--container-bg); color: var(--accent-color); border: 1px solid var(--accent-color); font-size: 1rem; padding: 0.8rem 1.2rem;">Ausschließlich das zuständige Jugendamt.</button>
                     </div>
                 </div>
                 
                 <div id="s3-tree-step3" style="display: none; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
                      <p><strong>Richtig!</strong> Primär stellen die Eltern den Antrag, in Ausnahmefällen oder subsidiär die Schule. <br><br><strong>Schritt 3:</strong> Um den Prozess zu beschleunigen, beauftragt die Schulleitung kurzerhand die an der eigenen Schule tätige Sonderpädagogin mit der Diagnostik und der Erstellung des Gutachtens. Ist das systemisch zulässig?</p>
                      <div style="display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap;">
-                        <button onclick="s3TreeAnswer(3, false)" style="background-color: var(--container-bg); color: var(--accent-color); border: 1px solid var(--accent-color);">Ja, da sie das Kind im Alltag am besten kennt.</button>
-                        <button onclick="s3TreeAnswer(3, true)" style="background-color: var(--container-bg); color: var(--accent-color); border: 1px solid var(--accent-color);">Nein, das verstößt gegen das Trennungsgebot.</button>
+                        <button onclick="s3TreeAnswer(3, false)" style="background-color: var(--container-bg); color: var(--accent-color); border: 1px solid var(--accent-color); font-size: 1rem; padding: 0.8rem 1.2rem;">Ja, da sie das Kind im Alltag am besten kennt.</button>
+                        <button onclick="s3TreeAnswer(3, true)" style="background-color: var(--container-bg); color: var(--accent-color); border: 1px solid var(--accent-color); font-size: 1rem; padding: 0.8rem 1.2rem;">Nein, das verstößt gegen das Trennungsgebot.</button>
                     </div>
                 </div>
                 
@@ -676,7 +688,7 @@
         </div>
 
         <div class="task-box no-print" id="s3-task2-box" style="opacity: 0.4; pointer-events: none; transition: opacity 0.5s ease-in-out;">
-            <h3>3. Konflikt-Simulator: Elternwille vs. Ressourcenvorbehalt</h3>
+            <h3>3. Elternwille vs. Ressourcenvorbehalt</h3>
             <p>Die UN-BRK stärkt den Elternwillen bei der Wahl des Lernortes (Inklusion vs. Förderschule). Dennoch existiert in den Schulgesetzen der <span class="glossary-term" data-key="Ressourcenvorbehalt">Ressourcenvorbehalt</span>. Wählen Sie aus den folgenden Begründungen der Schulaufsicht alle aus, die rechtlich ausreichen, um den Wunsch der Eltern nach inklusiver Beschulung an der zuständigen Regelschule abzulehnen.</p>
             
             <div style="background-color: var(--bg-color); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color); margin-top: 1.5rem;">
@@ -717,7 +729,13 @@
             </div>
             <h3>4. Reflexion & Diskussion</h3>
             <p><strong>Diskutieren Sie nun leise mit Ihrer Sitznachbar:in:</strong> Das Feststellungsverfahren führt systembedingt zum <span class="glossary-term" data-key="Ressourcen-Etikettierungs-Dilemma">Ressourcen-Etikettierungs-Dilemma</span>. Um individuelle Unterstützung zu erhalten, muss einem Kind zuvor ein formelles Defizit ("Etikett") gutachterlich attestiert werden. Wie ließe sich die Zuteilung von Ressourcen an Schulen perspektivisch (etwa im Sinne des UDL) organisieren, um personelle Unterstützung bereitzustellen, ohne Lernende defizitorientiert etikettieren zu müssen?</p>
-            <textarea id="ans-s3-reflection" rows="6" aria-label="Notizfeld für die Diskussion" placeholder="Ihre gemeinsamen Notizen zur Diskussion hier eintragen..."></textarea>
+            <div class="reflection-container">
+                <div class="reflection-toolbar">
+                    <button type="button" class="template-btn" onclick="loadReflectionTemplate('ans-s3-reflection', 'bullets')" aria-label="Stichpunkt-Raster in das Textfeld laden">Stichpunkt-Raster laden</button>
+                    <button type="button" class="template-btn" onclick="loadReflectionTemplate('ans-s3-reflection', 'structure')" aria-label="Strukturierte Leitfragen in das Textfeld laden">Leitfragen laden</button>
+                </div>
+                <textarea id="ans-s3-reflection" rows="6" aria-label="Notizfeld für die Diskussion" placeholder="Wählen Sie oben ein Raster oder tippen Sie hier Ihre Notizen ein..."></textarea>
+            </div>
         </div>
     </div>
 
@@ -754,8 +772,8 @@
                     <p id="s4-theory-card-text" style="font-weight: 600; margin: 0; font-size: 1.1rem; line-height: 1.5;">"Personen evaluieren ihre eigenen Fähigkeiten bevorzugt durch den Vergleich mit ähnlichen Personen (Ähnlichkeitshypothese)."</p>
                 </div>
                 <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
-                    <button onclick="checkS4Theory('vergleich')" style="flex: 1; min-width: 250px; background-color: var(--card-bg); color: var(--heading-color); border: 2px solid var(--heading-color);">Theorie sozialer Vergleichsprozesse</button>
-                    <button onclick="checkS4Theory('integrativ')" style="flex: 1; min-width: 250px; background-color: var(--card-bg); color: var(--heading-color); border: 2px solid var(--heading-color);">Theorie integrativer Prozesse</button>
+                    <button onclick="checkS4Theory('vergleich')" style="flex: 1; min-width: 250px; background-color: var(--card-bg); color: var(--heading-color); border: 2px solid var(--heading-color); font-size: 1rem; padding: 0.8rem 1.2rem;">Theorie sozialer Vergleichsprozesse</button>
+                    <button onclick="checkS4Theory('integrativ')" style="flex: 1; min-width: 250px; background-color: var(--card-bg); color: var(--heading-color); border: 2px solid var(--heading-color); font-size: 1rem; padding: 0.8rem 1.2rem;">Theorie integrativer Prozesse</button>
                 </div>
                 <div style="margin-top: 1.5rem; font-size: 0.9rem;">Fortschritt: <span id="s4-theory-progress">1</span> / 3</div>
                 <div id="s4-theory-feedback" aria-live="polite" style="display: none; margin-top: 1.5rem; padding: 1.2rem; border-radius: 6px; font-weight: 500; text-align: left;"></div>
@@ -763,7 +781,7 @@
         </div>
 
         <div class="task-box no-print" id="s4-task2-box" style="opacity: 0.4; pointer-events: none; transition: opacity 0.5s ease-in-out;">
-            <h3>3. Das Klassenraum-Labor: Leistung & Heterogenität</h3>
+            <h3>3. Leistung & Heterogenität</h3>
             <p>Experimentieren Sie mit der Zusammensetzung einer inklusiven Schulklasse. Verändern Sie die Regler für <strong>Klassenleistung</strong> und <strong>Heterogenität</strong>. Beobachten Sie, wie das System – streng nach den Regressionsmodellen von Kohrt et al. – die soziale Integration eines Kindes mit Förderbedarf berechnet.</p>
             
             <div style="background-color: var(--bg-color); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color); margin-top: 1.5rem;">
@@ -800,7 +818,7 @@
         </div>
 
         <div class="task-box no-print" id="s4-task3-box" style="opacity: 0.4; pointer-events: none; transition: opacity 0.5s ease-in-out;">
-            <h3>4. Hypothesen-Waage: Der Schulform-Vergleich</h3>
+            <h3>4. Der Schulform-Vergleich</h3>
             <p>Wir haben nun gelernt, dass hohe Klassenleistungen die soziale Integration (durch negative Vergleiche) erschweren und Heterogenität sie nicht auffangen kann. Treffen Sie nun eine quantitative Vorhersage: Wo schätzen die betroffenen Kinder (N=1924) ihre soziale Integration auf einer Skala von 0 bis 4 insgesamt höher ein? Schieben Sie den Regler auf Ihre Vermutung und lösen Sie auf.</p>
             
             <div style="background-color: var(--bg-color); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color); margin-top: 1.5rem;">
@@ -841,7 +859,13 @@
             </div>
             <h3>5. Reflexion & Methodik-Diskussion</h3>
             <p><strong>Diskutieren Sie nun leise mit Ihrer Sitznachbar:in:</strong> Die explorativen Ergebnisse zeigen, dass eine physische Platzierung in (leistungsstarken und heterogenen) allgemeinen Schulen paradoxerweise zu <em>weniger</em> Integrationsempfinden führt, da negative Vergleichsprozesse dominieren. Wenn einfache Umgebungsfaktoren versagen – welche tiefgreifenden pädagogischen und didaktischen Maßnahmen (etwa nach Prinzipien des <span class="glossary-term" data-key="UDL">UDL</span>) müssen Lehrkräfte an allgemeinen Schulen ergreifen, um Beziehungen gezielt zu gestalten?</p>
-            <textarea id="ans-s4-reflection" rows="6" aria-label="Notizfeld für die Diskussion" placeholder="Ihre gemeinsamen Notizen hier eintragen..."></textarea>
+            <div class="reflection-container">
+                <div class="reflection-toolbar">
+                    <button type="button" class="template-btn" onclick="loadReflectionTemplate('ans-s4-reflection', 'bullets')" aria-label="Stichpunkt-Raster in das Textfeld laden">Stichpunkt-Raster laden</button>
+                    <button type="button" class="template-btn" onclick="loadReflectionTemplate('ans-s4-reflection', 'structure')" aria-label="Strukturierte Leitfragen in das Textfeld laden">Leitfragen laden</button>
+                </div>
+                <textarea id="ans-s4-reflection" rows="6" aria-label="Notizfeld für die Diskussion" placeholder="Wählen Sie oben ein Raster oder tippen Sie hier Ihre Notizen ein..."></textarea>
+            </div>
         </div>
     </div>
 
@@ -873,7 +897,7 @@
         </div>
 
         <div class="task-box no-print" id="s5-formula-box" style="opacity: 0.4; pointer-events: none; transition: opacity 0.5s ease-in-out;">
-            <h3>2. Praxis-Simulator: Schulprofil entwickeln</h3>
+            <h3>2. Ein simuliertes Schulprofil entwickeln</h3>
             <p>Bauen Sie im folgenden Simulator eine fiktive Schule auf. Achtung: Viele der angebotenen Handlungsoptionen (wie z. B. Nachteilsausgleiche oder Schulbegleitungen) sind im heutigen Schulalltag zwar <strong>gängige, vermeintlich positive Praxis</strong>, gelten theoriegeleitet (nach Mitchell & Sutherland) jedoch als defizitäre Formen der <strong>Mikro-Exklusion</strong>. Überlegen Sie theoriegeleitet präzise: Was ist wirklich Inklusion?</p>
             
             <div style="background-color: var(--bg-color); padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color); margin-top: 1rem;">
@@ -946,7 +970,7 @@
         </div>
 
         <div class="task-box no-print" id="s5-neuro-box" style="opacity: 0.4; pointer-events: none; transition: opacity 0.5s ease-in-out;">
-            <h3>3. Live-Mischpult: Kybernetisches Feedback & Neuro-Scan</h3>
+            <h3>3. Kybernetisches Feedback & Neuro-Scan</h3>
             <p>Verändern Sie im folgenden Labor stufenlos die Parameter Ihres Feedbacks. <strong>Beobachten Sie, wie sich der generierte Satz Wort für Wort anpasst</strong> und wie das Gehirn in Echtzeit reagiert (Side-by-Side Ansicht).</p>
             
             <div style="background-color: var(--bg-color); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color); margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 2rem; align-items: flex-start;">
@@ -958,7 +982,7 @@
                             <span>Defizite (Person)</span>
                             <span>Ursache (Strategie)</span>
                         </div>
-                        <input type="range" id="s5-slide-focus" min="0" max="100" value="10" oninput="updateS5Neuro()" style="width: 100%; cursor: pointer;" aria-label="Schieberegler für Feedback-Fokus">
+                        <input type="range" id="s5-slide-focus" min="1" max="3" step="1" value="1" oninput="updateS5Neuro()" style="width: 100%; cursor: pointer;" aria-label="Schieberegler für Feedback-Fokus">
                     </div>
 
                     <div>
@@ -967,7 +991,7 @@
                             <span>Normativ (Vergleich)</span>
                             <span>Instruktiv (Sachlich)</span>
                         </div>
-                        <input type="range" id="s5-slide-norm" min="0" max="100" value="10" oninput="updateS5Neuro()" style="width: 100%; cursor: pointer;" aria-label="Schieberegler für Fehlerkommunikation">
+                        <input type="range" id="s5-slide-norm" min="1" max="3" step="1" value="1" oninput="updateS5Neuro()" style="width: 100%; cursor: pointer;" aria-label="Schieberegler für Fehlerkommunikation">
                     </div>
 
                     <div>
@@ -976,7 +1000,7 @@
                             <span>Appell ("Anstrengen!")</span>
                             <span>Kybernetisch ("Prüfen!")</span>
                         </div>
-                        <input type="range" id="s5-slide-action" min="0" max="100" value="10" oninput="updateS5Neuro()" style="width: 100%; cursor: pointer;" aria-label="Schieberegler für Konsequenz">
+                        <input type="range" id="s5-slide-action" min="1" max="3" step="1" value="1" oninput="updateS5Neuro()" style="width: 100%; cursor: pointer;" aria-label="Schieberegler für Konsequenz">
                     </div>
                 </div>
 
@@ -1021,8 +1045,8 @@
         </div>
 
         <div class="task-box no-print" id="s5-effect-box" style="opacity: 0.4; pointer-events: none; transition: opacity 0.5s ease-in-out;">
-            <h3>4. Interaktives Thermometer: Effektstärken ($d$)</h3>
-            <p>Wie stark wirken sich <span class="glossary-term" data-key="Formatives Assessment">formatives Assessment</span> und qualitatives Feedback in der empirischen Praxis tatsächlich auf den Lernerfolg aus? Schätzen Sie die durchschnittliche Effektstärke nach Cohen ($d$) auf der wissenschaftlichen Skala.</p>
+            <h3>4. Effektstärke d und formatives Feedback</h3>
+            <p>Wie stark wirken sich <span class="glossary-term" data-key="Formatives Assessment">formatives Assessment</span> und qualitatives Feedback in der empirischen Praxis tatsächlich auf den Lernerfolg aus? Schätzen Sie die durchschnittliche Effektstärke nach Cohen d auf der wissenschaftlichen Skala.</p>
             
             <div style="background-color: var(--bg-color); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color); margin-top: 1.5rem;">
                 
@@ -1078,10 +1102,398 @@
                 <button class="tts-btn tts-pause" onclick="pauseTTS()" aria-label="Vorlesen pausieren" disabled>Pause</button>
                 <button class="tts-btn tts-stop" onclick="stopTTS()" aria-label="Vorlesen stoppen" disabled>Stopp</button>
             </div>
-            <h3>5. Reflexion & Diskussion: Das Policy-Practice-Gap</h3>
-            <p><strong>Diskutieren Sie nun leise mit Ihrer Sitznachbar:in:</strong> Mitchell & Sutherland betonen, dass weltweit eine Lücke zwischen inklusiver Rhetorik (Gesetze, Visionen) und der tatsächlichen Praxis im Klassenzimmer klafft. Wenn wir wissen, dass formatives Assessment und fehlerfreundliches Feedback derart massive empirische Effekte ($d = 0.90$) haben, warum dominieren dann an Gymnasien in der Realität nach wie vor oft summatives Assessment (Noten) und defizitorientierte Leistungsvergleiche?</p>
-            <textarea id="ans-s5-reflection" rows="6" aria-label="Notizfeld für die Diskussion" placeholder="Ihre gemeinsamen Notizen hier eintragen..."></textarea>
+            <h3>5. Reflexion & Diskussion</h3>
+            <p><strong>Diskutieren Sie nun leise mit Ihrer Sitznachbar:in:</strong> Mitchell & Sutherland betonen, dass weltweit eine Lücke zwischen inklusiver Rhetorik (Gesetze, Visionen) und der tatsächlichen Praxis im Klassenzimmer klafft. Wenn wir wissen, dass formatives Assessment und fehlerfreundliches Feedback derart massive empirische Effekte (d = 0.90) haben, warum dominieren dann an Gymnasien in der Realität nach wie vor oft summatives Assessment (Noten) und defizitorientierte Leistungsvergleiche?</p>
+            <div class="reflection-container">
+                <div class="reflection-toolbar">
+                    <button type="button" class="template-btn" onclick="loadReflectionTemplate('ans-s5-reflection', 'bullets')" aria-label="Stichpunkt-Raster in das Textfeld laden">Stichpunkt-Raster laden</button>
+                    <button type="button" class="template-btn" onclick="loadReflectionTemplate('ans-s5-reflection', 'structure')" aria-label="Strukturierte Leitfragen in das Textfeld laden">Leitfragen laden</button>
+                </div>
+                <textarea id="ans-s5-reflection" rows="6" aria-label="Notizfeld für die Diskussion" placeholder="Wählen Sie oben ein Raster oder tippen Sie hier Ihre Notizen ein..."></textarea>
+            </div>
         </div>
+    </div>
+
+    <div id="view-self1" class="content-section">
+        <h2>Selbstarbeit I: Neurodiversität & Strukturierung (Haider et al.)</h2>
+
+        <div class="task-box">
+            <div class="tts-controls no-print" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
+                <div style="display: flex; gap: 0.5rem;">
+                    <button class="tts-btn tts-play" onclick="playTTS(this.parentElement.parentElement.parentElement)" aria-label="Abschnitt vorlesen">Vorlesen</button>
+                    <button class="tts-btn tts-pause" onclick="pauseTTS()" aria-label="Vorlesen pausieren" disabled>Pause</button>
+                    <button class="tts-btn tts-stop" onclick="stopTTS()" aria-label="Vorlesen stoppen" disabled>Stopp</button>
+                </div>
+                <a href="haider_1.pdf" target="_blank" class="nav-btn" style="text-decoration: none; width: auto; font-size: 0.9rem; background-color: var(--accent-color); color: white; border-color: var(--accent-color); display: flex; align-items: center; justify-content: center;" aria-label="Text von Haider et al. als PDF in neuem Tab öffnen">
+                    Text als PDF öffnen
+                </a>
+            </div>
+            <h3>1. Leseauftrag & Fokus</h3>
+            <p>Bitte lesen Sie den bereitgestellten Grundlagentext von Haider et al. mit dem Schwerpunkt auf <strong>Kapitel 2.1 (Neurodiverses Lernen im schulischen Feld)</strong> sowie <strong>Kapitel 2.2 (Rahmenbedingungen für einen neurodiversen Unterricht)</strong>. Achten Sie besonders darauf, wie Barrieren der Handlungssteuerung durch proaktive Reizreduktion und visuelle Strukturierung im Sinne des Universal Design for Learning abgebaut werden können. Bearbeiten Sie anschließend die interaktiven Aufgaben.</p>
+            
+            <button onclick="unlockTaskSelf1('self1-task1-box')" style="width: 100%; margin-top: 1rem; background-color: var(--heading-color);" aria-label="Bestätigen, dass der Text gelesen wurde, um die Aufgaben freizuschalten">
+                Text gelesen, Aufgaben bearbeiten
+            </button>
+        </div>
+
+        <div class="task-box no-print" id="self1-task1-box" style="opacity: 0.4; pointer-events: none; transition: opacity 0.5s ease-in-out;">
+            <h3>2. Kognitive Überlastung & Strukturierung</h3>
+            <p>Für neurodiverse Lernende kann ein unstrukturierter, optisch dichter Text rasch zu einer sensorischen und kognitiven Überlastung führen, da der Reizfilter anders funktioniert. Verschieben Sie den Regler schrittweise durch die 4 Stufen, um theoriegeleitet visuelle Barrieren abzubauen und den Text zugänglich zu machen.</p>
+
+            <div style="background-color: var(--bg-color); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color); margin-top: 1.5rem;">
+                
+                <div style="margin-bottom: 2rem;">
+                    <label for="self1-slider-structure" style="font-weight: 600; display: block; margin-bottom: 0.5rem;">Strukturierungsgrad der Lernumgebung (Stufe <span id="self1-slider-val">1</span> von 4)</label>
+                    <input type="range" id="self1-slider-structure" min="1" max="4" step="1" value="1" oninput="updateSelf1Overload()" style="width: 100%; cursor: pointer;" aria-label="Schieberegler zur schrittweisen Erhöhung der visuellen Strukturierung">
+                    <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--text-color); margin-top: 0.2rem; font-weight: 500;">
+                        <span>1. Dicht</span>
+                        <span>2. Format</span>
+                        <span>3. Struktur</span>
+                        <span>4. Visualisiert</span>
+                    </div>
+                </div>
+
+                <div id="self1-simulator-text" style="padding: 1.5rem; background-color: var(--container-bg); border-radius: 8px; border: 2px solid var(--border-color); transition: all 0.3s ease; font-size: 0.75rem; line-height: 0.9; letter-spacing: -1.5px; word-spacing: -3px; color: #555; font-family: 'Times New Roman', Times, serif; text-align: justify; word-break: break-all; overflow-wrap: break-word;">
+                    DiePhotosyntheseistderProzessdurchdendiePflanzenLichtenergieinchemischeEnergieumwandelnDiesgeschiehtindenChloroplastenderZellenwobeiKohlenstoffdioxidundWasserzuGlucoseundSauerstoffreagierenFürdiesenVorgangistdasChlorophyllentscheidendwelchesdasLichtabsorbiertDieserProzessistdieGrundlagefürdasLebenaufderErdedaerSauerstoffproduziertderfürdieZellatmungderMeistenLebewesenbenötigtwirdZusätzlichstelltGlucoseeineWichtigeEnergiequelleDar.
+                </div>
+
+                <div id="self1-simulator-feedback" aria-live="polite" style="display: none; margin-top: 1.5rem; padding: 1.2rem; border-radius: 6px; font-weight: 500; line-height: 1.5; background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb;">
+                    <strong>Stufe 4 erreicht:</strong> Durch den gezielten Einsatz von Absätzen, einer serifenlosen Schriftart, Hervorhebungen und einer kontextuellen Visualisierung (Multimodalität) haben Sie das Arbeitsgedächtnis massiv entlastet. 
+                </div>
+
+                <button id="btn-self1-next1" onclick="unlockTaskSelf1('self1-task2-box')" style="width: 100%; margin-top: 1.5rem; background-color: var(--heading-color); display: none;">Nächste Aufgabe</button>
+            </div>
+        </div>
+
+        <div class="task-box no-print" id="self1-task2-box" style="opacity: 0.4; pointer-events: none; transition: opacity 0.5s ease-in-out;">
+            <h3>3. Herausforderungen exekutiver Funktionen</h3>
+            <p>Haider et al. betonen die Bedeutsamkeit exekutiver Funktionen. Wenn diese überlastet sind, wird das Verhalten von Lernenden im Schulalltag oft fälschlicherweise als "Faulheit" oder "Provokation" missverstanden. Ordnen Sie die folgenden, kritischen Situationen dem jeweils primär beeinträchtigten Funktionsbereich zu.</p>
+            
+            <div style="background-color: var(--bg-color); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color); margin-top: 1.5rem;">
+                
+                <div style="display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: 2rem;">
+                    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">
+                        <div style="flex: 1; min-width: 250px; line-height: 1.4;"><strong>Situation A:</strong> Lernende lesen einen komplexen Fachtext, wissen am Ende des Absatzes aber nicht mehr, was im ersten Satz stand, da das mühsame Entschlüsseln der Wörter alle geistigen Kapazitäten verbraucht hat.</div>
+                        <select id="self1-sel-1" class="settings-control" style="width: 220px; padding: 0.5rem;" aria-label="Wählen Sie die zutreffende exekutive Funktion für Situation A">
+                            <option value="">-- Bitte wählen --</option>
+                            <option value="inhibition">Inhibition (Impulskontrolle)</option>
+                            <option value="flexibility">Kognitive Flexibilität</option>
+                            <option value="memory">Arbeitsgedächtnis</option>
+                        </select>
+                    </div>
+
+                    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">
+                        <div style="flex: 1; min-width: 250px; line-height: 1.4;"><strong>Situation B:</strong> Ein Kind arbeitet hochkonzentriert an einem Bild. Als es unerwartet zur Pause klingelt, weigert sich das Kind vehement den Stift wegzulegen, wird wütend und blockiert völlig (Übergangsschwierigkeit).</div>
+                        <select id="self1-sel-2" class="settings-control" style="width: 220px; padding: 0.5rem;" aria-label="Wählen Sie die zutreffende exekutive Funktion für Situation B">
+                            <option value="">-- Bitte wählen --</option>
+                            <option value="inhibition">Inhibition (Impulskontrolle)</option>
+                            <option value="flexibility">Kognitive Flexibilität</option>
+                            <option value="memory">Arbeitsgedächtnis</option>
+                        </select>
+                    </div>
+
+                    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">
+                        <div style="flex: 1; min-width: 250px; line-height: 1.4;"><strong>Situation C:</strong> Eine Lehrkraft stellt eine Frage ans Plenum. Eine Schülerin platzt sofort mit der Antwort heraus, unterbricht dabei andere Lernende und kann das Bedürfnis der sofortigen Mitteilung nicht stoppen.</div>
+                        <select id="self1-sel-3" class="settings-control" style="width: 220px; padding: 0.5rem;" aria-label="Wählen Sie die zutreffende exekutive Funktion für Situation C">
+                            <option value="">-- Bitte wählen --</option>
+                            <option value="inhibition">Inhibition (Impulskontrolle)</option>
+                            <option value="flexibility">Kognitive Flexibilität</option>
+                            <option value="memory">Arbeitsgedächtnis</option>
+                        </select>
+                    </div>
+
+                    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">
+                        <div style="flex: 1; min-width: 250px; line-height: 1.4;"><strong>Situation D:</strong> Ein Kind hat seine gesamte Hausaufgabe digital vorbereitet. Da der Akku leer ist, soll er die Ergebnisse spontan an der Tafel skizzieren. Er verfällt in Starre, kann die neue Situation nicht annehmen und ist für den Rest der Stunde nicht mehr ansprechbar.</div>
+                        <select id="self1-sel-4" class="settings-control" style="width: 220px; padding: 0.5rem;" aria-label="Wählen Sie die zutreffende exekutive Funktion für Situation D">
+                            <option value="">-- Bitte wählen --</option>
+                            <option value="inhibition">Inhibition (Impulskontrolle)</option>
+                            <option value="flexibility">Kognitive Flexibilität</option>
+                            <option value="memory">Arbeitsgedächtnis</option>
+                        </select>
+                    </div>
+
+                    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">
+                        <div style="flex: 1; min-width: 250px; line-height: 1.4;"><strong>Situation E:</strong> Während einer Stillarbeitsphase fängt ein Kind immer wieder an, leise mit dem Lineal zu trommeln oder zu summen. Er bemerkt es selbst kaum. Trotz mehrfacher Ermahnung und eigenem Bemühen bricht der motorische Impuls nach wenigen Minuten wieder durch.</div>
+                        <select id="self1-sel-5" class="settings-control" style="width: 220px; padding: 0.5rem;" aria-label="Wählen Sie die zutreffende exekutive Funktion für Situation E">
+                            <option value="">-- Bitte wählen --</option>
+                            <option value="inhibition">Inhibition (Impulskontrolle)</option>
+                            <option value="flexibility">Kognitive Flexibilität</option>
+                            <option value="memory">Arbeitsgedächtnis</option>
+                        </select>
+                    </div>
+
+                    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem;">
+                        <div style="flex: 1; min-width: 250px; line-height: 1.4;"><strong>Situation F:</strong> Die Lehrkraft gibt eine dreischrittige Anweisung: "Schlagt Seite 42 auf, lest den gelben Kasten und notiert danach die drei Hauptmerkmale im Heft." Das Kind schlägt die Seite auf, starrt dann aber ziellos ins Buch, da er die weiteren Schritte bereits "verloren" hat.</div>
+                        <select id="self1-sel-6" class="settings-control" style="width: 220px; padding: 0.5rem;" aria-label="Wählen Sie die zutreffende exekutive Funktion for Situation F">
+                            <option value="">-- Bitte wählen --</option>
+                            <option value="inhibition">Inhibition (Impulskontrolle)</option>
+                            <option value="flexibility">Kognitive Flexibilität</option>
+                            <option value="memory">Arbeitsgedächtnis</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button onclick="checkSelf1Case()" style="width: 100%; background-color: var(--heading-color);">Diagnose überprüfen</button>
+                <div id="self1-matrix-feedback" aria-live="polite" style="display: none; margin-top: 1.5rem; padding: 1.2rem; border-radius: 6px; font-weight: 500; line-height: 1.5;"></div>
+            </div>
+        </div>
+
+        <div class="task-box no-print" id="self1-task3-box" style="opacity: 0.4; pointer-events: none; transition: opacity 0.5s ease-in-out;">
+            <h3>4. Inklusive Lernumgebung bauen</h3>
+            <p>Ein 3-seitiger Fachtext zum Thema "Antikes Rom" steht an. Sie planen für eine Lerngruppe, in der u.a. ein <strong>Kind mit Sehbeeinträchtigung</strong>, ein <strong>Kind mit ADHS</strong> und ein <strong>Kind mit DaZ-Hintergrund (Deutsch als Zweitsprache)</strong> lernen. <br>
+            Aktivieren Sie didaktische Werkzeuge durch Klick auf die Karten. Beobachten Sie die Live-Auswirkung und lesen Sie die spezifischen Kommentare! Ziel: Alle drei Profile auf 100% Teilhabe bringen, <strong>ohne</strong> defizitorientierte Maßnahmen zu nutzen.</p>
+            
+            <div style="background-color: var(--bg-color); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color); margin-top: 1.5rem;">
+                
+                <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; justify-content: space-between; align-items: stretch;">
+                    <div style="flex: 1; min-width: 250px; background: var(--container-bg); padding: 1.2rem; border-radius: 8px; text-align: center; display: flex; flex-direction: column;">
+                        <strong style="display: block; margin-bottom: 0.5rem; font-size: 1.1rem;">Lernprofil: Sehbeeinträchtigung</strong>
+                        <div style="width: 100%; background: #e9ecef; border-radius: 10px; height: 14px; overflow: hidden; margin-bottom: 0.5rem;" aria-hidden="true">
+                            <div id="bar-vision" style="width: 10%; height: 100%; background: #dc3545; transition: all 0.4s ease;"></div>
+                        </div>
+                        <small id="text-vision" style="display: block; margin-bottom: 1rem; font-weight: 600;" aria-live="polite">10% - Visuelle Barriere</small>
+                        <div id="comment-vision" style="margin-top: auto; font-size: 0.9rem; color: var(--text-color); background: var(--bg-color); padding: 0.8rem; border-radius: 6px; border: 1px solid var(--border-color); text-align: left; line-height: 1.4;">
+                            <em>(Wählen Sie unten ein Werkzeug aus, um die konkrete Wirkung zu sehen)</em>
+                        </div>
+                    </div>
+                    <div style="flex: 1; min-width: 250px; background: var(--container-bg); padding: 1.2rem; border-radius: 8px; text-align: center; display: flex; flex-direction: column;">
+                        <strong style="display: block; margin-bottom: 0.5rem; font-size: 1.1rem;">Lernprofil: ADHS</strong>
+                        <div style="width: 100%; background: #e9ecef; border-radius: 10px; height: 14px; overflow: hidden; margin-bottom: 0.5rem;" aria-hidden="true">
+                            <div id="bar-adhd" style="width: 10%; height: 100%; background: #dc3545; transition: all 0.4s ease;"></div>
+                        </div>
+                        <small id="text-adhd" style="display: block; margin-bottom: 1rem; font-weight: 600;" aria-live="polite">10% - Exekutiv überlastet</small>
+                        <div id="comment-adhd" style="margin-top: auto; font-size: 0.9rem; color: var(--text-color); background: var(--bg-color); padding: 0.8rem; border-radius: 6px; border: 1px solid var(--border-color); text-align: left; line-height: 1.4;">
+                            <em>(Wählen Sie unten ein Werkzeug aus, um die konkrete Wirkung zu sehen)</em>
+                        </div>
+                    </div>
+                    <div style="flex: 1; min-width: 250px; background: var(--container-bg); padding: 1.2rem; border-radius: 8px; text-align: center; display: flex; flex-direction: column;">
+                        <strong style="display: block; margin-bottom: 0.5rem; font-size: 1.1rem;">Lernprofil: DaZ</strong>
+                        <div style="width: 100%; background: #e9ecef; border-radius: 10px; height: 14px; overflow: hidden; margin-bottom: 0.5rem;" aria-hidden="true">
+                            <div id="bar-daz" style="width: 10%; height: 100%; background: #dc3545; transition: all 0.4s ease;"></div>
+                        </div>
+                        <small id="text-daz" style="display: block; margin-bottom: 1rem; font-weight: 600;" aria-live="polite">10% - Sprachlich isoliert</small>
+                        <div id="comment-daz" style="margin-top: auto; font-size: 0.9rem; color: var(--text-color); background: var(--bg-color); padding: 0.8rem; border-radius: 6px; border: 1px solid var(--border-color); text-align: left; line-height: 1.4;">
+                            <em>(Wählen Sie unten ein Werkzeug aus, um die konkrete Wirkung zu sehen)</em>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+                    <button class="udl-tool-btn" data-tool="tts" onclick="toggleUDLTool(this)" style="padding: 1rem; border: 2px solid var(--border-color); background: var(--bg-color); color: var(--text-color); border-radius: 8px; cursor: pointer; text-align: left; transition: all 0.2s;">
+                        <strong>Text-to-Speech & Audio</strong><br><small>Optionale Vorlesefunktion für alle</small>
+                    </button>
+                    <button class="udl-tool-btn" data-tool="reduce" onclick="toggleUDLTool(this)" style="padding: 1rem; border: 2px solid var(--border-color); background: var(--bg-color); color: var(--text-color); border-radius: 8px; cursor: pointer; text-align: left; transition: all 0.2s;">
+                        <strong>Inhalt massiv kürzen</strong><br><small>Spezialtext nur für schwache Lernende</small>
+                    </button>
+                    <button class="udl-tool-btn" data-tool="choice" onclick="toggleUDLTool(this)" style="padding: 1rem; border: 2px solid var(--border-color); background: var(--bg-color); color: var(--text-color); border-radius: 8px; cursor: pointer; text-align: left; transition: all 0.2s;">
+                        <strong>Formate-Wahl (UDL)</strong><br><small>Wahl zw. Text, Podcast & Concept-Map</small>
+                    </button>
+                    <button class="udl-tool-btn" data-tool="glossary" onclick="toggleUDLTool(this)" style="padding: 1rem; border: 2px solid var(--border-color); background: var(--bg-color); color: var(--text-color); border-radius: 8px; cursor: pointer; text-align: left; transition: all 0.2s;">
+                        <strong>Klick-Glossar</strong><br><small>Fachbegriffe visuell erklärt (für alle)</small>
+                    </button>
+                    <button class="udl-tool-btn" data-tool="assist" onclick="toggleUDLTool(this)" style="padding: 1rem; border: 2px solid var(--border-color); background: var(--bg-color); color: var(--text-color); border-radius: 8px; cursor: pointer; text-align: left; transition: all 0.2s;">
+                        <strong>Frontal vorlesen</strong><br><small>Lehrkraft liest Text für alle laut vor</small>
+                    </button>
+                    <button class="udl-tool-btn" data-tool="structure" onclick="toggleUDLTool(this)" style="padding: 1rem; border: 2px solid var(--border-color); background: var(--bg-color); color: var(--text-color); border-radius: 8px; cursor: pointer; text-align: left; transition: all 0.2s;">
+                        <strong>Struktur-Hilfen</strong><br><small>Checklisten & Teilziele (Scaffolding)</small>
+                    </button>
+                    <button class="udl-tool-btn" data-tool="buddy" onclick="toggleUDLTool(this)" style="padding: 1rem; border: 2px solid var(--border-color); background: var(--bg-color); color: var(--text-color); border-radius: 8px; cursor: pointer; text-align: left; transition: all 0.2s;">
+                        <strong>Buddy-System</strong><br><small>Starke Lernende helfen bei der Aufgabe</small>
+                    </button>
+                    <button class="udl-tool-btn" data-tool="time" onclick="toggleUDLTool(this)" style="padding: 1rem; border: 2px solid var(--border-color); background: var(--bg-color); color: var(--text-color); border-radius: 8px; cursor: pointer; text-align: left; transition: all 0.2s;">
+                        <strong>Zeitzugabe (NTA)</strong><br><small>Einfach 20 Min. mehr Bearbeitungszeit</small>
+                    </button>
+                </div>
+
+                <button onclick="evaluateUDLInteractive()" style="width: 100%; margin-top: 1rem; background-color: var(--heading-color);">System auf Barrierefreiheit prüfen</button>
+                <div id="udl-interactive-feedback" aria-live="polite" style="margin-top: 1.5rem; display: none; padding: 1.2rem; border-radius: 6px; line-height: 1.5;"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="view-self2" class="content-section">
+        <h2>Selbstarbeit II: Lernraumgestaltung & Klassenmanagement (Haider et al.)</h2>
+
+        <div class="task-box">
+            <div class="tts-controls no-print" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
+                <div style="display: flex; gap: 0.5rem;">
+                    <button class="tts-btn tts-play" onclick="playTTS(this.parentElement.parentElement.parentElement)" aria-label="Abschnitt vorlesen">Vorlesen</button>
+                    <button class="tts-btn tts-pause" onclick="pauseTTS()" aria-label="Vorlesen pausieren" disabled>Pause</button>
+                    <button class="tts-btn tts-stop" onclick="stopTTS()" aria-label="Vorlesen stoppen" disabled>Stopp</button>
+                </div>
+                <a href="haider_2.pdf" target="_blank" class="nav-btn" style="text-decoration: none; width: auto; font-size: 0.9rem; background-color: var(--accent-color); color: white; border-color: var(--accent-color); display: flex; align-items: center; justify-content: center;" aria-label="Text von Haider et al. als PDF in neuem Tab öffnen">
+                    Text als PDF öffnen
+                </a>
+            </div>
+            <h3>1. Leseauftrag & Fokus</h3>
+            <p>Bitte lesen Sie den bereitgestellten Grundlagentext von Haider et al. schwerpunktmäßig <strong>Kapitel 3.1 bis 3.3 (Der Lernraum und Arbeitsorganisation)</strong> sowie <strong>Kapitel 3.4 (Zeitliche Gestaltung)</strong>. Fokussieren Sie sich darauf, wie der physische Raum das Verhalten lenkt und warum gutes <span class="glossary-term" data-key="Klassenmanagement">Klassenmanagement</span> nicht reaktiv straft, sondern durch Strukturen präventiv Inklusion ermöglicht. Bearbeiten Sie danach die nachfolgenden Aufgaben.</p>
+            
+            <button onclick="unlockTaskSelf2('self2-task1-box')" style="width: 100%; margin-top: 1rem; background-color: var(--heading-color);" aria-label="Bestätigen, dass der Text gelesen wurde, um die Aufgaben freizuschalten">
+                Text gelesen, Aufgaben bearbeiten
+            </button>
+        </div>
+
+        <div class="task-box no-print" id="self2-task1-box" style="opacity: 0.4; pointer-events: none; transition: opacity 0.5s ease-in-out;">
+            <h3>2. Simulator zur Raumeinrichtung</h3>
+            <p>Der physische Raum beeinflusst massiv das Lernen. Wandeln Sie das traditionelle Klassenzimmer durch Auswahl der untenstehenden Bausteine in einen inklusiven Lernraum um. <strong>Achtung:</strong> Nicht alle angebotenen Maßnahmen sind theoriegeleitet sinnvoll. Beobachten Sie den Barrierefreiheits-Index.</p>
+
+            <div style="background-color: var(--bg-color); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color); margin-top: 1.5rem;">
+                
+                <div style="margin-bottom: 2rem;">
+                    <div style="display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 0.5rem;">
+                        <span>Inklusions-Index des Lernraums</span>
+                        <span id="self2-room-score">20% (Exkludierend)</span>
+                    </div>
+                    <div style="width: 100%; background: #e9ecef; border-radius: 6px; height: 24px; overflow: hidden;">
+                        <div id="self2-room-bar" style="width: 20%; height: 100%; background: #dc3545; transition: width 0.4s ease, background-color 0.4s ease;"></div>
+                    </div>
+                </div>
+
+                <fieldset style="border: none; padding: 0; margin-bottom: 1.5rem;">
+                    <legend style="position: absolute; width: 1px; height: 1px; overflow: hidden;">Wählen Sie geeignete Maßnahmen zur Raumgestaltung:</legend>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+                        
+                        <label style="display: flex; align-items: flex-start; gap: 0.8rem; cursor: pointer; padding: 1rem; background: var(--container-bg); border-radius: 6px; border: 1px solid var(--border-color); transition: all 0.2s;">
+                            <input type="checkbox" onchange="updateSelf2Room()" value="20" style="width: 20px; height: 20px; margin-top: 0.2rem; accent-color: var(--accent-color);">
+                            <div>
+                                <strong style="display: block; margin-bottom: 0.3rem;">Akustische Dämpfung</strong>
+                                <span style="font-size: 0.85rem; line-height: 1.3; display: block;">Teppiche, Filzgleiter und Schallschluck-Paneele reduzieren den Lärmpegel massiv.</span>
+                            </div>
+                        </label>
+
+                        <label style="display: flex; align-items: flex-start; gap: 0.8rem; cursor: pointer; padding: 1rem; background: var(--container-bg); border-radius: 6px; border: 1px solid var(--border-color); transition: all 0.2s;">
+                            <input type="checkbox" onchange="updateSelf2Room()" value="-20" style="width: 20px; height: 20px; margin-top: 0.2rem; accent-color: var(--accent-color);">
+                            <div>
+                                <strong style="display: block; margin-bottom: 0.3rem;">Bunte Themenwände überall</strong>
+                                <span style="font-size: 0.85rem; line-height: 1.3; display: block;">Alle Wände und Fenster werden mit bunten Bastelarbeiten und Plakaten dekoriert.</span>
+                            </div>
+                        </label>
+
+                        <label style="display: flex; align-items: flex-start; gap: 0.8rem; cursor: pointer; padding: 1rem; background: var(--container-bg); border-radius: 6px; border: 1px solid var(--border-color); transition: all 0.2s;">
+                            <input type="checkbox" onchange="updateSelf2Room()" value="20" style="width: 20px; height: 20px; margin-top: 0.2rem; accent-color: var(--accent-color);">
+                            <div>
+                                <strong style="display: block; margin-bottom: 0.3rem;">Räumliche Zonenbildung</strong>
+                                <span style="font-size: 0.85rem; line-height: 1.3; display: block;">Einrichtung einer reizarmen Ruheecke sowie Flächen für Input und Gruppenarbeit.</span>
+                            </div>
+                        </label>
+
+                        <label style="display: flex; align-items: flex-start; gap: 0.8rem; cursor: pointer; padding: 1rem; background: var(--container-bg); border-radius: 6px; border: 1px solid var(--border-color); transition: all 0.2s;">
+                            <input type="checkbox" onchange="updateSelf2Room()" value="-20" style="width: 20px; height: 20px; margin-top: 0.2rem; accent-color: var(--accent-color);">
+                            <div>
+                                <strong style="display: block; margin-bottom: 0.3rem;">Starre, frontale Sitzordnung</strong>
+                                <span style="font-size: 0.85rem; line-height: 1.3; display: block;">Alle Tische blicken dauerhaft nach vorn zur Tafel, um die Kontrolle zu maximieren.</span>
+                            </div>
+                        </label>
+
+                        <label style="display: flex; align-items: flex-start; gap: 0.8rem; cursor: pointer; padding: 1rem; background: var(--container-bg); border-radius: 6px; border: 1px solid var(--border-color); transition: all 0.2s;">
+                            <input type="checkbox" onchange="updateSelf2Room()" value="20" style="width: 20px; height: 20px; margin-top: 0.2rem; accent-color: var(--accent-color);">
+                            <div>
+                                <strong style="display: block; margin-bottom: 0.3rem;">Visuelle Klarheit (Clean Desk)</strong>
+                                <span style="font-size: 0.85rem; line-height: 1.3; display: block;">Offene Regale werden strukturiert, überflüssige visuelle Reize strikt minimiert.</span>
+                            </div>
+                        </label>
+
+                        <label style="display: flex; align-items: flex-start; gap: 0.8rem; cursor: pointer; padding: 1rem; background: var(--container-bg); border-radius: 6px; border: 1px solid var(--border-color); transition: all 0.2s;">
+                            <input type="checkbox" onchange="updateSelf2Room()" value="20" style="width: 20px; height: 20px; margin-top: 0.2rem; accent-color: var(--accent-color);">
+                            <div>
+                                <strong style="display: block; margin-bottom: 0.3rem;">Flexible Sitzordnungen</strong>
+                                <span style="font-size: 0.85rem; line-height: 1.3; display: block;">Alternative Sitzmöglichkeiten (z.B. Stehpulte, Wackelhocker) für Bewegungsbedarf.</span>
+                            </div>
+                        </label>
+                    </div>
+                </fieldset>
+
+                <div id="self2-room-feedback" aria-live="polite" style="display: none; margin-top: 1.5rem; padding: 1.2rem; border-radius: 6px; font-weight: 500; line-height: 1.5;"></div>
+                
+                <button id="btn-self2-next1" onclick="unlockTaskSelf2('self2-task2-box')" style="width: 100%; margin-top: 1.5rem; background-color: var(--heading-color); display: none;">Aufgabe verstanden, weiter</button>
+            </div>
+        </div>
+
+        <div class="task-box no-print" id="self2-task2-box" style="opacity: 0.4; pointer-events: none; transition: opacity 0.5s ease-in-out;">
+            <h3>3. Dimensionen des Klassenmanagements</h3>
+            <p>Die Grundlage für Inklusion ist nach Jacob Kounin ein proaktives Klassenmanagement, das Störungen verhindert, bevor sie eskalieren. Ordnen Sie die folgenden Handlungen der Lehrkraft der jeweils korrekten Kounin-Dimension zu.</p>
+            
+            <div style="background-color: var(--bg-color); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color); margin-top: 1.5rem;">
+                
+                <div style="display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: 2rem;">
+                    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">
+                        <div style="flex: 1; min-width: 250px; line-height: 1.4;"><strong>Aktion A:</strong> Die Lehrkraft nähert sich während der Erklärphase subtil einer unruhigen Gruppe und stellt Blickkontakt her, ohne den inhaltlichen Redefluss der Stunde stoppen zu müssen.</div>
+                        <select id="self2-kounin-1" class="settings-control" style="width: 220px; padding: 0.5rem;" aria-label="Wählen Sie die zutreffende Kounin-Dimension für Aktion A">
+                            <option value="">-- Bitte wählen --</option>
+                            <option value="withitness">Allgegenwärtigkeit (Withitness)</option>
+                            <option value="overlapping">Überlappung (Overlapping)</option>
+                            <option value="smoothness">Reibungslosigkeit (Smoothness)</option>
+                            <option value="alerting">Gruppenmobilisierung</option>
+                        </select>
+                    </div>
+
+                    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">
+                        <div style="flex: 1; min-width: 250px; line-height: 1.4;"><strong>Aktion B:</strong> Während die Lehrkraft einer Kleingruppe an deren Tisch hilft, gibt sie gleichzeitig einem Kind am anderen Ende des Raumes ein kurzes Handzeichen, sich wieder auf seine Aufgabe zu konzentrieren.</div>
+                        <select id="self2-kounin-2" class="settings-control" style="width: 220px; padding: 0.5rem;" aria-label="Wählen Sie die zutreffende Kounin-Dimension für Aktion B">
+                            <option value="">-- Bitte wählen --</option>
+                            <option value="withitness">Allgegenwärtigkeit (Withitness)</option>
+                            <option value="overlapping">Überlappung (Overlapping)</option>
+                            <option value="smoothness">Reibungslosigkeit (Smoothness)</option>
+                            <option value="alerting">Gruppenmobilisierung</option>
+                        </select>
+                    </div>
+
+                    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">
+                        <div style="flex: 1; min-width: 250px; line-height: 1.4;"><strong>Aktion C:</strong> Statt der Frage "Wer weiß die Antwort?" nutzt die Lehrkraft ein Zufalls-Namensrad auf dem Smartboard, sodass sich alle Lernenden jederzeit aufgerufen fühlen könnten und gedanklich nicht abschalten.</div>
+                        <select id="self2-kounin-3" class="settings-control" style="width: 220px; padding: 0.5rem;" aria-label="Wählen Sie die zutreffende Kounin-Dimension für Aktion C">
+                            <option value="">-- Bitte wählen --</option>
+                            <option value="withitness">Allgegenwärtigkeit (Withitness)</option>
+                            <option value="overlapping">Überlappung (Overlapping)</option>
+                            <option value="smoothness">Reibungslosigkeit (Smoothness)</option>
+                            <option value="alerting">Gruppenmobilisierung</option>
+                        </select>
+                    </div>
+
+                    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem;">
+                        <div style="flex: 1; min-width: 250px; line-height: 1.4;"><strong>Aktion D:</strong> Die Lehrkraft kündigt das Ende einer Arbeitsphase 5 Minuten im Voraus visuell durch einen Time-Timer an. Der Ablauf zum anschließenden Aufräumen ist ritualisiert und erfordert keine erneute Erklärung.</div>
+                        <select id="self2-kounin-4" class="settings-control" style="width: 220px; padding: 0.5rem;" aria-label="Wählen Sie die zutreffende Kounin-Dimension für Aktion D">
+                            <option value="">-- Bitte wählen --</option>
+                            <option value="withitness">Allgegenwärtigkeit (Withitness)</option>
+                            <option value="overlapping">Überlappung (Overlapping)</option>
+                            <option value="smoothness">Reibungslosigkeit (Smoothness)</option>
+                            <option value="alerting">Gruppenmobilisierung</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button onclick="checkSelf2Kounin()" style="width: 100%; background-color: var(--heading-color);">Zuordnungen prüfen</button>
+                <div id="self2-kounin-feedback" aria-live="polite" style="display: none; margin-top: 1.5rem; padding: 1.2rem; border-radius: 6px; font-weight: 500; line-height: 1.5;"></div>
+            </div>
+        </div>
+
+        <div class="task-box no-print" id="self2-task3-box" style="opacity: 0.4; pointer-events: none; transition: opacity 0.5s ease-in-out;">
+            <h3>4. Der inklusive Routine-Builder</h3>
+            <p>Der Übergang aus der Pause in die Unterrichtsstunde ist für viele neurodiverse Lernende eine absolute Stressphase (hoher Lärmpegel, unklare Erwartungen). Wählen Sie aus den folgenden Optionen <strong>exakt 3 Elemente</strong> aus, die zu einem kognitiv entlastenden, proaktiven Stundenbeginn beitragen.</p>
+            
+            <div style="background-color: var(--bg-color); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color); margin-top: 1.5rem;">
+                
+                <div id="routine-builder-container" style="display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 2rem;">
+                    
+                    <button class="nav-btn routine-btn" onclick="toggleRoutine(this, 'correct')" style="height: auto; padding: 1rem; text-align: left; justify-content: flex-start; white-space: normal; background: var(--container-bg); color: var(--text-color); border: 1px solid var(--border-color); font-weight: normal;">Ein klares, nonverbales akustisches Signal (z.B. Klangschale) markiert sanft den Beginn der Konzentrationsphase.</button>
+                    
+                    <button class="nav-btn routine-btn" onclick="toggleRoutine(this, 'wrong')" style="height: auto; padding: 1rem; text-align: left; justify-content: flex-start; white-space: normal; background: var(--container-bg); color: var(--text-color); border: 1px solid var(--border-color); font-weight: normal;">Eine unstrukturierte "Erzählrunde" ohne Zeitlimit, in der alle durcheinanderrufen können, um sich zu beruhigen.</button>
+                    
+                    <button class="nav-btn routine-btn" onclick="toggleRoutine(this, 'correct')" style="height: auto; padding: 1rem; text-align: left; justify-content: flex-start; white-space: normal; background: var(--container-bg); color: var(--text-color); border: 1px solid var(--border-color); font-weight: normal;">Der visuelle Tagesplan an der Tafel wird gemeinsam, ritualisiert auf den aktuellen Stand ("Jetzt") aktualisiert.</button>
+
+                    <button class="nav-btn routine-btn" onclick="toggleRoutine(this, 'wrong')" style="height: auto; padding: 1rem; text-align: left; justify-content: flex-start; white-space: normal; background: var(--container-bg); color: var(--text-color); border: 1px solid var(--border-color); font-weight: normal;">Mündliches, unangekündigtes Abfragen der Hausaufgaben vor der gesamten Klasse zur sofortigen Leistungsüberprüfung.</button>
+                    
+                    <button class="nav-btn routine-btn" onclick="toggleRoutine(this, 'correct')" style="height: auto; padding: 1rem; text-align: left; justify-content: flex-start; white-space: normal; background: var(--container-bg); color: var(--text-color); border: 1px solid var(--border-color); font-weight: normal;">Der benötigte Materialbedarf für die erste Arbeitsphase wird per Piktogramm an der Tafel visualisiert.</button>
+
+                </div>
+
+                <div style="font-size: 0.9rem; margin-bottom: 1rem;">Ausgewählte Elemente: <span id="routine-counter">0</span> / 3</div>
+
+                <button onclick="checkSelf2Routine()" style="width: 100%; background-color: var(--heading-color);">Routine überprüfen</button>
+                <div id="self2-routine-feedback" aria-live="polite" style="display: none; margin-top: 1.5rem; padding: 1.2rem; border-radius: 6px; font-weight: 500; line-height: 1.5;"></div>
+            </div>
+        </div>
+
     </div>
 
     <div id="modal-s1" class="modal-overlay">
@@ -1095,36 +1507,32 @@
             <h2 style="margin-top: 0;">Zusammenfassung: Lindmeier & Lindmeier (2015)</h2>
             <p><strong>Quelle:</strong> Lindmeier, C. & Lindmeier, B. (2015). Inklusion aus der Perspektive des rechtlichen und ethischen Begründungsdiskurses. In: Erziehungswissenschaft 26 (51), S. 43-51.</p>
             
-            <h3>Einleitung: Verortung des Inklusionsdiskurses</h3>
-            <p>In der Erziehungswissenschaft besteht Konsens darüber, dass Inklusion eine zentrale und zugleich schwierige Frage des Bildungssystems darstellt (vgl. Tenorth 2013, S. 43). Lindmeier und Lindmeier (2015) unterscheiden nach Dyson (1999) grundsätzlich zwei Diskursstränge:</p>
-            <ul>
-                <li><strong>Realisierungsdiskurs:</strong> Fokussiert sich auf die Umsetzung in der Praxis (vgl. Dyson 1999, S. 43).</li>
-                <li><strong>Begründungsdiskurs:</strong> Legitimiert Inklusion rechtlich sowie ethisch und steht im Fokus des Textes (vgl. Lindmeier/Lindmeier 2015, S. 43).</li>
-            </ul>
+            <details open>
+                <summary>1. Inklusion als Menschenrechtsprinzip</summary>
+                <p>Die UN-Behindertenrechtskonvention (<span class="glossary-term" data-key="UN-BRK">UN-BRK</span>) verknüpft Inklusion direkt mit den Menschenrechten. Bielefeldt interpretiert dabei die klassischen Ideale für das Bildungssystem neu:</p>
+                <ul>
+                    <li><strong>Freiheit (<span class="glossary-term" data-key="Assistierte Freiheit">Assistierte Freiheit</span>):</strong> Kein Mensch ist völlig autonom. Soziale Assistenz schränkt individuelle Freiheit nicht ein, sondern ermöglicht sie erst.</li>
+                    <li><strong>Gleichheit (<span class="glossary-term" data-key="Barrierefreiheit">Barrierefreiheit</span>):</strong> Das Vorenthalten von angemessenen Anpassungen im Schulalltag gilt rechtlich bereits als handfeste Diskriminierung.</li>
+                    <li><strong>Brüderlichkeit (<span class="glossary-term" data-key="Belonging">Belonging</span>):</strong> Wirkliche Zugehörigkeit muss institutionell erschaffen werden. Ein bloßes körperliches "Dabeisein" in der Regelschule reicht nicht aus.</li>
+                </ul>
+            </details>
             
-            <h3>1. Entwicklung des internationalen Diskurses zu inklusiver Bildung</h3>
-            <ul>
-                <li><strong>Abkehr vom <span class="glossary-term" data-key="Mainstreaming">Mainstreaming</span>:</strong> Die Forderung nach Inklusion wurde seit Anfang der 1990er Jahre durch die UNESCO als „globale Agenda“ vorangetrieben (Kiuppis 2014, S. 43). Dies war eine direkte Reaktion auf das integrationspädagogische „mainstreaming“ in den USA (vgl. Lindmeier/Lindmeier 2015, S. 43).</li>
-                <li><strong>Kritik am Integrationsmodell:</strong> Beim Mainstreaming wurden lediglich leichter beeinträchtigte Kinder in Regelschulen platziert, während die Differenzlinien und Ausgrenzungen bestehen blieben; wer nicht passte, verblieb in „Resteinrichtungen“ (vgl. Lindmeier/Lindmeier 2015, S. 43).</li>
-                <li><strong>Das <span class="glossary-term" data-key="Kaskadenmodell">Kaskadenmodell</span>:</strong> Weil das Behinderungsmodell starr an der Person festgemacht wurde, wurden Kinder durch Vorbereitungsklassen und Sonderschulen „geschleust“ (vgl. Hinz 2008, S. 44).</li>
-                <li><strong>Meilensteine der Inklusion:</strong> Die Salamanca-Erklärung der UNESCO von 1994 forderte erstmals eine inklusive, an individuellen Bedürfnissen orientierte Bildung („child-centred-pedagogy“) (vgl. UNESCO 1994, S. 44). Mit der Ratifizierung der <span class="glossary-term" data-key="UN-BRK">UN-BRK</span> im Jahr 2009 verpflichtete sich Deutschland völkerrechtlich zur Gewährleistung eines inklusiven Bildungssystems nach Art. 24 (vgl. Klemm 2014, S. 44).</li>
-            </ul>
+            <details>
+                <summary>2. Entwicklung des Diskurses</summary>
+                <ul>
+                    <li><strong>Abkehr vom <span class="glossary-term" data-key="Mainstreaming">Mainstreaming</span>:</strong> Früher mussten sich Kinder an die Norm der Regelschule anpassen. Wer nicht passte, wurde aussortiert. Inklusion fordert, dass sich die Schule an die Vielfalt anpasst.</li>
+                    <li><strong>Das <span class="glossary-term" data-key="Kaskadenmodell">Kaskadenmodell</span>:</strong> Ein veraltetes System, bei dem Kinder je nach angeblichem "Defizit" in separierte Sonderschulen geschleust wurden.</li>
+                    <li><strong>Völkerrechtliche Pflicht:</strong> Durch die Ratifizierung der UN-BRK (2009) ist Deutschland bindend zur Umsetzung eines inklusiven Bildungssystems verpflichtet.</li>
+                </ul>
+            </details>
 
-            <h3>2. Inklusion als Menschenrechtsprinzip</h3>
-            <p><strong>Innovationspotenzial der UN-BRK:</strong> Inklusion wird direkt mit dem menschenrechtlichen Anspruch auf Achtung der Würde, Chancengleichheit und Nichtdiskriminierung verknüpft (vgl. Degener/Mogge-Grotjahn 2012, S. 45). Es werden keine neuen Menschenrechte geschaffen, sondern allgemeine Rechte auf den Kontext von Behinderung zugeschnitten (vgl. Lindmeier/Lindmeier 2015, S. 45).</p>
-            <p><strong>Neuinterpretation der Menschenrechte nach Bielefeldt (2012):</strong> Die Ideale der Französischen Revolution werden grundlegend erweitert (vgl. Bielefeldt 2012, S. 45):</p>
-            <ul>
-                <li><strong>Freiheit als „<span class="glossary-term" data-key="Assistierte Freiheit">assistierte Freiheit</span>“:</strong> Die klassische Autonomie blendet aus, dass jeder Mensch Unterstützung benötigt. Freiheit wird neu als „assistierte Freiheit“ definiert, bei der soziale Assistenz die Autonomie des Einzelnen nicht einschränkt (vgl. Graumann 2011, S. 45).</li>
-                <li><strong>Gleichheit durch <span class="glossary-term" data-key="Barrierefreiheit">Barrierefreiheit</span>:</strong> Diskriminierung ist nicht nur böswillig, sondern manifestiert sich in mentalen und strukturellen Barrieren (vgl. Bielefeldt 2012, S. 46). Das Vorenthalten von „angemessene[n] Vorkehrungen“ (UN-BRK, S. 46) gilt bereits als handfeste Diskriminierung (vgl. Aichele 2012, S. 46).</li>
-                <li><strong>Brüderlichkeit als gesellschaftliche Inklusion:</strong> Inklusion verlangt, dass die gesamte Architektur der Gesellschaft auf den Prüfstand gestellt wird, damit Zugehörigkeit („<span class="glossary-term" data-key="Belonging">enhanced sense of belonging</span>“) dauerhaft entstehen kann (vgl. Bielefeldt 2012, S. 46). Bloßes Dabeisein reicht nicht aus und darf nicht als Verzicht auf Unterstützung missverstanden werden (vgl. Wocken 2011, S. 47).</li>
-            </ul>
-
-            <h3>3. Implikationen für eine Bildungstheorie im inklusiven Kontext</h3>
-            <ul>
-                <li><strong>Erweiterung des Bildungsbegriffs:</strong> Die universalistische Idee der Bildung eines autonomen Subjekts muss um eine sozialtheoretische Perspektive ergänzt werden (vgl. Tenorth 2012, S. 47). Hierzu dient Ricken (2013) mit dem Verweis auf Tomasellos (2009) „relationale Anthropologie“, die die soziale Verfasstheit des Menschen betont (vgl. Lindmeier/Lindmeier 2015, S. 47).</li>
-                <li><strong>Anerkennung als Basis:</strong> Die Genese des eigenen Selbst ist konstitutiv von anderen abhängig, was im Diskurs der Anerkennungstheorie tief verankert ist (vgl. Lindmeier/Lindmeier 2012, S. 47-48). Subjektivität muss als soziale Genese begriffen werden (vgl. Lindmeier/Lindmeier 2015, S. 48).</li>
-                <li><strong>Soziale Konstruktion von Behinderung:</strong> Der Inklusionsdiskurs schließt an sozialpädagogische Linien an, indem Behinderung nicht im Menschen verortet wird (vgl. Lindmeier/Lindmeier 2015, S. 48). Laut Präambel der UN-BRK entsteht Behinderung erst aus der „Wechselwirkung zwischen Menschen mit Beeinträchtigungen und einstellungs- und umweltbedingten Barrieren“ (UN-BRK, S. 48). Erst dieses Verständnis ermöglicht es, Behinderung als strukturelles Unrecht zu adressieren (vgl. Lindmeier/Lindmeier 2015, S. 48).</li>
-            </ul>
+            <details>
+                <summary>3. Bildungstheoretische Konsequenzen</summary>
+                <ul>
+                    <li><strong>Behinderung ist sozial konstruiert:</strong> Sie ist kein medizinisches Defizit im Kind, sondern entsteht maßgeblich durch die Barrieren der Umwelt (z. B. durch unpassenden, starren Unterricht).</li>
+                    <li><strong>Anerkennung als Basis:</strong> Das eigene Selbst entwickelt sich nur in der sozialen Anerkennung durch andere. Ausgrenzung im Schulsystem beschädigt diesen Identitätsprozess massiv.</li>
+                </ul>
+            </details>
         </div>
     </div>
 
@@ -1139,56 +1547,30 @@
             <h2 style="margin-top: 0;">Zusammenfassung: Karin Bräu (2021)</h2>
             <p><strong>Quelle:</strong> Bräu, K. (2021). Kapitel 2.7 Inklusion und Leistung. S. 207–222.</p>
             
-            <h3>Einleitung: Der grundlegende Konflikt zwischen Schule und Inklusion</h3>
-            <ul>
-                <li><strong>Ausgangslage im Schulsystem:</strong> Das deutsche Schulsystem ist traditionell darauf ausgerichtet, Schüler*innen besonders früh anhand ihrer Leistungen einzustufen, zu selektieren und in unterschiedliche Bildungsgänge mit verschiedenen Abschlussmöglichkeiten zu sortieren (vgl. Bräu 2021, S. 207).</li>
-                <li><strong>Der aktuelle Wendepunkt:</strong> Durch die Forderung nach Inklusion und der Zusammenführung von Schularten stellt sich die Frage, inwiefern die gemeinsame Beschulung (Inklusion) und das selektive Leistungsprinzip der Schule überhaupt miteinander vereinbar sind (vgl. Bräu 2021, S. 207).</li>
-            </ul>
+            <details open>
+                <summary>1. Das meritokratische Paradoxon</summary>
+                <p>Das deutsche Schulsystem basiert historisch auf der <strong><span class="glossary-term" data-key="Meritokratie">Meritokratie</span></strong> (dem strengen Leistungsprinzip). Es selektiert und sortiert Kinder nach Leistung. Inklusion fordert hingegen den unbedingten Abbau von Benachteiligung und Hierarchien. Dieser Widerspruch lässt sich im aktuellen Schulsystem nicht logisch auflösen (<span class="glossary-term" data-key="Antinomie">Antinomie</span>).</p>
+                <ul>
+                    <li><strong>Kritik an der Notengebung:</strong> Schulische Bewertung ist selten objektiv. Oft wird unbewusst das angepasste Verhalten, die Sprache oder der familiäre Hintergrund (kultureller Habitus) mitbenotet.</li>
+                </ul>
+            </details>
 
-            <h3>1. Begriffsklärungen</h3>
-            <h4>1.1 Inklusion und ihre vier Diskurslinien</h4>
-            <p>Bräu unterscheidet vier ineinandergreifende Diskurslinien, um das komplexe Verständnis von Inklusion aufzuzeigen (vgl. Bräu 2021, S. 207):</p>
-            <ul>
-                <li><strong>Enges vs. weites Inklusionsverständnis:</strong> Ein enges (bzw. spezifisches) Verständnis zielt ausschließlich auf die gemeinsame Beschulung von behinderten und nicht-behinderten Kindern ab, vorangetrieben durch die <span class="glossary-term" data-key="UN-BRK">UN-BRK</span> von 2006 (vgl. Bräu 2021, S. 207f.). Ein weites (allgemeines) Verständnis meint hingegen das gemeinsame Lernen aller ohne jegliche Abgrenzung nach Personenmerkmalen und fordert eine intersektionale Perspektive zur Maximierung sozialer Teilhabe (vgl. Bräu 2021, S. 208).</li>
-                <li><strong><span class="glossary-term" data-key="Naturalistisch">Naturalistisches</span> vs. <span class="glossary-term" data-key="Konstruktivismus">sozialkonstruktivistisches</span> Differenzverständnis:</strong> Differenzen wie Behinderung, Geschlecht oder Migrationshintergrund können entweder als biologisch bzw. naturalistisch vorgegeben verstanden werden oder als sozial konstruiert (vgl. Bräu 2021, S. 208). Im sozialkonstruktivistischen Sinne werden Menschen aktiv behindert oder durch Praktiken zu den "Anderen" gemacht, was sich in Konzepten wie "<span class="glossary-term" data-key="Doing Difference">Doing Difference</span>" niederschlägt (vgl. Bräu 2021, S. 208).</li>
-                <li><strong>Spannungsfeld von Inklusion und Exklusion:</strong> Inklusion (Teilhabe) ist analytisch untrennbar mit Exklusion (Behinderung von Teilhabe) verbunden (vgl. Bräu 2021, S. 208). Exkludierende und differenzherstellende Praktiken existieren auch an Schulen, die sich eigentlich als inklusiv verstehen (vgl. Bräu 2021, S. 209).</li>
-                <li><strong>Begründungen für Inklusion:</strong> Inklusion wird pädagogisch als allgemeines Menschenrecht auf vollumfängliche Teilhabe begründet, aber parallel auch volkswirtschaftlich (Kosteneinsparungen vs. Mehrkosten) oder leistungsorientiert argumentiert, da bessere Schulabschlüsse auch die wirtschaftliche Potenz eines Landes fördern (vgl. Bräu 2021, S. 209f.).</li>
-            </ul>
+            <details>
+                <summary>2. Differenzverständnisse in der Schule</summary>
+                <ul>
+                    <li><strong><span class="glossary-term" data-key="Naturalistisch">Naturalistisch</span>:</strong> Eine veraltete Sichtweise. Lernschwächen oder Beeinträchtigungen werden als biologische Tatsachen und Defekte im Kind angesehen.</li>
+                    <li><strong><span class="glossary-term" data-key="Konstruktivismus">Konstruktivistisch</span>:</strong> Die moderne pädagogische Sichtweise. Differenzen entstehen erst dadurch, dass die Schule starre Normen setzt und "Abweichungen" durch ständige Leistungsmessung aktiv markiert (<span class="glossary-term" data-key="Doing Difference">Doing Difference</span>).</li>
+                </ul>
+            </details>
 
-            <h4>1.2 Schulische Leistung und das meritokratische Prinzip</h4>
-            <ul>
-                <li><strong>Legitimation durch Leistung:</strong> Schulische Leistung dient als legitimes Verteilungskriterium für spätere berufliche Optionen und Lebenschancen, was das <span class="glossary-term" data-key="meritokratische Leistungsprinzip">meritokratische Prinzip</span> darstellt und ständische Privilegien ablösen soll (vgl. Bräu 2021, S. 210).</li>
-                <li><strong>Kritik am Leistungsprinzip:</strong> Das Schulsystem gerät in die Kritik, da Leistungsbewertungen nicht objektiv messbar sind; vielmehr reproduzieren Schulen soziale Ungleichheiten (vgl. Bräu 2021, S. 211). Bewertungen hängen oft vom ungleichen kulturellen Kapital der Familien, von Fehlern in der Messung oder von impliziten Vorurteilen ("Images") der Lehrkräfte ab (vgl. Bräu 2021, S. 211).</li>
-                <li><strong>Subjektivierende Folgen:</strong> Dauerhafte Leistungsbeurteilungen und frühe Selektion können bei den "Verlierer*innen" zu Selbstzweifeln führen und das Selbstwertgefühl massiv mindern (vgl. Bräu 2021, S. 212).</li>
-            </ul>
-
-            <h4>1.3 Das <span class="glossary-term" data-key="Paradoxon">Paradoxon</span> von Inklusion und schulischer Leistung</h4>
-            <ul>
-                <li><strong>Paradigmata im Widerspruch:</strong> Das meritokratische System der Schule zielt auf die Produktion von Leistungsdifferenzen ab, während Inklusion (als Menschenrecht) den Abbau von Differenzherstellung und Benachteiligung verlangt (vgl. Bräu 2021, S. 212f.).</li>
-                <li><strong>Kommunikatives vs. konjunktives Wissen:</strong> Der Konflikt zeigt sich bei Lehrkräften: Das kommunikative Wissen orientiert sich an Förderidealen und Inklusion, während das habitualisierte (konjunktive) Erfahrungswissen unreflektiert Praktiken der Leistungsdifferenzierung antreibt (vgl. Bräu 2021, S. 213).</li>
-            </ul>
-
-            <h3>2. Empirische Befunde zum Verhältnis von Inklusion und Leistung</h3>
-            <h4>2.1 Folgen und Ergebnisse der Herstellung von Leistungsdifferenz</h4>
-            <ul>
-                <li><strong>Leistungsentwicklung nach Geschlecht:</strong> Bei (partieller) Monoedukation (z.B. reinen Mädchenschulen) zeigen Mädchen in den Fächern Mathematik, Physik und Muttersprache tendenziell leichte Leistungsvorteile sowie ein höheres Selbstkonzept (vgl. Bräu 2021, S. 214).</li>
-                <li><strong>Förderbedarf und Inklusion:</strong> Schüler*innen mit attestiertem Förderbedarf profitieren langfristig leistungsmäßig deutlich stärker von inklusiven Regelschulen als in Sonderschulen (vgl. Bräu 2021, S. 214).</li>
-                <li><strong>Auswirkungen auf Regelschüler*innen:</strong> Die Befürchtung, Inklusion senke die Leistung der Mehrheitsgruppe ohne Förderbedarf, wird nicht bestätigt; Studien zeigen eher keine signifikanten Unterschiede oder sogar leichte Vorteile für Kinder mit geringerem oder mittlerem Leistungsniveau in inklusiven Klassen (vgl. Bräu 2021, S. 215).</li>
-            </ul>
-
-            <h4>2.2 Prozesse der Herstellung von Leistungsdifferenz in inklusiven Settings</h4>
-            <ul>
-                <li><strong>Kategorisierung durch Bezeichnungen:</strong> Auch in scheinbar inklusiven Settings vollzieht sich ein "Doing difference". Schüler*innen klassifizieren Lehrkräfte als "richtige Lehrkraft" für Normalschüler*innen und als "Hilfslehrerin" für leistungsschwache Kinder, wodurch Differenzen zementiert werden (vgl. Bräu 2021, S. 215f.). Lehrkräfte erfinden zudem Stigmatisierungen wie "Kinder aus dem Niemandsland" für solche, die knapp am besonderen Förderbedarf vorbeischrammen (vgl. Bräu 2021, S. 216).</li>
-                <li><strong>Exklusion in der Praxis:</strong> Es lässt sich beobachten, dass Schüler*innen mit Förderbedarf oft von gemeinsamen Klassenaufgaben ausgeschlossen werden, weil sich eine Heilpädagogin abgetrennt um sie kümmert. Sie werden von der Leistungskonkurrenz entbunden, was ihren Ausschluss verfestigt und die Beteiligung am Gruppenlernen behindert (<span class="glossary-term" data-key="Othering">Othering</span>) (vgl. Bräu 2021, S. 216f.).</li>
-                <li><strong>Individualisierung als Falle:</strong> Im individualisierten Unterricht werden Entscheidungsfreiräume oft an "Selbstständigkeit" gekoppelt. Hohe Leistungserwartungen bringen Privilegien bei der Aufgabenwahl; als unselbstständig definierte Kinder werden im zirkulären Schluss rasch auch als leistungsschwach adressiert (vgl. Bräu 2021, S. 217).</li>
-            </ul>
-
-            <h3>3. Fazit</h3>
-            <ul>
-                <li><strong>Unaufhebbare Widersprüche:</strong> Die differenzvermeidende Logik der Inklusion und die differenzschaffende Logik der Meritokratie bleiben im Kern unvereinbar (vgl. Bräu 2021, S. 217).</li>
-                <li><strong>Notwendige Entdramatisierung:</strong> Um eine gerechte Schule zu formen, müssen Differenzen auf struktureller Ebene entdramatisiert werden. Dies erfordert von Lehrkräften, eigene Zuschreibungspraktiken zu reflektieren und ein performatives "<span class="glossary-term" data-key="Undoing Difference">Undoing difference</span>" zu etablieren (vgl. Bräu 2021, S. 218).</li>
-                <li><strong>Umbau des Leistungsprinzips:</strong> Das aktuelle schulische Leistungs-Dispositiv fungiert als Barriere für echte Inklusion. Universalistische Leistungsorientierungen und berufsrelevante Selektionen sollten erst sehr viel später in der Laufbahn (z.B. bei Abschlussprüfungen) ansetzen (vgl. Bräu 2021, S. 218).</li>
-            </ul>
+            <details>
+                <summary>3. Ausgrenzung im Schulalltag</summary>
+                <p>Auch in formell inklusiven Klassen findet oft unsichtbare Ausgrenzung statt:</p>
+                <ul>
+                    <li><strong><span class="glossary-term" data-key="Othering">Othering</span>:</strong> Förderkinder werden häufig von gemeinsamen Aufgaben getrennt und am Rand von speziellen Fachkräften betreut. Sie gehören formell zwar zur Klasse, werden aber sozial isoliert.</li>
+                    <li><strong>Pädagogische Konsequenz:</strong> Lehrkräfte müssen diese eigenen Zuschreibungen kritisch reflektieren und Differenzen im Schulalltag bewusst entdramatisieren (<span class="glossary-term" data-key="Undoing Difference">Undoing Difference</span>).</li>
+                </ul>
+            </details>
         </div>
     </div>
 
@@ -1203,38 +1585,29 @@
             <h2 style="margin-top: 0;">Zusammenfassung: Wolf & Dietze (2022)</h2>
             <p><strong>Quelle:</strong> Wolf, L. M. & Dietze, T. (2022). Ein Überblick über die Organisation der Feststellung von sonderpädagogischen Förderbedarfen in Deutschland. In: Gebhardt, M., Scheer, D. & Schurig, M. (Hrsg.): Handbuch der sonderpädagogischen Diagnostik. Regensburg: Universitätsbibliothek. S. 325–344.</p>
             
-            <h3>1. Bedeutung und historische Entwicklung der Feststellungsdiagnostik</h3>
-            <ul>
-                <li><strong>Paradigmenwechsel:</strong> Bis Mitte der 1980er Jahre führte ein festgestellter Bedarf fast zwangsläufig zur Überweisung an eine Sonderschule. Durch die KMK-Empfehlung von 1994 wurde der belastete Begriff der "Feststellung der Sonderschulbedürftigkeit" durch die "Feststellung von sonderpädagogischen Förderbedarfen" abgelöst, was den Weg für eine gemeinsame Beschulung in Regelschulen rechtlich ebnete (vgl. Wolf/Dietze 2022, S. 326).</li>
-                <li><strong>Grundlage individueller Förderung:</strong> Spätestens seit der Empfehlung zur Umsetzung der <span class="glossary-term" data-key="UN-BRK">UN-BRK</span> (2011) gilt das Feststellungsverfahren primär als Basis für die Einleitung individueller Förderung und nicht mehr alleinig als Zuweisungsinstrument für einen speziellen Lernort (vgl. Wolf/Dietze 2022, S. 326).</li>
-                <li><strong>Kritik und Relevanz:</strong> Formale Diagnosen greifen nach wie vor stark in kindliche Schullaufbahnen ein, obwohl die sonderpädagogische Diagnostik häufig qualitative Mängel aufweist und dem sogenannten <span class="glossary-term" data-key="Ressourcen-Etikettierungs-Dilemma">Ressourcen-Etikettierungs-Dilemma</span> unterliegt (vgl. Wolf/Dietze 2022, S. 326).</li>
-            </ul>
+            <details open>
+                <summary>1. Bedeutung der Feststellungsdiagnostik</summary>
+                <p>Das formelle Diagnostikverfahren dient heute primär dazu, passgenaue Förderung einzuleiten, und nicht mehr automatisch der Zuweisung an eine Förderschule.</p>
+                <ul>
+                    <li><strong><span class="glossary-term" data-key="Ressourcen-Etikettierungs-Dilemma">Ressourcen-Etikettierungs-Dilemma</span>:</strong> Ein ungelöstes Problem: Um personelle Unterstützung (Ressourcen) für die Schule zu erhalten, muss einem Kind weiterhin zwingend ein defizitorientiertes Etikett (die Diagnose) angeheftet werden.</li>
+                </ul>
+            </details>
 
-            <h3>2. Einleitung des Feststellungsverfahrens</h3>
-            <ul>
-                <li><strong>Prävention vor Feststellung:</strong> Sonderpädagogische Förderung nach Schuleintritt ist <span class="glossary-term" data-key="Subsidiär">subsidiär</span>. Ein förmliches Feststellungsverfahren darf erst dann eingeleitet werden, wenn alle anderen allgemeinpädagogischen Maßnahmen und präventiven Unterstützungen der Regelschule nachweislich ausgeschöpft sind (vgl. Wolf/Dietze 2022, S. 327).</li>
-                <li><strong>Ausnahmen vor Schuleintritt:</strong> Bei starken, evidenten Beeinträchtigungen (etwa im Bereich der geistigen oder motorischen Entwicklung) kann ein Verfahren bereits vor Schuleintritt, z.B. durch Früherkennungsuntersuchungen, initiiert werden (vgl. Wolf/Dietze 2022, S. 327).</li>
-                <li><strong>Antragstellende:</strong> Primär stellen die Erziehungsberechtigten oder die Schule den Antrag. In Ausnahmefällen können (je nach Landesrecht) auch Schüler:innen ab 14 Jahren oder Schulärzt:innen einen Antrag anregen (vgl. Wolf/Dietze 2022, S. 328).</li>
-            </ul>
+            <details>
+                <summary>2. Ablauf und rechtliche Prinzipien</summary>
+                <ul>
+                    <li><strong><span class="glossary-term" data-key="Subsidiär">Subsidiaritätsprinzip</span>:</strong> Formelle Diagnostik ist das letzte Mittel. Vorher müssen alle allgemeinen Fördermaßnahmen und Hilfen der Regelschule angewandt und ausgeschöpft sein.</li>
+                    <li><strong><span class="glossary-term" data-key="Trennungsgebot">Trennungsgebot</span>:</strong> Diagnostikverfahren dürfen nicht von Lehrkräften der eigenen Schule durchgeführt werden. Dies soll verhindern, dass verhaltensauffällige Kinder aus Eigeninteresse "abgeschoben" werden. Die Verfahren werden daher zentralisiert (z. B. durch Schulaufsichten oder übergreifende Förderzentren).</li>
+                </ul>
+            </details>
 
-            <h3>3. Organisation, Prozessverantwortung und Beteiligte</h3>
-            <ul>
-                <li><strong>Das Trennungsgebot:</strong> Um den Verdacht einer interessensgeleiteten Diagnostik abzuwenden (z.B. das "Abschieben" ressourcenintensiver Kinder), gilt der Grundsatz, dass "keine Diagnostik für die eigene Schule" stattfinden soll. Dies führt zu einer regionalen Zentralisierung der Feststellungsverfahren (vgl. Wolf/Dietze 2022, S. 329).</li>
-                <li><strong>Vier Strukturmodelle in Deutschland</strong> (vgl. Wolf/Dietze 2022, S. 329–330):
-                    <ol>
-                        <li>Eigens beauftragte Institutionen (z.B. zentrale Fachbereiche oder SIBUZe in Berlin).</li>
-                        <li>Diagnostikdienste, die administrativ an Förderschulen angegliedert sind (z.B. in Bayern).</li>
-                        <li>Übergreifende Beratungs- und Förderzentren (z.B. in Hessen).</li>
-                        <li>Direkte Beauftragung einer sonderpädagogischen Lehrkraft durch die Schulaufsicht (z.B. in NRW).</li>
-                    </ol>
-                </li>
-            </ul>
-
-            <h3>4. Elternbeteiligung und finale Lernortentscheidung</h3>
-            <ul>
-                <li><strong>Rolle der Eltern:</strong> Die Einvernehmlichkeit mit den Erziehungsberechtigten hat historisch massiv an Bedeutung gewonnen. Sie müssen während des gesamten Prozesses informiert und beraten werden (vgl. Wolf/Dietze 2022, S. 337).</li>
-                <li><strong><span class="glossary-term" data-key="Ressourcenvorbehalt">Ressourcenvorbehalt</span>:</strong> Grundsätzlich entscheiden die Eltern über den Lernort (Inklusion an der Regelschule vs. Förderschule). Die Schulaufsichtsbehörde kann diesen Elternwillen jedoch rechtlich aushebeln, wenn z.B. räumliche oder personelle Ressourcen an der Regelschule fehlen, eine akute Fremdgefährdung besteht oder die Funktionsfähigkeit des allgemeinen Unterrichts erheblich beeinträchtigt würde (vgl. Wolf/Dietze 2022, S. 337).</li>
-            </ul>
+            <details>
+                <summary>3. Lernortwahl und Grenzen</summary>
+                <ul>
+                    <li><strong>Elternwille:</strong> Die Erziehungsberechtigten entscheiden primär, ob das Kind inklusiv an einer Regelschule oder separiert an einer Förderschule lernt.</li>
+                    <li><strong><span class="glossary-term" data-key="Ressourcenvorbehalt">Ressourcenvorbehalt</span>:</strong> Die zuständige Schulaufsicht kann Inklusion rechtlich verweigern, wenn es der Regelschule objektiv an räumlichen oder personellen Mitteln fehlt oder der Unterricht für andere gefährdet ist. Subjektive Überforderung im Kollegium reicht als Ablehnungsgrund rechtlich nicht aus.</li>
+                </ul>
+            </details>
         </div>
     </div>
 
@@ -1249,38 +1622,28 @@
             <h2 style="margin-top: 0;">Zusammenfassung: Kohrt et al. (2021)</h2>
             <p><strong>Quelle:</strong> Kohrt, P., Gresch, C., & Mahler, N. (2021). Die soziale Integration von Schülerinnen und Schülern mit sonderpädagogischem Förderbedarf an allgemeinen Schulen und Förderschulen: Die Rolle individueller und klassenbezogener Kompetenzen. <em>Zeitschrift für Erziehungswissenschaft</em>, 24, 1205–1229.</p>
             
-            <h3>1. Ausgangslage und Zielsetzung der Studie</h3>
-            <ul>
-                <li><strong>Bildungspolitischer Auftrag:</strong> Die inklusive Beschulung ist ein zentraler Auftrag in Deutschland, flankiert durch die Ratifizierung der UN-Behindertenrechtskonvention. Ein elementares Ziel dieses gemeinsamen Unterrichts ist die aktive Teilhabe und tiefgehende soziale Integration von Kindern mit sonderpädagogischem Förderbedarf (SPF) in die Gesellschaft.</li>
-                <li><strong>Erwartungshaltung:</strong> Eltern sowie integrationspädagogische Initiativen erhoffen sich durch den Besuch allgemeiner Schulen positive Kontakte und den Abbau von Diskriminierung (Förderung der Inklusion).</li>
-                <li><strong>Forschungsdesiderat:</strong> Die Studie widmet sich der Frage, inwiefern diese Hoffnungen im realen Schulalltag eingelöst werden und ob Kinder mit SPF (Förderschwerpunkte Lernen, Sprache sowie emotionale und soziale Entwicklung, kurz: LSE) an allgemeinen Schulen tatsächlich besser integriert sind als an Förderschulen.</li>
-            </ul>
+            <details open>
+                <summary>1. Zielsetzung und theoretische Grundlage</summary>
+                <p>Die Studie untersucht, ob Kinder mit sonderpädagogischem Förderbedarf an Regelschulen tatsächlich sozial besser integriert sind, wie es die Bildungspolitik erhofft. Dabei werden zwei Theorien kontrastiert:</p>
+                <ul>
+                    <li><strong><span class="glossary-term" data-key="Theorie sozialer Vergleichsprozesse">Theorie sozialer Vergleichsprozesse</span>:</strong> Kinder vergleichen sich primär mit ähnlichen Peers. In sehr leistungsstarken Regelschulen fallen diese Vergleiche für Förderkinder oft negativ aus, was den Ausgrenzungsdruck stark erhöht.</li>
+                    <li><strong><span class="glossary-term" data-key="Theorie integrativer Prozesse">Theorie integrativer Prozesse</span>:</strong> Die Gegenannahme, dass in sehr bunten, heterogenen Klassen individuelle Schwächen nicht mehr als singuläre Abweichung auffallen und die Ausgrenzung daher abnimmt.</li>
+                </ul>
+            </details>
 
-            <h3>2. Theoretischer Rahmen</h3>
-            <p>Die Autorinnen kontrastieren zwei grundlegende theoretische Strömungen:</p>
-            <ul>
-                <li><strong>Theorie sozialer Vergleichsprozesse (Festinger, 1954):</strong> Personen vergleichen sich primär mit <em>ähnlichen</em> Bezugsgruppen, um ihren Selbstwert zu evaluieren (Ähnlichkeitshypothese). Fällt dieser leistungsbezogene Vergleich im Gymnasium oder der Grundschule für ein Kind mit Förderbedarf überwiegend negativ aus, steigt die Gefahr der Ausgrenzung. <em>Ableitung:</em> An Förderschulen sollten sich Kinder durch den Vergleich mit ähnlichen Peers sozial integrierter fühlen.</li>
-                <li><strong><span class="glossary-term" data-key="Theorie integrativer Prozesse">Theorie integrativer Prozesse</span> (z.B. Prengel, Wocken):</strong> Dieser Ansatz geht davon aus, dass Heterogenität in einer Gruppe Ausgrenzungen aktiv verhindert, da individuelle Unterschiede in einer sehr bunten Gruppe nicht mehr als singuläre "Abweichung" stigmatisiert werden. <em>Ableitung:</em> An leistungsheterogenen allgemeinen Schulen sollten sich Kinder mit SPF stärker integriert fühlen, da der Anpassungsdruck geringer sei.</li>
-            </ul>
+            <details>
+                <summary>2. Zentrale empirische Befunde</summary>
+                <ul>
+                    <li><strong>Überraschendes Hauptergebnis:</strong> Entgegen der Erwartungen fühlen sich Kinder mit Förderbedarf an separierten Förderschulen sozial <strong>signifikant besser integriert</strong> als an inklusiven Regelschulen.</li>
+                    <li><strong>Leistung als Auslöser:</strong> Je höher das durchschnittliche Leistungsniveau einer Klasse ist, desto schlechter gelingt die soziale Integration des Förderkindes (dies bestätigt die soziale Vergleichstheorie).</li>
+                    <li><strong>Vielfalt schützt nicht:</strong> Eine hohe Leistungsheterogenität (Vielfalt) in der Klasse konnte die Ausgrenzungsprozesse nicht spürbar abmildern.</li>
+                </ul>
+            </details>
 
-            <h3>3. Methodik und Datengrundlage</h3>
-            <ul>
-                <li><strong>Datensatz:</strong> Genutzt wurden bundesweite Daten aus dem IQB-Bildungstrend 2016 von Lernenden der vierten Jahrgangsstufe.</li>
-                <li><strong>Stichprobe:</strong> N = 26.899 Schüler:innen, davon n = 1924 explizit mit dem Förderbedarf LSE.</li>
-                <li><strong>Operationalisierung:</strong> Die soziale Integration wurde durch die <em>subjektive Selbsteinschätzung</em> der Lernenden selbst erhoben ("Ich bin beliebt in meiner Klasse") und nicht durch Fremdeinschätzungen der Lehrkräfte.</li>
-            </ul>
-
-            <h3>4. Zentrale empirische Befunde</h3>
-            <ul>
-                <li><strong>Der Hauptbefund:</strong> Entgegen der bildungspolitischen Hoffnungen ist die wahrgenommene soziale Integration von Schüler:innen mit SPF-LSE an Förderschulen signifikant <strong>höher</strong> ausgeprägt als an allgemeinen Regelschulen.</li>
-                <li><strong>Keine Erklärung durch schulische Leistung:</strong> Zwar weisen Klassen an Regelschulen eine höhere Kompetenz und größere Heterogenität auf, doch diese Leistungsfaktoren können die Unterschiede in der sozialen Integration zwischen den Schulformen <em>nicht</em> aufklären oder begründen.</li>
-            </ul>
-
-            <h3>5. Diskussion und Implikationen für die Inklusion</h3>
-            <ul>
-                <li><strong>Kritische Reflexion des gemeinsamen Unterrichts:</strong> Der bloße Weg in die Regelschule ist im Schulalltag noch nicht durch gelingende soziale Integration geprägt. Das physische "Dabeisein" führt nicht zwingend zu einem Zugehörigkeitsgefühl.</li>
-                <li><strong>Pädagogischer Handlungsbedarf:</strong> Da weder individuelle Leistungen noch Leistungsheterogenität die Ausgrenzung an Regelschulen beenden, müssen an allgemeinen Schulen gezielt die sozialen Beziehungen der Kinder untereinander (Peers) proaktiv gestärkt werden. Es bedarf weitreichender Reflexionen bezüglich Unterrichtsgestaltung und Lehrkräftefeedback, um Ausgrenzungsmechanismen präventiv abzubauen.</li>
-            </ul>
+            <details>
+                <summary>3. Pädagogische Konsequenzen</summary>
+                <p>Das bloße physische "Dabeisein" im selben Klassenraum erzeugt noch keine echte Inklusion. Da Regelschulen strukturell auf Leistung ausgerichtet sind, müssen Lehrkräfte dort proaktiv die sozialen Beziehungen gestalten und Leistungsvergleiche reduzieren, um echter Ausgrenzung vorzubeugen.</p>
+            </details>
         </div>
     </div>
 
@@ -1295,49 +1658,150 @@
             <h2 style="margin-top: 0;">Zusammenfassung: Evidenzbasierte Praxis & Assessment</h2>
             <p><strong>Quelle:</strong> Mitchell, D. & Sutherland, D. (2020). <em>What really works in special and inclusive education: using evidence-based teaching strategies.</em> Routledge. (Kapitel 4 & 10).</p>
             
-            <h3>1. Die "Magic Formula" der inklusiven Bildung</h3>
-            <p>Die Autoren definieren inklusive Bildung nicht nur als reinen Standortwechsel (Placement), sondern als hochkomplexe Systemstrategie ("multi-component mega-strategy"). Die wesentlichen Gelingensbedingungen werden in einer Formel summiert: <strong>Inclusive Education = V + P + 5As + S + R + L</strong>. Fehlt eine dieser Komponenten, droht das System zu scheitern oder in defizitorientierte "Integration" zurückzufallen.</p>
-            <ul>
-                <li><strong>V (Vision):</strong> Ein klares Bekenntnis zu Inklusion auf allen Ebenen, verankert in Gesetzgebung und Schulpolitik.</li>
-                <li><strong>P (Placement):</strong> Die physische Platzierung in einer altersgerechten Regelklasse im Wohnort. Ohne pädagogische Begleitung führt dies jedoch zur "Mikro-Exklusion".</li>
-                <li><strong>5 As:</strong>
-                    <ul>
-                        <li><em>Adapted Curriculum:</em> Ein flexibler Lehrplan, der an verschiedene Entwicklungsniveaus anpassbar ist.</li>
-                        <li><em>Adapted Assessment:</em> Angepasste Prüfungsverfahren (z. B. Nachteilsausgleiche oder alternative Leistungsnachweise).</li>
-                        <li><em>Adapted Teaching:</em> Der Einsatz wissenschaftlich validierter, evidenzbasierter Lehrmethoden.</li>
-                        <li><em>Acceptance:</em> Eine proaktive Kultur der Akzeptanz bei Lehrkräften, Lernenden und Eltern.</li>
-                        <li><em>Access:</em> Umfassende physische und infrastrukturelle Zugänglichkeit (Rampen, Akustik, Raumgestaltung).</li>
-                    </ul>
-                </li>
-                <li><strong>S (Support):</strong> Zusammenarbeit in multiprofessionellen Teams (Sonderpädagog:innen, Therapeut:innen, Assistenz).</li>
-                <li><strong>R (Resources):</strong> Die Notwendigkeit angemessener finanzieller und personeller Ressourcen, die dem Kind folgen sollten (Backpack-System), anstatt an spezielle Schulformen gebunden zu sein.</li>
-                <li><strong>L (Leadership):</strong> Führungskräfte, die die inklusive Kultur aktiv vorleben und strukturelle Hürden abbauen.</li>
-            </ul>
+            <details open>
+                <summary>1. Die "Magic Formula" der inklusiven Bildung</summary>
+                <p>Inklusion ist mehr als nur ein Standortwechsel. Fehlt eine der folgenden Komponenten, droht das System in defizitorientierte "Integration" zurückzufallen:</p>
+                <ul>
+                    <li><strong>V (Vision):</strong> Klares, verbindliches Bekenntnis zu Inklusion auf Schulleitungsebene.</li>
+                    <li><strong>P (Placement):</strong> Bedingungslose Platzierung in einer altersgerechten Regelklasse im Wohnort.</li>
+                    <li><strong>Die 5 As:</strong> Ein flexibel angepasster Lehrplan, angepasste Prüfungen, evidenzbasierte Lehrmethoden, proaktive Akzeptanzkultur und umfassende physische Barrierefreiheit.</li>
+                    <li><strong>S + R + L:</strong> Multiprofessioneller <em>Support</em> (z. B. Co-Teaching), präventive <em>Ressourcen</em>, die direkt dem Kind folgen, und ein starkes <em>Leadership</em> im Kollegium.</li>
+                </ul>
+            </details>
 
-            <h3>2. Empirische Befunde: Wirkt Inklusion?</h3>
-            <p>Internationale Meta-Analysen (u. a. von Hehir, 2016) belegen konsistent den Nutzen von inklusiven Settings:</p>
-            <ul>
-                <li>Lernende mit Förderbedarf erzielen in Regelklassen stärkere Fortschritte in Lesen und Mathematik, weisen höhere Anwesenheitsquoten auf und erlangen häufiger formale Abschlüsse als in separierten Förderschulen.</li>
-                <li>Die Leistungen der Lernenden <em>ohne</em> Förderbedarf sinken durch die Inklusion nicht; im Gegenteil profitieren sie häufig von den differenzierten Lehrmethoden, die Lehrkräfte durch die gesteigerte Heterogenität anwenden.</li>
-            </ul>
+            <details>
+                <summary>2. Assessment und kybernetisches Feedback</summary>
+                <ul>
+                    <li><strong><span class="glossary-term" data-key="Formatives Assessment">Formativ</span> vs. <span class="glossary-term" data-key="Summatives Assessment">Summativ</span>:</strong> Summatives Assessment bewertet am Ende eines Prozesses (Noten für Selektion). Formatives Assessment steuert <em>während</em> des Lernprozesses und passt die Lehrmethoden dynamisch an die Bedarfe an.</li>
+                    <li><strong>Das <span class="glossary-term" data-key="Kybernetik">Kybernetische Prinzip</span>:</strong> Feedback funktioniert wie ein Steuermann auf einem Schiff. Es schließt aktiv die Lücke zwischen dem aktuellen Leistungsstand und dem angestrebten Ziel.</li>
+                    <li><strong>Instruktiv statt Normativ:</strong> Hochwirksames Feedback greift nie die Person an, sondern liefert konkrete sachliche Lösungsstrategien. Normative Vergleiche ("Du bist schlechter als andere") beschädigen den Selbstwert und blockieren Lernen.</li>
+                </ul>
+            </details>
 
-            <h3>3. Formatives Assessment und kybernetisches Feedback</h3>
-            <p>Kapitel 10 beleuchtet die mit Abstand wirkungsvollsten pädagogischen Instrumente im inklusiven Unterricht: <span class="glossary-term" data-key="Formatives Assessment">formatives Assessment</span> und qualitatives Feedback.</p>
-            <ul>
-                <li><strong>Das kybernetische Prinzip:</strong> Feedback wird als Steuerungsprozess verstanden (griech. <em>kubernētēs</em> = Steuermann). Es schließt aktiv die kognitive Lücke zwischen dem aktuellen Leistungsstand und dem angestrebten Lernziel.</li>
-                <li><strong>Formativ vs. Summativ:</strong> <span class="glossary-term" data-key="Summatives Assessment">Summatives Assessment</span> bewertet am <em>Ende</em> eines Prozesses (Noten), formatives Assessment steuert <em>während</em> des Prozesses und ermöglicht Anpassungen des Lehrverhaltens und der Methoden.</li>
-                <li><strong>Feedback-Qualität:</strong> Effektiv ist "instruktives" Feedback, welches prozessbezogene Strategien fokussiert anstatt rein die Person oder deren Anstrengung ("Du hast die Formel richtig angewandt, aber prüfe nochmal Schritt 2..."). Normative Vergleiche ("Du bist schlechter als...") sind strikt zu vermeiden.</li>
-            </ul>
+            <details>
+                <summary>3. Neurobiologie und Evidenz (<span class="glossary-term" data-key="Hattie-Studie">Hattie</span>)</summary>
+                <ul>
+                    <li><strong>Stress blockiert das Gehirn:</strong> Normatives, abwertendes Feedback erzeugt im Gehirn das Gefühl von sozialer Bedrohung. Das Gehirn wird mit Cortisol (Stresshormon) geflutet, Lernen und Empathie werden biologisch unmöglich.</li>
+                    <li><strong>Massive <span class="glossary-term" data-key="Hattie-Studie">Effektstärken</span>:</strong> Internationale Meta-Analysen zeigen eindeutig: Formatives Assessment (Effektstärke d = 0.90) und sachliches, instruktives Feedback (d = 0.73) zählen zu den absolut wirkungsvollsten pädagogischen Instrumenten weltweit.</li>
+                </ul>
+            </details>
 
-            <h3>4. Neurobiologie und Effektstärken</h3>
-            <ul>
-                <li><strong>Neurobiologische Reaktionen:</strong> Die schulische Fehlerkultur beeinflusst das Gehirn massiv. Negatives, normatives Feedback wird neurobiologisch als soziale Bedrohung ("social-evaluative threat") interpretiert. Dies führt zu einer Cortisol-Ausschüttung (Stress), welche die kognitive Leistungsfähigkeit und Empathie blockiert. Konstruktives, lösungsorientiertes Feedback hingegen fördert die Ausschüttung von Oxytocin und Dopamin, was Lernen und Bindung begünstigt.</li>
-                <li><strong>Empirische Daten:</strong> In Meta-Analysen zeigt formatives Assessment eine herausragende Effektstärke von $d = 0.90$. Instruktiv formuliertes Feedback liegt im Mittel bei $d = 0.73$ (und in manchen Erhebungen sogar über $d = 1.13$) und zählt damit zu den nachweislich stärksten Einflussfaktoren auf den schulischen Bildungserfolg überhaupt.</li>
-            </ul>
+            <details>
+                <summary>2. Empirische Befunde: Wirkt Inklusion?</summary>
+                <dl>
+                    <dt>Vorteile für Lernende mit Förderbedarf</dt>
+                    <dd>Stärkere Fortschritte in Kernfächern, höhere Anwesenheit und mehr formale Abschlüsse als an separierten Förderschulen.</dd>
+                    <dt>Auswirkungen auf Regelschüler:innen</dt>
+                    <dd>Die Leistungen sinken nicht; sie profitieren häufig von den differenzierten, flexiblen Lehrmethoden.</dd>
+                </dl>
+            </details>
+
+            <details>
+                <summary>3. Formatives Assessment und kybernetisches Feedback</summary>
+                <dl>
+                    <dt><span class="glossary-term" data-key="Kybernetik">Kybernetisches Prinzip</span></dt>
+                    <dd>Feedback als konstanter Steuerungsprozess, der aktiv die Lücke zwischen aktuellem Leistungsstand und Lernziel schließt.</dd>
+                    <dt><span class="glossary-term" data-key="Formatives Assessment">Formativ</span> vs. <span class="glossary-term" data-key="Summatives Assessment">Summativ</span></dt>
+                    <dd>Formativ steuert während des Prozesses (Lernbegleitung); Summativ bewertet am Ende (Noten/Selektion).</dd>
+                    <dt>Instruktives Feedback</dt>
+                    <dd>Fokussiert prozessbezogene Strategien (Ursachen), nicht die Person oder normative Vergleiche ("besser als X").</dd>
+                </dl>
+            </details>
+
+            <details>
+                <summary>4. Neurobiologie und Effektstärken</summary>
+                <dl>
+                    <dt>Neurobiologische Reaktionen</dt>
+                    <dd>Normatives Feedback erzeugt "social-evaluative threat" (Cortisol-Ausschüttung), was Lernen blockiert. Instruktives Feedback fördert Dopamin und Lernbereitschaft.</dd>
+                    <dt>Massive <span class="glossary-term" data-key="Hattie-Studie">Effektstärken</span></dt>
+                    <dd>Formatives Assessment (d = 0.90) und instruktives Feedback (d = 0.73) zählen zu den wirkungsvollsten pädagogischen Instrumenten weltweit.</dd>
+                </dl>
+            </details>
         </div>
     </div>
 
-    <div id="modal-placeholder" class="modal-overlay">
+    <div id="modal-sa1" class="modal-overlay">
+    <div class="modal-content">
+        <div class="modal-header-actions" style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">
+            <button class="pdf-btn" style="position: static; margin: 0; min-width: 180px; text-align: center; padding: 0.6rem 1.2rem; font-size: 0.95rem; border-radius: 6px;" onclick="printModalContent()" aria-label="Diese Zusammenfassung als PDF Datei speichern">Als PDF speichern</button>
+            <button class="tts-btn tts-play" style="position: static; margin: 0; min-width: 180px; text-align: center; padding: 0.6rem 1.2rem; font-size: 0.95rem; border-radius: 6px; background-color: var(--accent-color); color: white; border: none; cursor: pointer;" onclick="playTTS(this.parentElement.parentElement)" aria-label="Diese Seite vorlesen">Diese Seite vorlesen</button>
+            <button class="modal-close" style="position: static; margin: 0; min-width: 180px; text-align: center; padding: 0.6rem 1.2rem; font-size: 0.95rem; border-radius: 6px; font-weight: 600;" onclick="closeModal('modal-sa1')" aria-label="Aktuelles Fenster schließen">Fenster schließen</button>
+        </div>
+        
+        <h2 style="margin-top: 0;">Zusammenfassung: Neurodiversität & Strukturierung</h2>
+        <p><strong>Fokus:</strong> Haider et al. – Neurodiversität als Paradigma & Exekutive Funktionen</p>
+        
+        <details open>
+            <summary>1. Neurodiversität als inklusives Paradigma</summary>
+            <p>Der Begriff <strong><span class="glossary-term" data-key="Neurodiversität">Neurodiversität</span></strong> fordert einen fundamentalen Paradigmenwechsel im Umgang mit Besonderheiten wie ADHS oder Autismus:</p>
+            <ul>
+                <li><strong>Abkehr vom medizinischen Defizitmodell:</strong> Neurologische Unterschiede sind natürliche, menschliche Variationen (ähnlich der Biodiversität) und keine Defekte, die "repariert" oder geheilt werden müssen.</li>
+                <li><strong>Umgebung anpassen (UDL):</strong> Nicht das Kind muss passend gemacht werden, sondern die Schule muss Barrieren abbauen, die durch starre Vorgaben an die Informationsverarbeitung entstehen.</li>
+            </ul>
+        </details>
+        
+        <details>
+            <summary>2. Die exekutiven Funktionen</summary>
+            <p>Verhalten, das im Schulalltag oft als "Faulheit" oder "Provokation" abgetan wird, resultiert häufig aus einer chronischen Überlastung der <strong><span class="glossary-term" data-key="Exekutive Funktionen">exekutiven Funktionen</span></strong> (den Steuerungszentralen des Gehirns):</p>
+            <ul>
+                <li><strong>Arbeitsgedächtnis:</strong> Die Fähigkeit, Informationen kurzzeitig zu speichern und mental zu bearbeiten (z. B. komplexe, mehrteilige Arbeitsanweisungen behalten).</li>
+                <li><strong>Inhibition (Impulskontrolle):</strong> Die Fähigkeit, störende <span class="glossary-term" data-key="Reizfilter">Sinnesreize</span> auszublenden oder automatische Handlungen (z. B. aufstehen, Zwischenrufen) bewusst zu unterdrücken.</li>
+                <li><strong>Kognitive Flexibilität:</strong> Die Fähigkeit, sich rasch an unerwartete Planänderungen im Unterricht anzupassen, ohne in eine Stressstarre zu verfallen.</li>
+            </ul>
+        </details>
+
+        <details>
+            <summary>3. Strukturierungshilfen (UDL)</summary>
+            <p>Um kognitive Überlastung zu verhindern, hilft konsequente Vorhersehbarkeit allen Lernenden im System gleichermaßen:</p>
+            <ul>
+                <li><strong>Räumliche Reizreduktion:</strong> Klare Arbeitsplätze, die visuell entlasten und Ablenkungen minimieren.</li>
+                <li><strong>Zeitliche Visualisierung:</strong> Den Verlauf von Zeit sichtbar machen (z. B. Time-Timer) und Übergänge zwischen Arbeitsphasen fest ritualisieren.</li>
+                <li><strong>Materialstruktur:</strong> Optisch entlastete Arbeitsblätter und kleinschrittige Anweisungen (Scaffolding), die stets beantworten: <em>Was ist zu tun? Wie viel ist zu tun? Wann bin ich fertig?</em></li>
+            </ul>
+        </details>
+    </div>
+</div>
+
+<div id="modal-sa2" class="modal-overlay">
+    <div class="modal-content">
+        <div class="modal-header-actions" style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">
+            <button class="pdf-btn" style="position: static; margin: 0; min-width: 180px; text-align: center; padding: 0.6rem 1.2rem; font-size: 0.95rem; border-radius: 6px;" onclick="printModalContent()" aria-label="Diese Zusammenfassung als PDF Datei speichern">Als PDF speichern</button>
+            <button class="tts-btn tts-play" style="position: static; margin: 0; min-width: 180px; text-align: center; padding: 0.6rem 1.2rem; font-size: 0.95rem; border-radius: 6px; background-color: var(--accent-color); color: white; border: none; cursor: pointer;" onclick="playTTS(this.parentElement.parentElement)" aria-label="Diese Seite vorlesen">Diese Seite vorlesen</button>
+            <button class="modal-close" style="position: static; margin: 0; min-width: 180px; text-align: center; padding: 0.6rem 1.2rem; font-size: 0.95rem; border-radius: 6px; font-weight: 600;" onclick="closeModal('modal-sa2')" aria-label="Aktuelles Fenster schließen">Fenster schließen</button>
+        </div>
+        
+        <h2 style="margin-top: 0;">Zusammenfassung: Lernraumgestaltung & Klassenmanagement</h2>
+        <p><strong>Fokus:</strong> Haider et al. – Der Raum als dritter Pädagoge & Proaktives Management</p>
+        
+        <details open>
+            <summary>1. Der Raum als "dritter Pädagoge"</summary>
+            <p>Die physische Raumstruktur lenkt Verhalten massiv. Eine exkludierende Raumstruktur (hohe Reizdichte, starre Sitzordnung) zementiert Barrieren. Eine inklusive Gestaltung zeichnet sich aus durch:</p>
+            <ul>
+                <li><strong>Akustische Entlastung:</strong> Gezielte Reduktion von hallendem Lärm durch Teppiche oder Filzgleiter, um <span class="glossary-term" data-key="Reizfilter">Reizüberflutung</span> vorzubeugen.</li>
+                <li><strong>Bewegung erlauben:</strong> Flexible Sitzmöbel (wie Wackelhocker oder Stehpulte) ermöglichen motorische Selbstregulation für neurodiverse Lernende.</li>
+                <li><strong>Visuelle Klarheit (Clean Desk):</strong> Die konsequente Entfernung ablenkender und überflüssiger Dekorationen lenkt den Fokus auf das Wesentliche.</li>
+            </ul>
+        </details>
+        
+        <details>
+            <summary>2. Präventives <span class="glossary-term" data-key="Klassenmanagement">Klassenmanagement</span> (nach Kounin)</summary>
+            <p>Erfolgreiche Lehrkräfte reagieren nicht strafend auf Störungen, sondern verhindern sie im Vorfeld durch klare, proaktive Führung. Die vier Dimensionen sind:</p>
+            <ul>
+                <li><strong>Allgegenwärtigkeit (Withitness):</strong> Die Lehrkraft hat alles im Blick und greift sehr frühzeitig non-verbal ein (z. B. durch ruhigen Blickkontakt), ohne den Unterricht stoppen zu müssen.</li>
+                <li><strong>Überlappung (Overlapping):</strong> Das souveräne Managen von zwei parallelen Prozessen (z. B. einer Gruppe helfen und zeitgleich ein unruhiges Kind per Handzeichen lenken).</li>
+                <li><strong>Reibungslosigkeit (Smoothness):</strong> Lückenlose, stark ritualisierte Übergänge zwischen den Arbeitsphasen ohne Leerlauf, der oft zu Unruhe und Stress führt.</li>
+                <li><strong>Gruppenmobilisierung:</strong> Alle Lernenden gedanklich auf "Sendung" halten (z. B. durch ein Zufalls-Namensrad anstelle von reinem Melden).</li>
+            </ul>
+        </details>
+
+        <details>
+            <summary>3. Fazit für die Inklusionspädagogik</summary>
+            <p>Eine gute Raumgestaltung und exzellentes Klassenmanagement schaffen primär eines: <strong>Vorhersehbarkeit und Sicherheit</strong>. Störverhalten wird in diesem System nicht als böswillige Provokation abgetan, sondern als Symptom von Überforderung oder unklaren Strukturen verstanden. Proaktive Planung reduziert die Notwendigkeit von reaktiven, stigmatisierenden Strafen drastisch.</p>
+        </details>
+    </div>
+</div>
+
+<div id="modal-placeholder" class="modal-overlay">
         <div class="modal-content">
             <div class="modal-header-actions" style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">
                 <button class="pdf-btn" style="position: static; margin: 0; min-width: 180px; text-align: center; padding: 0.6rem 1.2rem; font-size: 0.95rem; border-radius: 6px;" onclick="printModalContent()" aria-label="Diese Ansicht als PDF Datei speichern">Als PDF speichern</button>
@@ -1501,7 +1965,7 @@
     </div>
 </main>
 <!-- OPAL ANPASSUNG -->
-<script src="script.js?v=4"></script>
+<script src="script.js?v=6"></script>
 
 </body>
 </html>
